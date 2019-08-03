@@ -1,0 +1,1457 @@
+{% extends 'page/base.html' %}
+{% load static %}
+{% block content %}
+ <!-- Header -->
+  <header class="bg-primary py-5 mb-5">
+    <div id="lecturer" class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <h1 class="display-4 text-white mt-5 mb-2">LECTURER PAGE</h1>
+          <p class="lead mb-5 text-white-50">Create your own lecture's interface with any tools you like. Add items using the drag and drop method and then press Save. When you finish you can either edit or delete your interface and then start again.</p>
+          <form onsubmit="return check()" id="dataform" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <input hidden type="text" id="col1value" name="Slot1" value="">
+            <input hidden type="text" id="col2value" name="Slot2" value="">
+            <input hidden type="text" id="col3value" name="Slot3" value="">
+            <input hidden type="text" id="col4value" name="Slot4" value="">
+            <input hidden type="text" id="col5value" name="Slot5" value="">
+            <input hidden type="text" id="col6value" name="Slot6" value="">
+            <input hidden type="text" id="col7value" name="Slot7" value="">
+            <input hidden type="text" id="col8value" name="Slot8" value="">
+            <input hidden type="text" id="col9value" name="Slot9" value="">
+            <input hidden type="text" id="deletevalue" name="deletevalue" value="no">
+            <input hidden type="text" id="formquestions" name="formquestions" value="">
+            <input id="savebtn" class="btn btn-dark" type="submit" value="Save">
+            <div id="alert"></div>
+          </form>
+          <button hidden id="editbtn" style="display:none;" class="btn btn-dark" type="button">Edit</button>
+          <form id="deleteform" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <input hidden type="text" id="deletevalue" name="deletevalue" value="yes">
+            <input onsubmit="return beforeDelete()" id="deletebtn" style="display:none;" class="btn btn-dark" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="student" style="display:none;" class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <h1 class="display-4 text-white mt-5 mb-2">STUDENT PAGE</h1>
+          <p class="lead mb-5 text-white-50">Use the following tools as you wish.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div id="sourceitems" class="row source">
+      <div class="col">
+        <div id="buttons" class="items" draggable="true" ondragstart="drag(event)" ondragover="noAllowDrop(event)" ondragend="dragEnd(event)">
+          BUTTONS
+        </div>
+      </div>
+ 
+      <div class="col">
+        <div id="question" class="items" draggable=true ondragstart="drag(event)" ondragover="noAllowDrop(event)" ondragend="dragEnd(event)">
+          QUESTION
+        </div>
+      </div>
+
+      <div class="col">
+        <div id="questions" class="items" draggable=true ondragstart="drag(event)" ondragover="noAllowDrop(event)" ondragend="dragEnd(event)">
+          STUDENTS' QUESTIONS
+        </div>
+      </div>
+
+       <div class="col">
+        <div id="feedback" class="items" draggable=true ondragstart="drag(event)" ondragover="noAllowDrop(event)" ondragend="dragEnd(event)">
+          FEEDBACK
+        </div>
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <hr>
+
+  <div class="container">
+    <div class="row destination">
+      <div id="col1" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+      <div id="col2" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+      <div id="col3" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+    </div>
+    <!-- /.row -->
+    <div class="row destination">
+      <div id="col4" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+      <div id="col5" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+      <div id="col6" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+    </div>
+    <!-- /.row -->
+    <div class="row destination">
+      <div id="col7" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+      <div id="col8" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+      <div id="col9" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <script type="text/javascript">
+  localStorage.setItem("question",0);
+  var v = parseInt(localStorage.getItem("question"));
+  var doc = document.getElementById("formquestions");
+  doc.value = v;
+  function beforeDelete() {
+    localStorage.setItem("results1",0);
+    localStorage.setItem("results2",0);
+    localStorage.setItem("results3",0);
+    localStorage.setItem("results4",0);
+    localStorage.setItem("results5",0);
+    localStorage.setItem("results6",0);
+    localStorage.setItem("results7",0);
+    localStorage.setItem("results8",0);
+    localStorage.setItem("results9",0);
+    return true;
+  }
+  function check() {
+    var valid = true;
+    var q1 = document.getElementById("question1");
+    var q2 = document.getElementById("question2");
+    var q3 = document.getElementById("question3");
+    var q4 = document.getElementById("question4");
+    var q5 = document.getElementById("question5");
+    var q6 = document.getElementById("question6");
+    var q7 = document.getElementById("question7");
+    var q8 = document.getElementById("question8");
+    var q9 = document.getElementById("question9");
+    if (q1 || q2 || q3 || q4 || q5 || q6 || q7 || q8 || q9) {
+      var alert = document.getElementById("alert");
+      alert.classList.add("alert");
+      alert.classList.add("alert-danger");
+      alert.setAttribute("role","alert");
+      alert.innerHTML = "You must complete and save all the questions and answers!";
+      return false;
+    } else {
+      localStorage.setItem("results1",0);
+      localStorage.setItem("results2",0);
+      localStorage.setItem("results3",0);
+      localStorage.setItem("results4",0);
+      localStorage.setItem("results5",0);
+      localStorage.setItem("results6",0);
+      localStorage.setItem("results7",0);
+      localStorage.setItem("results8",0);
+      localStorage.setItem("results9",0);
+      return true;
+    }
+  }
+  function addAnswer(q) {
+  	var v = parseInt(localStorage.getItem("q"+q+"answers")) + 1;
+  	if (v <= 10) {
+      var dropdown = document.getElementById("q"+q+"correctanswer");
+      var op = document.createElement("option");
+      op.setAttribute("id","q"+q+"op"+v);
+      op.setAttribute("value",v);
+      op.innerHTML = v;
+      dropdown.appendChild(op);
+  		var doc = document.getElementById("q"+q+"moreanswers");
+    	var div = document.createElement("div");
+    	div.setAttribute("id","q"+q+"a"+v);
+    	var x = document.createElement("input");
+    	x.setAttribute("type","radio");
+    	x.setAttribute("name","answer");
+    	x.setAttribute("value",v);
+    	div.appendChild(x);
+    	var y = document.createElement("input");
+    	y.setAttribute("type","text");
+    	y.setAttribute("id","q"+q+"answer"+v);
+    	y.setAttribute("name","q"+q+"answer"+v);
+    	y.setAttribute("placeholder","Answer "+v);
+    	y.setAttribute("value","");
+    	div.appendChild(y);
+    	var del = document.createElement("button");
+    	var z = document.createElement("br");
+    	del.setAttribute("id","q"+q+"a"+v+"del");
+    	del.setAttribute("onclick","deleteAnswer("+q+","+v+")");
+    	del.innerHTML = "Delete";
+    	div.appendChild(del);
+    	div.appendChild(z);
+    	doc.appendChild(div);
+    	localStorage.setItem("q"+q+"answers",v);
+    }
+  }
+  function deleteAnswer(q,v) {
+    var doc = document.getElementById("q"+q+"moreanswers");
+    var div = document.getElementById("q"+q+"a"+v);
+    doc.removeChild(div);
+    var dropdown = document.getElementById("q"+q+"correctanswer");
+    var op = document.getElementById("q"+q+"op"+v);
+    dropdown.removeChild(op);
+  }
+  function save(v) {
+  	var dataform = document.getElementById("dataform");
+    var div = document.getElementById("q"+v);
+    var q = document.getElementById("question"+v);
+    var a1 = document.getElementById("q"+v+"answer1");
+    var a2 = document.getElementById("q"+v+"answer2");
+    var dropdown = document.getElementById("q"+v+"correctanswer");
+    var d = document.createElement("span");
+    d.innerHTML = " " + q.value;
+    var el1 = document.createElement("input");
+    el1.setAttribute("hidden",true);
+    el1.setAttribute("type","text");
+    el1.setAttribute("id","form"+q.id);
+    el1.setAttribute("name","form"+q.id);
+    el1.setAttribute("value",q.value);
+    dataform.appendChild(el1);
+    var d1 = document.createElement("span");
+    d1.innerHTML = " " + a1.value;
+    var el2 = document.createElement("input");
+    el2.setAttribute("hidden",true);
+    el2.setAttribute("type","text");
+    el2.setAttribute("id","form"+a1.id);
+    el2.setAttribute("name","form"+a1.id);
+    el2.setAttribute("value",a1.value);
+    dataform.appendChild(el2);
+    var d2 = document.createElement("span");
+    d2.innerHTML = " " + a2.value;
+    var el3 = document.createElement("input");
+    el3.setAttribute("hidden",true);
+    el3.setAttribute("type","text");
+    el3.setAttribute("id","form"+a2.id);
+    el3.setAttribute("name","form"+a2.id);
+    el3.setAttribute("value",a2.value);
+    dataform.appendChild(el3);
+    div.replaceChild(d, q); 
+    div.replaceChild(d1, a1);
+    div.replaceChild(d2, a2);
+    var b1 = document.getElementById("q"+v+"addanswer");
+    var b2 = document.getElementById("q"+v+"save");
+    div.removeChild(b1);
+    div.removeChild(b2);
+    var x = 3;
+    while (x < 11) {
+      var answerdiv = document.getElementById("q"+v+"a"+x);
+      if (answerdiv) {
+      	var answer = document.getElementById("q"+v+"answer"+x);
+      	var del = document.getElementById("q"+v+"a"+x+"del");
+      	var d = document.createElement("span");
+      	d.innerHTML = " " + answer.value;
+      	var el = document.createElement("input");
+        el.setAttribute("hidden",true);
+        el.setAttribute("type","text");
+        el.setAttribute("id","form"+answer.id);
+        el.setAttribute("name","form"+answer.id);
+        el.setAttribute("value",answer.value);
+        dataform.appendChild(el);
+      	answerdiv.replaceChild(d,answer);
+      	answerdiv.removeChild(del);
+      }
+      x++;
+    }
+    var el4 = document.createElement("input");
+    el4.setAttribute("hidden",true);
+    el4.setAttribute("type","text");
+    el4.setAttribute("id","form"+dropdown.id);
+    el4.setAttribute("name","form"+dropdown.id);
+    el4.setAttribute("value",dropdown.value);
+    dataform.appendChild(el4);
+  }
+  function ask() {
+    var div1 = document.getElementById("txt");
+    var div2 = document.getElementById("squestions");
+    var text = document.createElement("div");
+    var text2 = document.createElement("span");
+    var b = document.createElement("i");
+    b.setAttribute("onclick","vote(this)");
+    b.setAttribute("onmouseover","this.style.color='gray';")
+    b.setAttribute("class","fa fa-thumbs-up");
+    text2.innerHTML = div1.value + " ";
+    text.appendChild(text2);
+    text.appendChild(b);
+    div2.appendChild(text);
+  }
+  function vote(b) {
+    b.style.color = 'blue';
+  }
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  function noAllowDrop(ev) {
+    ev.stopPropagation();
+  }
+  function noDrag(id) {
+    var doc = document.getElementById(id);
+    doc.setAttribute("draggable","false");
+    doc.classList.add("dragged");
+  }
+  function drag(ev) {
+    var element = document.getElementById(ev.target.id);
+    element.classList.add("draggable");
+  }
+  function dragEnd(ev) {
+    var element = document.getElementById(ev.target.id);
+    element.classList.remove("draggable");
+  }
+  function drop(ev) {
+    ev.preventDefault();
+    if (ev.target.childElementCount==0) {
+      var evid = ev.target.id;
+      var doc = document.getElementsByClassName("draggable");
+      var id = doc[0].id;
+      setItems(ev.target, id);
+      doc[0].classList.remove("draggable");
+      if (id=='question') {
+    	 document.getElementById(ev.target.id+"value").value = id+localStorage.getItem("question");
+      } else {
+    	 document.getElementById(ev.target.id+"value").value = id;
+      }
+    }
+  }
+
+  function createChart() {
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var button1 = document.getElementById("button1");
+    var button2 = document.getElementById("button2");
+    var button3 = document.getElementById("button3");
+    var count1 = 0, count2 = 0, count3 = 0;
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Red", "Blue", "Yellow"],
+        datasets: [{
+          label: 'Number of Votes',
+          data: [count1, count2, count3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    button1.onclick = function() {
+      count1 += 1;
+      myChart.data.datasets[0].data[0] = count1;
+      myChart.update();
+    };
+    button2.onclick = function() {
+      count2 += 1;
+      myChart.data.datasets[0].data[1] = count2;
+      myChart.update();
+    };
+    button3.onclick = function() {
+      count3 += 1;
+      myChart.data.datasets[0].data[2] = count3;
+      myChart.update();
+    };
+  }
+
+  function submit(q) {
+    localStorage.setItem("submit"+q,0);
+    var doc = document.getElementsByName("q"+q+"answer");
+    for (var i=0; i < doc.length; i++)
+      if (doc[i].checked)
+        location.replace(href="{% url 'tools' %}?username={{ username }}&question="+q+"&answer="+doc[i].value);
+  }
+  function getResults(q) {
+    localStorage.setItem("results"+q,1);
+    location.replace(href="{% url 'tools' %}?username={{ username }}&question="+q+"&results=true");
+  }
+  function showResults(div, q) {
+    var len = parseInt("{{ slist|length }}") - 1;
+    var s = "<p><strong>Results</strong></p><p><u>Question:</u> "+"{{ slist.0.0 }}"+"</p>";
+    x = 1;
+    while (x<=len) {
+       switch (x) {
+            case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.1.0 }}"+"<br><u>Correct:</u> "+"{{ slist.1.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.2 }}"+"</p>";
+                    break;
+            case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.2.0 }}"+"<br><u>Correct:</u> "+"{{ slist.2.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.2 }}"+"</p>";
+                    break;
+            case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.3.0 }}"+"<br><u>Correct:</u> "+"{{ slist.3.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.2 }}"+"</p>";
+                    break;
+            case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.4.0 }}"+"<br><u>Correct:</u> "+"{{ slist.4.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.2 }}"+"</p>";
+                    break;
+            case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.5.0 }}"+"<br><u>Correct:</u> "+"{{ slist.5.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.2 }}"+"</p>";
+                    break;
+            case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.6.0 }}"+"<br><u>Correct:</u> "+"{{ slist.6.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.2 }}"+"</p>";
+                    break;
+            case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.7.0 }}"+"<br><u>Correct:</u> "+"{{ slist.7.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.2 }}"+"</p>";
+                    break;
+            case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.8.0 }}"+"<br><u>Correct:</u> "+"{{ slist.8.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.2 }}"+"</p>";
+                    break;
+            case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.9.0 }}"+"<br><u>Correct:</u> "+"{{ slist.9.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.9.2 }}"+"</p>";
+                    break;
+            case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.10.0 }}"+"<br><u>Correct:</u> "+"{{ slist.10.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.10.2 }}"+"</p>";
+                    break;
+          }
+          x = x+1
+    }
+    div.innerHTML = s;
+  }
+  function setItems(ev, id) {
+    var cleanbtn = document.createElement("button");
+    cleanbtn.classList.add("btn");
+    cleanbtn.classList.add("btn-danger");
+    var trash = document.createElement("i");
+    trash.classList.add("fas");
+    trash.classList.add("fa-trash-alt");
+    trash.innerHTML = " Delete";
+    cleanbtn.appendChild(trash);
+    cleanbtn.onclick = function() {
+      while(ev.firstChild) {
+        if (id == 'buttons' || id == 'questions' || id == 'feedback') {
+          var doc = document.getElementById(id);
+          doc.setAttribute("draggable","true");
+          doc.classList.remove("dragged");
+        }
+        ev.removeChild(ev.firstChild);
+        var q1 = document.getElementById("question1");
+        var q2 = document.getElementById("question2");
+        var q3 = document.getElementById("question3");
+        var q4 = document.getElementById("question4");
+        var q5 = document.getElementById("question5");
+        var q6 = document.getElementById("question6");
+        var q7 = document.getElementById("question7");
+        var q8 = document.getElementById("question8");
+        var q9 = document.getElementById("question9");
+        if (!q1 && !q2 && !q3 && !q4 && !q5 && !q6 && !q7 && !q8 && !q9) {
+          var doc = document.getElementById("formquestions");
+          doc.value = 0;
+        }
+      }
+    }
+    ev.appendChild(cleanbtn);
+    var hr = document.createElement("br");
+    ev.appendChild(hr);
+    var hr1 = document.createElement("br");
+    ev.appendChild(hr1);
+    if (id=="buttons") {
+      noDrag('buttons');
+      var x = document.createElement("canvas");
+      x.setAttribute("id","myChart");
+      x.setAttribute("style","max-width:100%;max-height:100%;");
+      ev.appendChild(x);
+      var b1 = document.createElement("button");
+      b1.setAttribute("id","button1");
+      b1.setAttribute("type","button");
+      b1.setAttribute("class","btn btn-outline-danger");
+      b1.innerHTML = "I don't understand";
+      ev.appendChild(b1);
+      var b2 = document.createElement("button");
+      b2.setAttribute("id","button2");
+      b2.setAttribute("type","button");
+      b2.setAttribute("class","btn btn-outline-primary");
+      b2.innerHTML = "Could you slow down?";
+      ev.appendChild(b2);
+      var b3 = document.createElement("button");
+      b3.setAttribute("id","button3");
+      b3.setAttribute("type","button");
+      b3.setAttribute("class","btn btn-outline-warning");
+      b3.innerHTML = "Could you give an example?";
+      ev.appendChild(b3);
+      createChart();
+    } else if (id=="question") {
+      var v = parseInt(localStorage.getItem("question"));
+      if (v!=9) {
+        v = v + 1;
+        var doc = document.getElementById("formquestions");
+        doc.value = v;
+        localStorage.setItem("q"+v+"answers",2);
+        var div = document.createElement("div");
+        div.setAttribute("id","q"+v);
+        var x = document.createElement("input");
+        x.setAttribute("type","text");
+        x.setAttribute("id","question"+v);
+        x.setAttribute("name","question"+v);
+        x.setAttribute("placeholder","Question "+v);
+        x.setAttribute("value","");
+        x.setAttribute("size","30");
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","answer");
+        y.setAttribute("value","1");
+        div.appendChild(y);
+        var z = document.createElement("input");
+        z.setAttribute("type","text");
+        z.setAttribute("id","q"+v+"answer1");
+        z.setAttribute("name","q"+v+"answer1");
+        z.setAttribute("placeholder","Answer 1");
+        z.setAttribute("value","");
+        div.appendChild(z);
+        var br2 = document.createElement("br");
+        div.appendChild(br2);
+        y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","answer");
+        y.setAttribute("value","2");
+        div.appendChild(y);
+        z = document.createElement("input");
+        z.setAttribute("type","text");
+        z.setAttribute("id","q"+v+"answer2");
+        z.setAttribute("name","q"+v+"answer2");
+        z.setAttribute("placeholder","Answer 2");
+        z.setAttribute("value","");
+        div.appendChild(z);
+        var br3 = document.createElement("br");
+        div.appendChild(br3);
+        var div2 = document.createElement("div");
+        div2.setAttribute("id","q"+v+"moreanswers");
+        div.appendChild(div2);
+        var label = document.createElement("label");
+        label.setAttribute("for","q"+v+"correctanswer");
+        label.innerHTML = "Correct Answer:";
+        div.appendChild(label);
+        var dropdown = document.createElement("select");
+        dropdown.setAttribute("id","q"+v+"correctanswer");
+        dropdown.setAttribute("name","q"+v+"correctanswer");
+        var op1 = document.createElement("option");
+        op1.setAttribute("value","1");
+        op1.innerHTML = "1";
+        dropdown.appendChild(op1);
+        var op2 = document.createElement("option");
+        op2.setAttribute("value","2");
+        op2.innerHTML = "2";
+        dropdown.appendChild(op2);
+        div.appendChild(dropdown);
+        var br4 = document.createElement("br");
+        div.appendChild(br4);
+        var b1 = document.createElement("button");
+        b1.setAttribute("id","q"+v+"addanswer");
+        b1.setAttribute("onclick","addAnswer("+v+")");
+        b1.innerHTML = "Add Answer";
+        div.appendChild(b1);
+        var b2 = document.createElement("button");
+        b2.setAttribute("id","q"+v+"save");
+        b2.setAttribute("onclick","save("+v+")");
+        b2.innerHTML = "Save";
+        div.appendChild(b2);
+        ev.appendChild(div);
+        localStorage.setItem("question",v);
+      }
+    } else if (id=="questions") {
+      noDrag('questions');
+      var div = document.createElement("div");
+      div.setAttribute("id","squestions");
+      div.setAttribute("style","border:solid; overflow-x:scroll; overflow-y:scroll; height:50%; width:100%;");
+      ev.appendChild(div);
+      var br1 = document.createElement("br");
+      ev.appendChild(br1);
+      var title = document.createElement("div");
+      title.innerHTML = "Ask a question:";
+      ev.appendChild(title);
+      var txt = document.createElement("textarea");
+      txt.setAttribute("id","txt");
+      txt.setAttribute("rows","4");
+      txt.setAttribute("cols","33");
+      ev.appendChild(txt);
+      var br2 = document.createElement("br");
+      ev.appendChild(br2);
+      var btn = document.createElement("button");
+      btn.setAttribute("onclick","ask()");
+      btn.innerHTML = "Send";
+      ev.appendChild(btn);
+    } else if (id=="feedback") {
+      noDrag('feedback');
+      var title = document.createElement("div");
+      title.innerHTML = "Send your feedback:";
+      ev.appendChild(title);
+      var txt = document.createElement("textarea");
+      txt.setAttribute("id","txt");
+      txt.setAttribute("rows","4");
+      txt.setAttribute("cols","33");
+      ev.appendChild(txt);
+      var br2 = document.createElement("br");
+      ev.appendChild(br2);
+      var btn = document.createElement("button");
+      btn.setAttribute("onclick","sendfeedback()");
+      btn.innerHTML = "Send";
+      ev.appendChild(btn);
+    }
+  }
+  function setSlots(d,s) {
+    if (s=='question1') {
+      var div = document.createElement("div");
+        div.setAttribute("id","q1");
+        var x = document.createElement("label");
+        x.setAttribute("id","question1");
+        x.setAttribute("name","question1");
+        x.innerHTML = "{{ qlist.0.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.0|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.0.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q1answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q1answer"+i);
+          z.setAttribute("name","q1answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.0.2 }}";
+                    break;
+            case 2: a = "{{ qlist.0.3 }}";
+                    break;
+            case 3: a = "{{ qlist.0.4 }}";
+                    break;
+            case 4: a = "{{ qlist.0.5 }}";
+                    break;
+            case 5: a = "{{ qlist.0.6 }}";
+                    break;
+            case 6: a = "{{ qlist.0.7 }}";
+                    break;
+            case 7: a = "{{ qlist.0.8 }}";
+                    break;
+            case 8: a = "{{ qlist.0.9 }}";
+                    break;
+            case 9: a = "{{ qlist.0.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    } else 
+    if (s=='question2') {
+      var div = document.createElement("form");
+        div.setAttribute("id","q2");
+        var x = document.createElement("label");
+        x.setAttribute("id","question2");
+        x.setAttribute("name","question2");
+        x.innerHTML = "{{ qlist.1.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.1|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.1.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q2answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q2answer"+i);
+          z.setAttribute("name","q2answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.1.2 }}";
+                    break;
+            case 2: a = "{{ qlist.1.3 }}";
+                    break;
+            case 3: a = "{{ qlist.1.4 }}";
+                    break;
+            case 4: a = "{{ qlist.1.5 }}";
+                    break;
+            case 5: a = "{{ qlist.1.6 }}";
+                    break;
+            case 6: a = "{{ qlist.1.7 }}";
+                    break;
+            case 7: a = "{{ qlist.1.8 }}";
+                    break;
+            case 8: a = "{{ qlist.1.9 }}";
+                    break;
+            case 9: a = "{{ qlist.1.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    } else
+    if (s=='question3') {
+      var div = document.createElement("form");
+        div.setAttribute("id","q3");
+        var x = document.createElement("label");
+        x.setAttribute("id","question3");
+        x.setAttribute("name","question3");
+        x.innerHTML = "{{ qlist.2.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.2|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.2.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q3answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q3answer"+i);
+          z.setAttribute("name","q3answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.2.2 }}";
+                    break;
+            case 2: a = "{{ qlist.2.3 }}";
+                    break;
+            case 3: a = "{{ qlist.2.4 }}";
+                    break;
+            case 4: a = "{{ qlist.2.5 }}";
+                    break;
+            case 5: a = "{{ qlist.2.6 }}";
+                    break;
+            case 6: a = "{{ qlist.2.7 }}";
+                    break;
+            case 7: a = "{{ qlist.2.8 }}";
+                    break;
+            case 8: a = "{{ qlist.2.9 }}";
+                    break;
+            case 9: a = "{{ qlist.2.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    } else 
+    if (s=='question4') {
+      var div = document.createElement("form");
+        div.setAttribute("id","q4");
+        var x = document.createElement("label");
+        x.setAttribute("id","question4");
+        x.setAttribute("name","question4");
+        x.innerHTML = "{{ qlist.3.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.3|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.3.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q4answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q4answer"+i);
+          z.setAttribute("name","q4answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.3.2 }}";
+                    break;
+            case 2: a = "{{ qlist.3.3 }}";
+                    break;
+            case 3: a = "{{ qlist.3.4 }}";
+                    break;
+            case 4: a = "{{ qlist.3.5 }}";
+                    break;
+            case 5: a = "{{ qlist.3.6 }}";
+                    break;
+            case 6: a = "{{ qlist.3.7 }}";
+                    break;
+            case 7: a = "{{ qlist.3.8 }}";
+                    break;
+            case 8: a = "{{ qlist.3.9 }}";
+                    break;
+            case 9: a = "{{ qlist.3.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    } else 
+    if (s=='question5') {
+      var div = document.createElement("form");
+        div.setAttribute("id","q5");
+        var x = document.createElement("label");
+        x.setAttribute("id","question5");
+        x.setAttribute("name","question5");
+        x.innerHTML = "{{ qlist.4.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.4|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.4.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q5answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q5answer"+i);
+          z.setAttribute("name","q5answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.4.2 }}";
+                    break;
+            case 2: a = "{{ qlist.4.3 }}";
+                    break;
+            case 3: a = "{{ qlist.4.4 }}";
+                    break;
+            case 4: a = "{{ qlist.4.5 }}";
+                    break;
+            case 5: a = "{{ qlist.4.6 }}";
+                    break;
+            case 6: a = "{{ qlist.4.7 }}";
+                    break;
+            case 7: a = "{{ qlist.4.8 }}";
+                    break;
+            case 8: a = "{{ qlist.4.9 }}";
+                    break;
+            case 9: a = "{{ qlist.4.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    } else 
+    if (s=='question6') {
+      var div = document.createElement("form");
+        div.setAttribute("id","q6");
+        var x = document.createElement("label");
+        x.setAttribute("id","question6");
+        x.setAttribute("name","question6");
+        x.innerHTML = "{{ qlist.5.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.5|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.5.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q6answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q6answer"+i);
+          z.setAttribute("name","q6answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.5.2 }}";
+                    break;
+            case 2: a = "{{ qlist.5.3 }}";
+                    break;
+            case 3: a = "{{ qlist.5.4 }}";
+                    break;
+            case 4: a = "{{ qlist.5.5 }}";
+                    break;
+            case 5: a = "{{ qlist.5.6 }}";
+                    break;
+            case 6: a = "{{ qlist.5.7 }}";
+                    break;
+            case 7: a = "{{ qlist.5.8 }}";
+                    break;
+            case 8: a = "{{ qlist.5.9 }}";
+                    break;
+            case 9: a = "{{ qlist.5.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    } else 
+    if (s=='question7') {
+      var div = document.createElement("form");
+        div.setAttribute("id","q7");
+        var x = document.createElement("label");
+        x.setAttribute("id","question7");
+        x.setAttribute("name","question7");
+        x.innerHTML = "{{ qlist.6.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.6|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.6.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q7answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q7answer"+i);
+          z.setAttribute("name","q7answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.6.2 }}";
+                    break;
+            case 2: a = "{{ qlist.6.3 }}";
+                    break;
+            case 3: a = "{{ qlist.6.4 }}";
+                    break;
+            case 4: a = "{{ qlist.6.5 }}";
+                    break;
+            case 5: a = "{{ qlist.6.6 }}";
+                    break;
+            case 6: a = "{{ qlist.6.7 }}";
+                    break;
+            case 7: a = "{{ qlist.6.8 }}";
+                    break;
+            case 8: a = "{{ qlist.6.9 }}";
+                    break;
+            case 9: a = "{{ qlist.6.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    } else 
+    if (s=='question8') {
+      var div = document.createElement("form");
+        div.setAttribute("id","q8");
+        var x = document.createElement("label");
+        x.setAttribute("id","question8");
+        x.setAttribute("name","question8");
+        x.innerHTML = "{{ qlist.7.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.7|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.7.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q8answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q8answer"+i);
+          z.setAttribute("name","q8answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.7.2 }}";
+                    break;
+            case 2: a = "{{ qlist.7.3 }}";
+                    break;
+            case 3: a = "{{ qlist.7.4 }}";
+                    break;
+            case 4: a = "{{ qlist.7.5 }}";
+                    break;
+            case 5: a = "{{ qlist.7.6 }}";
+                    break;
+            case 6: a = "{{ qlist.7.7 }}";
+                    break;
+            case 7: a = "{{ qlist.7.8 }}";
+                    break;
+            case 8: a = "{{ qlist.7.9 }}";
+                    break;
+            case 9: a = "{{ qlist.7.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    } else 
+    if (s=='question9') {
+      var div = document.createElement("form");
+        div.setAttribute("id","q9");
+        var x = document.createElement("label");
+        x.setAttribute("id","question9");
+        x.setAttribute("name","question9");
+        x.innerHTML = "{{ qlist.8.0 }}";
+        div.appendChild(x);
+        var br1 = document.createElement("br");
+        div.appendChild(br1);
+        var len = parseInt("{{ qlist.8|length }}") - 1;
+        i = 1;
+        var a = "{{ qlist.8.1 }}";
+        while (i <= len) {
+          var y = document.createElement("input");
+          y.setAttribute("type","radio");
+          y.setAttribute("name","q9answer");
+          {% if role is false %}
+          y.setAttribute("required",true);
+          {% endif %}
+          y.setAttribute("value",i);
+          div.appendChild(y);
+          z = document.createElement("label");
+          z.setAttribute("id","q9answer"+i);
+          z.setAttribute("name","q9answer"+i);
+          z.innerHTML = a;
+          div.appendChild(z);
+          var br = document.createElement("br");
+          div.appendChild(br);
+          switch (i) {
+            case 1: a = "{{ qlist.8.2 }}";
+                    break;
+            case 2: a = "{{ qlist.8.3 }}";
+                    break;
+            case 3: a = "{{ qlist.8.4 }}";
+                    break;
+            case 4: a = "{{ qlist.8.5 }}";
+                    break;
+            case 5: a = "{{ qlist.8.6 }}";
+                    break;
+            case 6: a = "{{ qlist.8.7 }}";
+                    break;
+            case 7: a = "{{ qlist.8.8 }}";
+                    break;
+            case 8: a = "{{ qlist.8.9 }}";
+                    break;
+            case 9: a = "{{ qlist.8.10 }}";
+                    break;
+          }
+          i=i+1;
+        }
+        d.appendChild(div);
+
+    }
+  }
+</script>
+{% if interface_exists %}
+<script type='text/javascript'>
+  var doc1 = document.getElementById('col1');
+  var doc2 = document.getElementById('col2');
+  var doc3 = document.getElementById('col3');
+  var doc4 = document.getElementById('col4');
+  var doc5 = document.getElementById('col5');
+  var doc6 = document.getElementById('col6');
+  var doc7 = document.getElementById('col7');
+  var doc8 = document.getElementById('col8');
+  var doc9 = document.getElementById('col9');
+  var source = document.getElementById('sourceitems');
+  var s1 = '{{ slot1 }}';
+  var s2 = '{{ slot2 }}';
+  var s3 = '{{ slot3 }}';
+  var s4 = '{{ slot4 }}';
+  var s5 = '{{ slot5 }}';
+  var s6 = '{{ slot6 }}';
+  var s7 = '{{ slot7 }}';
+  var s8 = '{{ slot8 }}';
+  var s9 = '{{ slot9 }}';
+  var results1 = parseInt(localStorage.getItem("results1"));
+  var results2 = parseInt(localStorage.getItem("results2"));
+  var results3 = parseInt(localStorage.getItem("results3"));
+  var results4 = parseInt(localStorage.getItem("results4"));
+  var results5 = parseInt(localStorage.getItem("results5"));
+  var results6 = parseInt(localStorage.getItem("results6"));
+  var results7 = parseInt(localStorage.getItem("results7"));
+  var results8 = parseInt(localStorage.getItem("results8"));
+  var results9 = parseInt(localStorage.getItem("results9"));
+  if (results1==1) {
+    showResults(doc1,results1);
+  } else {
+    setSlots(doc1, s1);
+  } 
+  if (results2==1) {
+    showResults(doc2,results2);
+  } else {
+    setSlots(doc2, s2);
+  }
+  if (results3==1) {
+    showResults(doc3,results3);
+  } else {
+    setSlots(doc3, s3);
+  }
+  if (results4==1) {
+    showResults(doc4,results4);
+  } else {
+    setSlots(doc4, s4);
+  }
+  if (results5==1) {
+    showResults(doc5,results5);
+  } else {
+    setSlots(doc5, s5);
+  }
+  if (results6==1) {
+    showResults(doc6,results6);
+  } else {
+    setSlots(doc6, s6);
+  }
+  if (results7==1) {
+    showResults(doc7,results7);
+  } else {
+    setSlots(doc7, s7);
+  }
+  if (results8==1) {
+    showResults(doc8,results8);
+  } else {
+    setSlots(doc8, s8);
+  }
+  if (results9==1) {
+    showResults(doc9,results9);
+  } else {
+    setSlots(doc9, s9);
+  }
+  doc1.style.border = 'none';
+  doc2.style.border = 'none';
+  doc3.style.border = 'none';
+  doc4.style.border = 'none';
+  doc5.style.border = 'none';
+  doc6.style.border = 'none';
+  doc7.style.border = 'none';
+  doc8.style.border = 'none';
+  doc9.style.border = 'none';
+  source.style.display = 'none';
+</script>
+{% endif %}
+{% if role is False %}
+<script type='text/javascript'>
+  var doc1 = document.getElementById('col1');
+  var doc2 = document.getElementById('col2');
+  var doc3 = document.getElementById('col3');
+  var doc4 = document.getElementById('col4');
+  var doc5 = document.getElementById('col5');
+  var doc6 = document.getElementById('col6');
+  var doc7 = document.getElementById('col7');
+  var doc8 = document.getElementById('col8');
+  var doc9 = document.getElementById('col9');
+  var source = document.getElementById('sourceitems');
+  var lec = document.getElementById('lecturer');
+  var stu = document.getElementById('student');
+  lec.style.display = 'none';
+  stu.style.display = 'block';
+  doc1.style.border = 'none';
+  doc2.style.border = 'none';
+  doc3.style.border = 'none';
+  doc4.style.border = 'none';
+  doc5.style.border = 'none';
+  doc6.style.border = 'none';
+  doc7.style.border = 'none';
+  doc8.style.border = 'none';
+  doc9.style.border = 'none';
+  source.style.display = 'none';
+</script>
+{% endif %}
+{% if interface_exists %}
+  {% if role %}
+  <script type='text/javascript'>
+    var btn1 = document.getElementById('savebtn');
+    var btn2 = document.getElementById('editbtn');
+    var btn3 = document.getElementById('deletebtn');
+    btn1.style.display = 'none';
+    btn2.style.display = 'block';
+    btn3.style.display = 'block';
+    var doc1 = document.getElementById('q1');
+    if (doc1) {
+      var x = parseInt(localStorage.getItem("results1"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b1");
+        b.setAttribute("onclick","getResults(1)");
+        b.innerHTML = "Get Results";
+        doc1.appendChild(b);
+      }
+    }
+    var doc2 = document.getElementById('q2');
+    if (doc2) {
+      var x = parseInt(localStorage.getItem("results2"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b2");
+        b.setAttribute("onclick","getResults(2)");
+        b.innerHTML = "Get Results";
+        doc2.appendChild(b);
+      }
+    }
+    var doc3 = document.getElementById('q3');
+    if (doc3) {
+      var x = parseInt(localStorage.getItem("results3"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b3");
+        b.setAttribute("onclick","getResults(3)");
+        b.innerHTML = "Get Results";
+        doc3.appendChild(b);
+      }
+    }
+    var doc4 = document.getElementById('q4');
+    if (doc4) {
+      var x = parseInt(localStorage.getItem("results4"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b4");
+        b.setAttribute("onclick","getResults(4)");
+        b.innerHTML = "Get Results";
+        doc4.appendChild(b);
+      }
+    }
+    var doc5 = document.getElementById('q5');
+    if (doc5) {
+      var x = parseInt(localStorage.getItem("results5"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b5");
+        b.setAttribute("onclick","getResults(5)");
+        b.innerHTML = "Get Results";
+        doc5.appendChild(b);
+      }
+    }
+    var doc6 = document.getElementById('q6');
+    if (doc6) {
+      var x = parseInt(localStorage.getItem("results6"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b6");
+        b.setAttribute("onclick","getResults(6)");
+        b.innerHTML = "Get Results";
+        doc6.appendChild(b);
+      }
+    }
+    var doc7 = document.getElementById('q7');
+    if (doc7) {
+      var x = parseInt(localStorage.getItem("results7"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b7");
+        b.setAttribute("onclick","getResults(7)");
+        b.innerHTML = "Get Results";
+        doc7.appendChild(b);
+      }
+    }
+    var doc8 = document.getElementById('q8');
+    if (doc8) {
+      var x = parseInt(localStorage.getItem("results8"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b8");
+        b.setAttribute("onclick","getResults(8)");
+        b.innerHTML = "Get Results";
+        doc8.appendChild(b);
+      }
+    }
+    var doc9 = document.getElementById('q9');
+    if (doc9) {
+      var x = parseInt(localStorage.getItem("results9"));
+      if (x==0) {
+        var b = document.createElement('button');
+        b.setAttribute("id","b9");
+        b.setAttribute("onclick","getResults(9)");
+        b.innerHTML = "Get Results";
+        doc9.appendChild(b);
+      }
+    }
+  </script>
+  {% else %}
+  <script type='text/javascript'>
+    var doc1 = document.getElementById('q1');
+    if (doc1) {
+      var x = localStorage.getItem("submit1");
+      if (x==null)  {
+            localStorage.setItem("submit1",0);
+            x = parseInt(localStorage.getItem("submit1"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub1");
+        sub.setAttribute("onclick","submit(1)");
+        sub.innerHTML = "Submit";
+        doc1.appendChild(sub);
+      }
+    }
+    var doc2 = document.getElementById('q2');
+    if (doc2) {
+      var x = localStorage.getItem("submit2");
+      if (x==null)  {
+            localStorage.setItem("submit2",0);
+            x = parseInt(localStorage.getItem("submit2"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub2");
+        sub.setAttribute("onclick","submit(2)");
+        sub.innerHTML = "Submit";
+        doc2.appendChild(sub);
+      }
+    }
+    var doc3 = document.getElementById('q3');
+    if (doc3) {
+      var x = localStorage.getItem("submit3");
+      if (x==null)  {
+            localStorage.setItem("submit3",0);
+            x = parseInt(localStorage.getItem("submit3"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub3");
+        sub.setAttribute("onclick","submit(3)");
+        sub.innerHTML = "Submit";
+        doc3.appendChild(sub);
+      }
+    }
+    var doc4 = document.getElementById('q4');
+    if (doc4) {
+      var x = localStorage.getItem("submit4");
+      if (x==null)  {
+            localStorage.setItem("submit4",0);
+            x = parseInt(localStorage.getItem("submit4"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub4");
+        sub.setAttribute("onclick","submit(4)");
+        sub.innerHTML = "Submit";
+        doc4.appendChild(sub);
+      }
+    }
+    var doc5 = document.getElementById('q5');
+    if (doc5) {
+      var x = localStorage.getItem("submit5");
+      if (x==null)  {
+            localStorage.setItem("submit5",0);
+            x = parseInt(localStorage.getItem("submit5"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub5");
+        sub.setAttribute("onclick","submit(5)");
+        sub.innerHTML = "Submit";
+        doc5.appendChild(sub);
+      }
+    }
+    var doc6 = document.getElementById('q6');
+    if (doc6) {
+      var x = localStorage.getItem("submit6");
+      if (x==null)  {
+            localStorage.setItem("submit6",0);
+            x = parseInt(localStorage.getItem("submit6"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub6");
+        sub.setAttribute("onclick","submit(6)");
+        sub.innerHTML = "Submit";
+        doc6.appendChild(sub);
+      }
+    }
+    var doc7 = document.getElementById('q7');
+    if (doc7) {
+      var x = localStorage.getItem("submit7");
+      if (x==null)  {
+            localStorage.setItem("submit7",0);
+            x = parseInt(localStorage.getItem("submit7"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub7");
+        sub.setAttribute("onclick","submit(7)");
+        sub.innerHTML = "Submit";
+        doc7.appendChild(sub);
+      }
+    }
+    var doc8 = document.getElementById('q8');
+    if (doc8) {
+      var x = localStorage.getItem("submit8");
+      if (x==null)  {
+            localStorage.setItem("submit8",0);
+            x = parseInt(localStorage.getItem("submit8"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub8");
+        sub.setAttribute("onclick","submit(8)");
+        sub.innerHTML = "Submit";
+        doc8.appendChild(sub);
+      }
+    }
+    var doc9 = document.getElementById('q9');
+    if (doc9) {
+      var x = localStorage.getItem("submit9");
+      if (x==null)  {
+            localStorage.setItem("submit9",0);
+            x = parseInt(localStorage.getItem("submit9"));
+      }
+      if (x==0) {
+        var sub = document.createElement('button');
+        sub.setAttribute("id","sub9");
+        sub.setAttribute("onclick","submit(9)");
+        sub.innerHTML = "Submit";
+        doc9.appendChild(sub);
+      }
+    }
+  </script>
+  {% endif %}
+{% endif %}
+{% endblock %}

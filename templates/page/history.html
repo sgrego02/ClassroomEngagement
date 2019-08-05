@@ -1,0 +1,338 @@
+{% extends 'page/base.html' %}
+
+{% block content %}
+  <!-- Header -->
+  <header class="bg-primary py-5 mb-5">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <h1 class="display-4 text-white mt-5 mb-2">History Page</h1>
+          <p class="lead mb-5 text-white-50"></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% if course_lecture %}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1>Questions/Answers</h1>
+    <div id="historyquestions">
+    </div>
+  </div>
+  <!-- /.container -->
+  {% else %}
+  <div class="container">
+    {% if selectedCourse is False %}
+    <label>Course: </label>
+    <select id="selectCourse" onchange="chooseCourse()">
+      <option value="----">-----</option>
+      {% for course in courses %}
+      <option value="{{ course }}">{{ course }}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
+    {% if selectedCourse %}
+    <label>Lecture: </label>
+    <select id="selectLecture" onchange="chooseLecture()">
+      <option value="--">--</option>
+      {% for l in cl %}
+      <option value="{{ l }}">{{ l }}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
+    <hr>
+  </div>
+  {% endif %}
+
+  <script type="text/javascript">
+  function chooseCourse() {
+    var selected = document.getElementById("selectCourse");
+    var selectedValue = selected.options[selected.selectedIndex].value;
+    location.replace(href="{% url 'history' %}?username={{ username }}&course="+selectedValue);
+  }
+  function chooseLecture() {
+    var selected = document.getElementById("selectLecture");
+    var selectedValue = selected.options[selected.selectedIndex].value;
+    location.replace(href="{% url 'history' %}?username={{ username }}&course={{ co }}&lecture="+selectedValue);
+  }
+  </script>
+  {% if course_lecture %}
+   <script type="text/javascript">
+    var s = "<hr>";
+    var div = document.getElementById("historyquestions");
+    var len = parseInt("{{ slist|length }}");
+    var len1 = (parseInt("{{ slist.0|length }}")-1)/3;
+    x = 0;
+    while (x<len) {
+      switch (x) {
+        case 0: s = s + "<p><u>Question:</u> "+"{{ slist.0.0 }}"+"</p>";
+                var len1 = (parseInt("{{ slist.0|length }}")-1)/3;
+                y = 1;
+                while (y<=len1) {
+                  switch (y) {
+                    case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.0.1 }}"+"<br><u>Correct:</u> "+"{{ slist.0.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.3 }}"+"</p>";
+                            break;
+                    case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.0.4 }}"+"<br><u>Correct:</u> "+"{{ slist.0.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.6 }}"+"</p>";
+                            break;
+                    case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.0.7 }}"+"<br><u>Correct:</u> "+"{{ slist.0.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.9 }}"+"</p>";
+                            break;
+                    case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.0.10 }}"+"<br><u>Correct:</u> "+"{{ slist.0.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.12 }}"+"</p>";
+                            break;
+                    case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.0.13 }}"+"<br><u>Correct:</u> "+"{{ slist.0.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.15 }}"+"</p>";
+                            break;
+                    case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.0.16 }}"+"<br><u>Correct:</u> "+"{{ slist.0.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.18 }}"+"</p>";
+                            break;
+                    case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.0.19 }}"+"<br><u>Correct:</u> "+"{{ slist.0.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.21 }}"+"</p>";
+                            break;
+                    case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.0.22 }}"+"<br><u>Correct:</u> "+"{{ slist.0.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.24 }}"+"</p>";
+                            break;
+                    case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.0.25 }}"+"<br><u>Correct:</u> "+"{{ slist.0.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.27 }}"+"</p>";
+                            break;
+                    case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.0.28 }}"+"<br><u>Correct:</u> "+"{{ slist.0.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.30 }}"+"</p>";
+                            break;
+                  }
+                  y = y+1
+                }
+                break;
+        case 1: s = s + "<p><u>Question:</u> "+"{{ slist.1.0 }}"+"</p>";
+                    var len1 = (parseInt("{{ slist.1|length }}")-1)/3;
+                    y = 1;
+                    while (y<=len1) {
+                      switch (y) {
+                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.1.1 }}"+"<br><u>Correct:</u> "+"{{ slist.1.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.3 }}"+"</p>";
+                        break;
+                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.1.4 }}"+"<br><u>Correct:</u> "+"{{ slist.1.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.6 }}"+"</p>";
+                        break;
+                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.1.7 }}"+"<br><u>Correct:</u> "+"{{ slist.1.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.9 }}"+"</p>";
+                        break;
+                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.1.10 }}"+"<br><u>Correct:</u> "+"{{ slist.1.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.12 }}"+"</p>";
+                        break;
+                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.1.13 }}"+"<br><u>Correct:</u> "+"{{ slist.1.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.15 }}"+"</p>";
+                        break;
+                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.1.16 }}"+"<br><u>Correct:</u> "+"{{ slist.1.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.18 }}"+"</p>";
+                        break;
+                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.1.19 }}"+"<br><u>Correct:</u> "+"{{ slist.1.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.21 }}"+"</p>";
+                        break;
+                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.1.22 }}"+"<br><u>Correct:</u> "+"{{ slist.1.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.24 }}"+"</p>";
+                        break;
+                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.1.25 }}"+"<br><u>Correct:</u> "+"{{ slist.1.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.27 }}"+"</p>";
+                        break;
+                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.1.28 }}"+"<br><u>Correct:</u> "+"{{ slist.1.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.30 }}"+"</p>";
+                        break;
+                      }
+                      y = y+1
+                    }
+                    break;
+            case 2: s = s + "<p><u>Question:</u> "+"{{ slist.2.0 }}"+"</p>";
+                    var len1 = (parseInt("{{ slist.2|length }}")-1)/3;
+                    y = 1;
+                    while (y<=len1) {
+                      switch (y) {
+                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.2.1 }}"+"<br><u>Correct:</u> "+"{{ slist.2.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.3 }}"+"</p>";
+                        break;
+                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.2.4 }}"+"<br><u>Correct:</u> "+"{{ slist.2.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.6 }}"+"</p>";
+                        break;
+                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.2.7 }}"+"<br><u>Correct:</u> "+"{{ slist.2.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.9 }}"+"</p>";
+                        break;
+                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.2.10 }}"+"<br><u>Correct:</u> "+"{{ slist.2.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.12 }}"+"</p>";
+                        break;
+                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.2.13 }}"+"<br><u>Correct:</u> "+"{{ slist.2.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.15 }}"+"</p>";
+                        break;
+                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.2.16 }}"+"<br><u>Correct:</u> "+"{{ slist.2.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.18 }}"+"</p>";
+                        break;
+                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.2.19 }}"+"<br><u>Correct:</u> "+"{{ slist.2.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.21 }}"+"</p>";
+                        break;
+                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.2.22 }}"+"<br><u>Correct:</u> "+"{{ slist.2.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.24 }}"+"</p>";
+                        break;
+                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.2.25 }}"+"<br><u>Correct:</u> "+"{{ slist.2.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.27 }}"+"</p>";
+                        break;
+                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.2.28 }}"+"<br><u>Correct:</u> "+"{{ slist.2.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.30 }}"+"</p>";
+                        break;
+                      }
+                      y = y+1
+                    }
+                    break;
+            case 3: s = s + "<p><u>Question:</u> "+"{{ slist.3.0 }}"+"</p>";
+                    var len1 = (parseInt("{{ slist.3|length }}")-1)/3;
+                    y = 1;
+                    while (y<=len1) {
+                      switch (y) {
+                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.3.1 }}"+"<br><u>Correct:</u> "+"{{ slist.3.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.3 }}"+"</p>";
+                        break;
+                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.3.4 }}"+"<br><u>Correct:</u> "+"{{ slist.3.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.6 }}"+"</p>";
+                        break;
+                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.3.7 }}"+"<br><u>Correct:</u> "+"{{ slist.3.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.9 }}"+"</p>";
+                        break;
+                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.3.10 }}"+"<br><u>Correct:</u> "+"{{ slist.3.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.12 }}"+"</p>";
+                        break;
+                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.3.13 }}"+"<br><u>Correct:</u> "+"{{ slist.3.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.15 }}"+"</p>";
+                        break;
+                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.3.16 }}"+"<br><u>Correct:</u> "+"{{ slist.3.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.18 }}"+"</p>";
+                        break;
+                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.3.19 }}"+"<br><u>Correct:</u> "+"{{ slist.3.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.21 }}"+"</p>";
+                        break;
+                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.3.22 }}"+"<br><u>Correct:</u> "+"{{ slist.3.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.24 }}"+"</p>";
+                        break;
+                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.3.25 }}"+"<br><u>Correct:</u> "+"{{ slist.3.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.27 }}"+"</p>";
+                        break;
+                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.3.28 }}"+"<br><u>Correct:</u> "+"{{ slist.3.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.30 }}"+"</p>";
+                        break;
+                      }
+                      y = y+1
+                    }
+                    break;
+            case 4: s = s + "<p><u>Question:</u> "+"{{ slist.4.0 }}"+"</p>";
+                    var len1 = (parseInt("{{ slist.4|length }}")-1)/3;
+                    y = 1;
+                    while (y<=len1) {
+                      switch (y) {
+                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.4.1 }}"+"<br><u>Correct:</u> "+"{{ slist.4.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.3 }}"+"</p>";
+                        break;
+                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.4.4 }}"+"<br><u>Correct:</u> "+"{{ slist.4.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.6 }}"+"</p>";
+                        break;
+                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.4.7 }}"+"<br><u>Correct:</u> "+"{{ slist.4.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.9 }}"+"</p>";
+                        break;
+                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.4.10 }}"+"<br><u>Correct:</u> "+"{{ slist.4.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.12 }}"+"</p>";
+                        break;
+                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.4.13 }}"+"<br><u>Correct:</u> "+"{{ slist.4.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.15 }}"+"</p>";
+                        break;
+                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.4.16 }}"+"<br><u>Correct:</u> "+"{{ slist.4.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.18 }}"+"</p>";
+                        break;
+                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.4.19 }}"+"<br><u>Correct:</u> "+"{{ slist.4.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.21 }}"+"</p>";
+                        break;
+                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.4.22 }}"+"<br><u>Correct:</u> "+"{{ slist.4.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.24 }}"+"</p>";
+                        break;
+                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.4.25 }}"+"<br><u>Correct:</u> "+"{{ slist.4.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.27 }}"+"</p>";
+                        break;
+                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.4.28 }}"+"<br><u>Correct:</u> "+"{{ slist.4.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.30 }}"+"</p>";
+                        break;
+                      }
+                      y = y+1
+                    }
+                    break;
+            case 5: s = s + "<p><u>Question:</u> "+"{{ slist.5.0 }}"+"</p>";
+                    var len1 = (parseInt("{{ slist.5|length }}")-1)/3;
+                    y = 1;
+                    while (y<=len1) {
+                      switch (y) {
+                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.5.1 }}"+"<br><u>Correct:</u> "+"{{ slist.5.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.3 }}"+"</p>";
+                        break;
+                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.5.4 }}"+"<br><u>Correct:</u> "+"{{ slist.5.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.6 }}"+"</p>";
+                        break;
+                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.5.7 }}"+"<br><u>Correct:</u> "+"{{ slist.5.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.9 }}"+"</p>";
+                        break;
+                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.5.10 }}"+"<br><u>Correct:</u> "+"{{ slist.5.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.12 }}"+"</p>";
+                        break;
+                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.5.13 }}"+"<br><u>Correct:</u> "+"{{ slist.5.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.15 }}"+"</p>";
+                        break;
+                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.5.16 }}"+"<br><u>Correct:</u> "+"{{ slist.5.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.18 }}"+"</p>";
+                        break;
+                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.5.19 }}"+"<br><u>Correct:</u> "+"{{ slist.5.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.21 }}"+"</p>";
+                        break;
+                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.5.22 }}"+"<br><u>Correct:</u> "+"{{ slist.5.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.24 }}"+"</p>";
+                        break;
+                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.5.25 }}"+"<br><u>Correct:</u> "+"{{ slist.5.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.27 }}"+"</p>";
+                        break;
+                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.5.28 }}"+"<br><u>Correct:</u> "+"{{ slist.5.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.30 }}"+"</p>";
+                        break;
+                      }
+                      y = y+1
+                    }
+                    break;
+            case 6: s = s + "<p><u>Question:</u> "+"{{ slist.6.0 }}"+"</p>";
+                    var len1 = (parseInt("{{ slist.6|length }}")-1)/3;
+                    y = 1;
+                    while (y<=len1) {
+                      switch (y) {
+                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.6.1 }}"+"<br><u>Correct:</u> "+"{{ slist.6.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.3 }}"+"</p>";
+                        break;
+                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.6.4 }}"+"<br><u>Correct:</u> "+"{{ slist.6.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.6 }}"+"</p>";
+                        break;
+                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.6.7 }}"+"<br><u>Correct:</u> "+"{{ slist.6.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.9 }}"+"</p>";
+                        break;
+                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.6.10 }}"+"<br><u>Correct:</u> "+"{{ slist.6.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.12 }}"+"</p>";
+                        break;
+                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.6.13 }}"+"<br><u>Correct:</u> "+"{{ slist.6.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.15 }}"+"</p>";
+                        break;
+                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.6.16 }}"+"<br><u>Correct:</u> "+"{{ slist.6.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.18 }}"+"</p>";
+                        break;
+                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.6.19 }}"+"<br><u>Correct:</u> "+"{{ slist.6.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.21 }}"+"</p>";
+                        break;
+                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.6.22 }}"+"<br><u>Correct:</u> "+"{{ slist.6.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.24 }}"+"</p>";
+                        break;
+                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.6.25 }}"+"<br><u>Correct:</u> "+"{{ slist.6.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.27 }}"+"</p>";
+                        break;
+                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.6.28 }}"+"<br><u>Correct:</u> "+"{{ slist.6.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.30 }}"+"</p>";
+                        break;
+                      }
+                      y = y+1
+                    }
+                    break;
+            case 7: s = s + "<p><u>Question:</u> "+"{{ slist.7.0 }}"+"</p>";
+                    var len1 = (parseInt("{{ slist.7|length }}")-1)/3;
+                    y = 1;
+                    while (y<=len1) {
+                      switch (y) {
+                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.7.1 }}"+"<br><u>Correct:</u> "+"{{ slist.7.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.3 }}"+"</p>";
+                        break;
+                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.7.4 }}"+"<br><u>Correct:</u> "+"{{ slist.7.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.6 }}"+"</p>";
+                        break;
+                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.7.7 }}"+"<br><u>Correct:</u> "+"{{ slist.7.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.9 }}"+"</p>";
+                        break;
+                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.7.10 }}"+"<br><u>Correct:</u> "+"{{ slist.7.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.12 }}"+"</p>";
+                        break;
+                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.7.13 }}"+"<br><u>Correct:</u> "+"{{ slist.7.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.15 }}"+"</p>";
+                        break;
+                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.7.16 }}"+"<br><u>Correct:</u> "+"{{ slist.7.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.18 }}"+"</p>";
+                        break;
+                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.7.19 }}"+"<br><u>Correct:</u> "+"{{ slist.7.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.21 }}"+"</p>";
+                        break;
+                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.7.22 }}"+"<br><u>Correct:</u> "+"{{ slist.7.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.24 }}"+"</p>";
+                        break;
+                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.7.25 }}"+"<br><u>Correct:</u> "+"{{ slist.7.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.27 }}"+"</p>";
+                        break;
+                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.7.28 }}"+"<br><u>Correct:</u> "+"{{ slist.7.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.30 }}"+"</p>";
+                        break;
+                      }
+                      y = y+1
+                    }
+                    break;
+            case 8: s = s + "<p><u>Question:</u> "+"{{ slist.8.0 }}"+"</p>";
+                    var len1 = (parseInt("{{ slist.8|length }}")-1)/3;
+                    y = 1;
+                    while (y<=len1) {
+                      switch (y) {
+                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.8.1 }}"+"<br><u>Correct:</u> "+"{{ slist.8.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.3 }}"+"</p>";
+                        break;
+                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.8.4 }}"+"<br><u>Correct:</u> "+"{{ slist.8.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.6 }}"+"</p>";
+                        break;
+                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.8.7 }}"+"<br><u>Correct:</u> "+"{{ slist.8.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.9 }}"+"</p>";
+                        break;
+                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.8.10 }}"+"<br><u>Correct:</u> "+"{{ slist.8.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.12 }}"+"</p>";
+                        break;
+                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.8.13 }}"+"<br><u>Correct:</u> "+"{{ slist.8.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.15 }}"+"</p>";
+                        break;
+                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.8.16 }}"+"<br><u>Correct:</u> "+"{{ slist.8.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.18 }}"+"</p>";
+                        break;
+                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.8.19 }}"+"<br><u>Correct:</u> "+"{{ slist.8.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.21 }}"+"</p>";
+                        break;
+                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.8.22 }}"+"<br><u>Correct:</u> "+"{{ slist.8.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.24 }}"+"</p>";
+                        break;
+                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.8.25 }}"+"<br><u>Correct:</u> "+"{{ slist.8.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.27 }}"+"</p>";
+                        break;
+                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.8.28 }}"+"<br><u>Correct:</u> "+"{{ slist.8.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.30 }}"+"</p>";
+                        break;
+                      }
+                      y = y+1
+                    }
+                    break;
+        }
+        x = x + 1
+        s = s + "<hr>";
+    }
+    div.innerHTML = s;
+  </script>
+  {% endif %}
+{% endblock %}

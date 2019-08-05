@@ -21,7 +21,9 @@
             <input hidden type="text" id="col9value" name="Slot9" value="">
             <input hidden type="text" id="deletevalue" name="deletevalue" value="no">
             <input hidden type="text" id="formquestions" name="formquestions" value="">
+            {% if course_lecture %}
             <input id="savebtn" class="btn btn-dark" type="submit" value="Save">
+            {% endif %}
             <div id="alert"></div>
           </form>
           <button hidden id="editbtn" style="display:none;" class="btn btn-dark" type="button">Edit</button>
@@ -42,9 +44,12 @@
       </div>
     </div>
   </header>
-
+  {% if course_lecture %}
   <!-- Page Content -->
   <div class="container">
+
+    <button onclick="hideAll()" id="hidebtn" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide All</i></button>
+    <button onclick="showAll()" id="showbtn" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show All</i></button>
 
     <div id="sourceitems" class="row source">
       <div class="col">
@@ -110,12 +115,51 @@
 
   </div>
   <!-- /.container -->
+  {% else %}
+  <div class="container">
+    {% if selectedCourse is False %}
+    <label>Course: </label>
+    <select id="selectCourse" onchange="chooseCourse()">
+      <option value="----">-----</option>
+      {% for course in courses %}
+      <option value="{{ course }}">{{ course }}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
+    {% if selectedCourse %}
+    <label>Lecture: </label>
+    <select id="selectLecture" onchange="chooseLecture()">
+      <option value="--">--</option>
+      {% for l in cl %}
+      <option value="{{ l }}">{{ l }}</option>
+      {% endfor %}
+    </select>
+    {% endif %}
+    <hr>
+  </div>
+  {% endif %}
 
   <script type="text/javascript">
   localStorage.setItem("question",0);
   var v = parseInt(localStorage.getItem("question"));
   var doc = document.getElementById("formquestions");
   doc.value = v;
+  function hideAll() {
+    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&hide=True");
+  }
+  function showAll() {
+    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&show=True");
+  }
+  function chooseCourse() {
+    var selected = document.getElementById("selectCourse");
+    var selectedValue = selected.options[selected.selectedIndex].value;
+    location.replace(href="{% url 'tools' %}?username={{ username }}&course="+selectedValue);
+  }
+  function chooseLecture() {
+    var selected = document.getElementById("selectLecture");
+    var selectedValue = selected.options[selected.selectedIndex].value;
+    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture="+selectedValue);
+  }
   function beforeDelete() {
     localStorage.setItem("results1",0);
     localStorage.setItem("results2",0);
@@ -381,11 +425,11 @@
     var doc = document.getElementsByName("q"+q+"answer");
     for (var i=0; i < doc.length; i++)
       if (doc[i].checked)
-        location.replace(href="{% url 'tools' %}?username={{ username }}&question="+q+"&answer="+doc[i].value);
+        location.replace("{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&question="+q+"&answer="+doc[i].value);
   }
   function getResults(q) {
     localStorage.setItem("results"+q,1);
-    location.replace(href="{% url 'tools' %}?username={{ username }}&question="+q+"&results=true");
+    window.location = "/tools?username={{ username }}&course={{ co }}&lecture={{ le }}&question="+q+"&results=true";
   }
   function showResults(div, q) {
     var len = parseInt("{{ slist|length }}") - 1;
@@ -1120,50 +1164,357 @@
   var results7 = parseInt(localStorage.getItem("results7"));
   var results8 = parseInt(localStorage.getItem("results8"));
   var results9 = parseInt(localStorage.getItem("results9"));
+
   if (results1==1) {
-    showResults(doc1,results1);
+    if (s1 =='question1')
+      showResults(doc1,s1);
+    else if (s2 =='question1')
+      showResults(doc2,s2);
+    else if (s3 =='question1')
+      showResults(doc3,s3);
+    else if (s4 =='question1')
+      showResults(doc4,s4);
+    else if (s5 =='question1')
+      showResults(doc5,s5);
+    else if (s6 =='question1')
+      showResults(doc6,s6);
+    else if (s7 =='question1')
+      showResults(doc7,s7);
+    else if (s8 =='question1')
+      showResults(doc8,s8);
+    else if (s9 =='question1')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc1, s1);
-  } 
+    if (s1 =='question1')
+      setSlots(doc1,s1);
+    else if (s2 =='question1')
+      setSlots(doc2,s2);
+    else if (s3 =='question1')
+      setSlots(doc3,s3);
+    else if (s4 =='question1')
+      setSlots(doc4,s4);
+    else if (s5 =='question1')
+      setSlots(doc5,s5);
+    else if (s6 =='question1')
+      setSlots(doc6,s6);
+    else if (s7 =='question1')
+      setSlots(doc7,s7);
+    else if (s8 =='question1')
+      setSlots(doc8,s8);
+    else if (s9 =='question1')
+      setSlots(doc9,s9);
+  }
   if (results2==1) {
-    showResults(doc2,results2);
+    if (s1 =='question2')
+      showResults(doc1,s1);
+    else if (s2 =='question2')
+      showResults(doc2,s2);
+    else if (s3 =='question2')
+      showResults(doc3,s3);
+    else if (s4 =='question2')
+      showResults(doc4,s4);
+    else if (s5 =='question2')
+      showResults(doc5,s5);
+    else if (s6 =='question2')
+      showResults(doc6,s6);
+    else if (s7 =='question2')
+      showResults(doc7,s7);
+    else if (s8 =='question2')
+      showResults(doc8,s8);
+    else if (s9 =='question2')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc2, s2);
+    if (s1 =='question2')
+      setSlots(doc1,s1);
+    else if (s2 =='question2')
+      setSlots(doc2,s2);
+    else if (s3 =='question2')
+      setSlots(doc3,s3);
+    else if (s4 =='question2')
+      setSlots(doc4,s4);
+    else if (s5 =='question2')
+      setSlots(doc5,s5);
+    else if (s6 =='question2')
+      setSlots(doc6,s6);
+    else if (s7 =='question2')
+      setSlots(doc7,s7);
+    else if (s8 =='question2')
+      setSlots(doc8,s8);
+    else if (s9 =='question2')
+      setSlots(doc9,s9);
   }
   if (results3==1) {
-    showResults(doc3,results3);
+    if (s1 =='question3')
+      showResults(doc1,s1);
+    else if (s2 =='question3')
+      showResults(doc2,s2);
+    else if (s3 =='question3')
+      showResults(doc3,s3);
+    else if (s4 =='question3')
+      showResults(doc4,s4);
+    else if (s5 =='question3')
+      showResults(doc5,s5);
+    else if (s6 =='question3')
+      showResults(doc6,s6);
+    else if (s7 =='question3')
+      showResults(doc7,s7);
+    else if (s8 =='question3')
+      showResults(doc8,s8);
+    else if (s9 =='question3')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc3, s3);
+    if (s1 =='question3')
+      setSlots(doc1,s1);
+    else if (s2 =='question3')
+      setSlots(doc2,s2);
+    else if (s3 =='question3')
+      setSlots(doc3,s3);
+    else if (s4 =='question3')
+      setSlots(doc4,s4);
+    else if (s5 =='question3')
+      setSlots(doc5,s5);
+    else if (s6 =='question3')
+      setSlots(doc6,s6);
+    else if (s7 =='question3')
+      setSlots(doc7,s7);
+    else if (s8 =='question3')
+      setSlots(doc8,s8);
+    else if (s9 =='question3')
+      setSlots(doc9,s9);
   }
   if (results4==1) {
-    showResults(doc4,results4);
+    if (s1 =='question4')
+      showResults(doc1,s1);
+    else if (s2 =='question4')
+      showResults(doc2,s2);
+    else if (s3 =='question4')
+      showResults(doc3,s3);
+    else if (s4 =='question4')
+      showResults(doc4,s4);
+    else if (s5 =='question4')
+      showResults(doc5,s5);
+    else if (s6 =='question4')
+      showResults(doc6,s6);
+    else if (s7 =='question4')
+      showResults(doc7,s7);
+    else if (s8 =='question4')
+      showResults(doc8,s8);
+    else if (s9 =='question4')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc4, s4);
+    if (s1 =='question4')
+      setSlots(doc1,s1);
+    else if (s2 =='question4')
+      setSlots(doc2,s2);
+    else if (s3 =='question4')
+      setSlots(doc3,s3);
+    else if (s4 =='question4')
+      setSlots(doc4,s4);
+    else if (s5 =='question4')
+      setSlots(doc5,s5);
+    else if (s6 =='question4')
+      setSlots(doc6,s6);
+    else if (s7 =='question4')
+      setSlots(doc7,s7);
+    else if (s8 =='question4')
+      setSlots(doc8,s8);
+    else if (s9 =='question4')
+      setSlots(doc9,s9);
   }
   if (results5==1) {
-    showResults(doc5,results5);
+    if (s1 =='question5')
+      showResults(doc1,s1);
+    else if (s2 =='question5')
+      showResults(doc2,s2);
+    else if (s3 =='question5')
+      showResults(doc3,s3);
+    else if (s4 =='question5')
+      showResults(doc4,s4);
+    else if (s5 =='question5')
+      showResults(doc5,s5);
+    else if (s6 =='question5')
+      showResults(doc6,s6);
+    else if (s7 =='question5')
+      showResults(doc7,s7);
+    else if (s8 =='question5')
+      showResults(doc8,s8);
+    else if (s9 =='question5')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc5, s5);
+    if (s1 =='question5')
+      setSlots(doc1,s1);
+    else if (s2 =='question5')
+      setSlots(doc2,s2);
+    else if (s3 =='question5')
+      setSlots(doc3,s3);
+    else if (s4 =='question5')
+      setSlots(doc4,s4);
+    else if (s5 =='question5')
+      setSlots(doc5,s5);
+    else if (s6 =='question5')
+      setSlots(doc6,s6);
+    else if (s7 =='question5')
+      setSlots(doc7,s7);
+    else if (s8 =='question5')
+      setSlots(doc8,s8);
+    else if (s9 =='question5')
+      setSlots(doc9,s9);
   }
   if (results6==1) {
-    showResults(doc6,results6);
+    if (s1 =='question6')
+      showResults(doc1,s1);
+    else if (s2 =='question6')
+      showResults(doc2,s2);
+    else if (s3 =='question6')
+      showResults(doc3,s3);
+    else if (s4 =='question6')
+      showResults(doc4,s4);
+    else if (s5 =='question6')
+      showResults(doc5,s5);
+    else if (s6 =='question6')
+      showResults(doc6,s6);
+    else if (s7 =='question6')
+      showResults(doc7,s7);
+    else if (s8 =='question6')
+      showResults(doc8,s8);
+    else if (s9 =='question6')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc6, s6);
+    if (s1 =='question6')
+      setSlots(doc1,s1);
+    else if (s2 =='question6')
+      setSlots(doc2,s2);
+    else if (s3 =='question6')
+      setSlots(doc3,s3);
+    else if (s4 =='question6')
+      setSlots(doc4,s4);
+    else if (s5 =='question6')
+      setSlots(doc5,s5);
+    else if (s6 =='question6')
+      setSlots(doc6,s6);
+    else if (s7 =='question6')
+      setSlots(doc7,s7);
+    else if (s8 =='question6')
+      setSlots(doc8,s8);
+    else if (s9 =='question6')
+      setSlots(doc9,s9);
   }
   if (results7==1) {
-    showResults(doc7,results7);
+    if (s1 =='question7')
+      showResults(doc1,s1);
+    else if (s2 =='question7')
+      showResults(doc2,s2);
+    else if (s3 =='question7')
+      showResults(doc3,s3);
+    else if (s4 =='question7')
+      showResults(doc4,s4);
+    else if (s5 =='question7')
+      showResults(doc5,s5);
+    else if (s6 =='question7')
+      showResults(doc6,s6);
+    else if (s7 =='question7')
+      showResults(doc7,s7);
+    else if (s8 =='question7')
+      showResults(doc8,s8);
+    else if (s9 =='question7')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc7, s7);
+    if (s1 =='question7')
+      setSlots(doc1,s1);
+    else if (s2 =='question7')
+      setSlots(doc2,s2);
+    else if (s3 =='question7')
+      setSlots(doc3,s3);
+    else if (s4 =='question7')
+      setSlots(doc4,s4);
+    else if (s5 =='question7')
+      setSlots(doc5,s5);
+    else if (s6 =='question7')
+      setSlots(doc6,s6);
+    else if (s7 =='question7')
+      setSlots(doc7,s7);
+    else if (s8 =='question7')
+      setSlots(doc8,s8);
+    else if (s9 =='question7')
+      setSlots(doc9,s9);
   }
   if (results8==1) {
-    showResults(doc8,results8);
+    if (s1 =='question8')
+      showResults(doc1,s1);
+    else if (s2 =='question8')
+      showResults(doc2,s2);
+    else if (s3 =='question8')
+      showResults(doc3,s3);
+    else if (s4 =='question8')
+      showResults(doc4,s4);
+    else if (s5 =='question8')
+      showResults(doc5,s5);
+    else if (s6 =='question8')
+      showResults(doc6,s6);
+    else if (s7 =='question8')
+      showResults(doc7,s7);
+    else if (s8 =='question8')
+      showResults(doc8,s8);
+    else if (s9 =='question8')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc8, s8);
+    if (s1 =='question8')
+      setSlots(doc1,s1);
+    else if (s2 =='question8')
+      setSlots(doc2,s2);
+    else if (s3 =='question8')
+      setSlots(doc3,s3);
+    else if (s4 =='question8')
+      setSlots(doc4,s4);
+    else if (s5 =='question8')
+      setSlots(doc5,s5);
+    else if (s6 =='question8')
+      setSlots(doc6,s6);
+    else if (s7 =='question8')
+      setSlots(doc7,s7);
+    else if (s8 =='question8')
+      setSlots(doc8,s8);
+    else if (s9 =='question8')
+      setSlots(doc9,s9);
   }
   if (results9==1) {
-    showResults(doc9,results9);
+    if (s1 =='question9')
+      showResults(doc1,s1);
+    else if (s2 =='question9')
+      showResults(doc2,s2);
+    else if (s3 =='question9')
+      showResults(doc3,s3);
+    else if (s4 =='question9')
+      showResults(doc4,s4);
+    else if (s5 =='question9')
+      showResults(doc5,s5);
+    else if (s6 =='question9')
+      showResults(doc6,s6);
+    else if (s7 =='question9')
+      showResults(doc7,s7);
+    else if (s8 =='question9')
+      showResults(doc8,s8);
+    else if (s9 =='question9')
+      showResults(doc9,s9);
   } else {
-    setSlots(doc9, s9);
+    if (s1 =='question9')
+      setSlots(doc1,s1);
+    else if (s2 =='question9')
+      setSlots(doc2,s2);
+    else if (s3 =='question9')
+      setSlots(doc3,s3);
+    else if (s4 =='question9')
+      setSlots(doc4,s4);
+    else if (s5 =='question9')
+      setSlots(doc5,s5);
+    else if (s6 =='question9')
+      setSlots(doc6,s6);
+    else if (s7 =='question9')
+      setSlots(doc7,s7);
+    else if (s8 =='question9')
+      setSlots(doc8,s8);
+    else if (s9 =='question9')
+      setSlots(doc9,s9);
   }
   doc1.style.border = 'none';
   doc2.style.border = 'none';
@@ -1211,29 +1562,31 @@
     var btn1 = document.getElementById('savebtn');
     var btn2 = document.getElementById('editbtn');
     var btn3 = document.getElementById('deletebtn');
+    var btn4 = document.getElementById('hidebtn');
     btn1.style.display = 'none';
     btn2.style.display = 'block';
     btn3.style.display = 'block';
+    btn4.style.display = 'block';
     var doc1 = document.getElementById('q1');
     if (doc1) {
-      var x = parseInt(localStorage.getItem("results1"));
-      if (x==0) {
-        var b = document.createElement('button');
-        b.setAttribute("id","b1");
-        b.setAttribute("onclick","getResults(1)");
-        b.innerHTML = "Get Results";
-        doc1.appendChild(b);
+      var x1 = parseInt(localStorage.getItem("results1"));
+      if (x1==0) {
+        var b1 = document.createElement('button');
+        b1.setAttribute("id","b1");
+        b1.setAttribute("onclick","getResults(1)");
+        b1.innerHTML = "Get Results";
+        doc1.appendChild(b1);
       }
     }
     var doc2 = document.getElementById('q2');
     if (doc2) {
-      var x = parseInt(localStorage.getItem("results2"));
-      if (x==0) {
-        var b = document.createElement('button');
-        b.setAttribute("id","b2");
-        b.setAttribute("onclick","getResults(2)");
-        b.innerHTML = "Get Results";
-        doc2.appendChild(b);
+      var x2 = parseInt(localStorage.getItem("results2"));
+      if (x2==0) {
+        var b2 = document.createElement('button');
+        b2.setAttribute("id","b2");
+        b2.setAttribute("onclick","getResults(2)");
+        b2.innerHTML = "Get Results";
+        doc2.appendChild(b2);
       }
     }
     var doc3 = document.getElementById('q3');
@@ -1453,5 +1806,72 @@
     }
   </script>
   {% endif %}
-{% endif %}
+  {% endif %}
+  {% if h %}
+  <script type="text/javascript">
+    var doc1 = document.getElementById('col1');
+    var doc2 = document.getElementById('col2');
+    var doc3 = document.getElementById('col3');
+    var doc4 = document.getElementById('col4');
+    var doc5 = document.getElementById('col5');
+    var doc6 = document.getElementById('col6');
+    var doc7 = document.getElementById('col7');
+    var doc8 = document.getElementById('col8');
+    var doc9 = document.getElementById('col9');
+    doc1.style.display = 'none';
+    doc2.style.display = 'none';
+    doc3.style.display = 'none';
+    doc4.style.display = 'none';
+    doc5.style.display = 'none';
+    doc6.style.display = 'none';
+    doc7.style.display = 'none';
+    doc8.style.display = 'none';
+    doc9.style.display = 'none';
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var hidebtn = document.getElementById("hidebtn");
+    var showbtn = document.getElementById("showbtn");
+    hidebtn.style.display = 'none';
+    showbtn.style.display = 'block';
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s %}
+    {% if role %}
+  <script type="text/javascript">
+    var hidebtn = document.getElementById("hidebtn");
+    var showbtn = document.getElementById("showbtn");
+    hidebtn.style.display = 'block';
+    showbtn.style.display = 'none';
+  </script>
+    {% endif %}
+    {% endif %}
+  {% endif %}
+  {% if d %}
+  <script type="text/javascript">
+    var btn = document.getElementById("hidebtn");
+    var showbtn = document.getElementById("showbtn");
+    btn.style.display = 'none';
+    showbtn.style.display = 'none';
+    var doc1 = document.getElementById('col1');
+    var doc2 = document.getElementById('col2');
+    var doc3 = document.getElementById('col3');
+    var doc4 = document.getElementById('col4');
+    var doc5 = document.getElementById('col5');
+    var doc6 = document.getElementById('col6');
+    var doc7 = document.getElementById('col7');
+    var doc8 = document.getElementById('col8');
+    var doc9 = document.getElementById('col9');
+    doc1.style.display = 'block';
+    doc2.style.display = 'block';
+    doc3.style.display = 'block';
+    doc4.style.display = 'block';
+    doc5.style.display = 'block';
+    doc6.style.display = 'block';
+    doc7.style.display = 'block';
+    doc8.style.display = 'block';
+    doc9.style.display = 'block';
+  </script>
+  {% endif %}
 {% endblock %}

@@ -35,6 +35,16 @@ class Interface(models.Model):
 	slot7 = models.TextField()
 	slot8 = models.TextField()
 	slot9 = models.TextField()
+	hide = models.BooleanField()
+	hide1 = models.BooleanField()
+	hide2 = models.BooleanField()
+	hide3 = models.BooleanField()
+	hide4 = models.BooleanField()
+	hide5 = models.BooleanField()
+	hide6 = models.BooleanField()
+	hide7 = models.BooleanField()
+	hide8 = models.BooleanField()
+	hide9 = models.BooleanField()
 	def __str__(self):
 		return self.course.code + " " + str(self.lecture.number)
 

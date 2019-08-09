@@ -17,13 +17,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 
-STATIC_DIR = os.path.join(BASE_DIR,'static')
-STATICFILES_DIRS = [STATIC_DIR,]
-
-MEDIA_DIR = os.path.join(BASE_DIR,'media')
-MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/media/'
-
 LOGIN_URL = '/page/user_login/'
 
 DEFAULT_FILE_STORAGE = 'classroom_engagement.custom_azure.AzureMediaStorage'
@@ -59,7 +52,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'page',
-    'storages',
 ]
 
 MIDDLEWARE = [

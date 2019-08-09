@@ -201,15 +201,18 @@ def tools(request):
                     d = True
         else:
             if request.method == 'GET':
-                question = request.GET.get('question')
-                answer = request.GET.get('answer')
-                results = request.GET.get('results')
-                if (question and answer):
-                    q = Question.objects.get(question_number=int(question))
-                    a = Answer.objects.get(question=q,answer_number=int(answer))
-                    st = getattr(a, 'students')
-                    a.students=st+1
-                    a.save()              
+                i = Interface.objects.filter(course=this_course, lecture=this_lecture)
+                if i.count()>0 :
+                    i = Interface.objects.get(course=this_course, lecture=this_lecture)
+                    question = request.GET.get('question')
+                    answer = request.GET.get('answer')
+                    results = request.GET.get('results')
+                    if (question and answer):
+                        q = Question.objects.get(interface=i,question_number=int(question))
+                        a = Answer.objects.get(question=q,answer_number=int(answer))
+                        st = getattr(a, 'students')
+                        a.students=st+1
+                        a.save()              
 
         i = Interface.objects.filter(course=this_course, lecture=this_lecture)
         if i.count()>0 :

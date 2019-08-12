@@ -34,7 +34,7 @@ LOGIN_URL = '/page/user_login/'
 SECRET_KEY = '7-k(0j!549)7r!=!n1wd4oah!+#re-qn#r%q=)ei-5n)72%-mf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

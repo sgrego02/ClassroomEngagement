@@ -80,11 +80,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'classroom_engagement',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'sg4518@classroomengagement',
+        'PASSWORD': 'imperial4518!',
+        'HOST': 'classroomengagement.mysql.database.azure.com',
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

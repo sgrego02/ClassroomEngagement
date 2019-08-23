@@ -26,11 +26,10 @@
             {% endif %}
             <div id="alert"></div>
           </form>
-          <button hidden id="editbtn" style="display:none;" class="btn btn-dark" type="button">Edit</button>
           <form id="deleteform" enctype="multipart/form-data" method="post">
             {% csrf_token %}
             <input hidden type="text" id="deletevalue" name="deletevalue" value="yes">
-            <input onsubmit="return beforeDelete()" id="deletebtn" style="display:none;" class="btn btn-dark" type="submit" value="Delete">
+            <input id="deletebtn" style="display:none;" class="btn btn-dark" type="submit" value="Delete">
           </form>
         </div>
       </div>
@@ -84,32 +83,55 @@
 
   <hr>
 
+  <form id="feedbackform" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <input hidden type="text" id="feedbackvalue" name="feedbackvalue" value="">
+  </form>
+
   <div class="container">
     <div class="row destination">
-      <div id="col1" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
-      <div id="col2" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
-      <div id="col3" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
+        <button onclick="hide(1)" id="hidebtn1" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(1)" id="showbtn1" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col1" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <button onclick="hide(2)" id="hidebtn2" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(2)" id="showbtn2" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col2" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <button onclick="hide(3)" id="hidebtn3" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(3)" id="showbtn3" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col3" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
     </div>
     <!-- /.row -->
     <div class="row destination">
-      <div id="col4" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
-      <div id="col5" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
-      <div id="col6" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
+        <button onclick="hide(4)" id="hidebtn4" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(4)" id="showbtn4" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col4" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <button onclick="hide(5)" id="hidebtn5" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(5)" id="showbtn5" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col5" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <button onclick="hide(6)" id="hidebtn6" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(6)" id="showbtn6" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col6" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
     </div>
     <!-- /.row -->
     <div class="row destination">
-      <div id="col7" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
-      <div id="col8" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
-      <div id="col9" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-      </div>
+        <button onclick="hide(7)" id="hidebtn7" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(7)" id="showbtn7" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col7" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <button onclick="hide(8)" id="hidebtn8" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(8)" id="showbtn8" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col8" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <button onclick="hide(9)" id="hidebtn9" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
+        <button onclick="show(9)" id="showbtn9" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
+        <div id="col9" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
     </div>
     <!-- /.row -->
 
@@ -150,6 +172,12 @@
   function showAll() {
     location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&show=True");
   }
+  function hide(id) {
+    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&hide"+id+"=True");
+  }
+  function show(id) {
+    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&show"+id+"=True");
+  }
   function chooseCourse() {
     var selected = document.getElementById("selectCourse");
     var selectedValue = selected.options[selected.selectedIndex].value;
@@ -160,17 +188,12 @@
     var selectedValue = selected.options[selected.selectedIndex].value;
     location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture="+selectedValue);
   }
-  function beforeDelete() {
-    localStorage.setItem("results1",0);
-    localStorage.setItem("results2",0);
-    localStorage.setItem("results3",0);
-    localStorage.setItem("results4",0);
-    localStorage.setItem("results5",0);
-    localStorage.setItem("results6",0);
-    localStorage.setItem("results7",0);
-    localStorage.setItem("results8",0);
-    localStorage.setItem("results9",0);
-    return true;
+  function sendfeedback() {
+    var txt = document.getElementById("txt");
+    var val = document.getElementById("feedbackvalue");
+    val.value = txt.value;
+    var doc = document.getElementById("feedbackform");
+    doc.submit();
   }
   function check() {
     var valid = true;
@@ -191,51 +214,42 @@
       alert.innerHTML = "You must complete and save all the questions and answers!";
       return false;
     } else {
-      localStorage.setItem("results1",0);
-      localStorage.setItem("results2",0);
-      localStorage.setItem("results3",0);
-      localStorage.setItem("results4",0);
-      localStorage.setItem("results5",0);
-      localStorage.setItem("results6",0);
-      localStorage.setItem("results7",0);
-      localStorage.setItem("results8",0);
-      localStorage.setItem("results9",0);
       return true;
     }
   }
   function addAnswer(q) {
-  	var v = parseInt(localStorage.getItem("q"+q+"answers")) + 1;
-  	if (v <= 10) {
+    var v = parseInt(localStorage.getItem("q"+q+"answers")) + 1;
+    if (v <= 10) {
       var dropdown = document.getElementById("q"+q+"correctanswer");
       var op = document.createElement("option");
       op.setAttribute("id","q"+q+"op"+v);
       op.setAttribute("value",v);
       op.innerHTML = v;
       dropdown.appendChild(op);
-  		var doc = document.getElementById("q"+q+"moreanswers");
-    	var div = document.createElement("div");
-    	div.setAttribute("id","q"+q+"a"+v);
-    	var x = document.createElement("input");
-    	x.setAttribute("type","radio");
-    	x.setAttribute("name","answer");
-    	x.setAttribute("value",v);
-    	div.appendChild(x);
-    	var y = document.createElement("input");
-    	y.setAttribute("type","text");
-    	y.setAttribute("id","q"+q+"answer"+v);
-    	y.setAttribute("name","q"+q+"answer"+v);
-    	y.setAttribute("placeholder","Answer "+v);
-    	y.setAttribute("value","");
-    	div.appendChild(y);
-    	var del = document.createElement("button");
-    	var z = document.createElement("br");
-    	del.setAttribute("id","q"+q+"a"+v+"del");
-    	del.setAttribute("onclick","deleteAnswer("+q+","+v+")");
-    	del.innerHTML = "Delete";
-    	div.appendChild(del);
-    	div.appendChild(z);
-    	doc.appendChild(div);
-    	localStorage.setItem("q"+q+"answers",v);
+      var doc = document.getElementById("q"+q+"moreanswers");
+      var div = document.createElement("div");
+      div.setAttribute("id","q"+q+"a"+v);
+      var x = document.createElement("input");
+      x.setAttribute("type","radio");
+      x.setAttribute("name","answer");
+      x.setAttribute("value",v);
+      div.appendChild(x);
+      var y = document.createElement("input");
+      y.setAttribute("type","text");
+      y.setAttribute("id","q"+q+"answer"+v);
+      y.setAttribute("name","q"+q+"answer"+v);
+      y.setAttribute("placeholder","Answer "+v);
+      y.setAttribute("value","");
+      div.appendChild(y);
+      var del = document.createElement("button");
+      var z = document.createElement("br");
+      del.setAttribute("id","q"+q+"a"+v+"del");
+      del.setAttribute("onclick","deleteAnswer("+q+","+v+")");
+      del.innerHTML = "Delete";
+      div.appendChild(del);
+      div.appendChild(z);
+      doc.appendChild(div);
+      localStorage.setItem("q"+q+"answers",v);
     }
   }
   function deleteAnswer(q,v) {
@@ -246,129 +260,8 @@
     var op = document.getElementById("q"+q+"op"+v);
     dropdown.removeChild(op);
   }
-  function save(v) {
-  	var dataform = document.getElementById("dataform");
-    var div = document.getElementById("q"+v);
-    var q = document.getElementById("question"+v);
-    var a1 = document.getElementById("q"+v+"answer1");
-    var a2 = document.getElementById("q"+v+"answer2");
-    var dropdown = document.getElementById("q"+v+"correctanswer");
-    var d = document.createElement("span");
-    d.innerHTML = " " + q.value;
-    var el1 = document.createElement("input");
-    el1.setAttribute("hidden",true);
-    el1.setAttribute("type","text");
-    el1.setAttribute("id","form"+q.id);
-    el1.setAttribute("name","form"+q.id);
-    el1.setAttribute("value",q.value);
-    dataform.appendChild(el1);
-    var d1 = document.createElement("span");
-    d1.innerHTML = " " + a1.value;
-    var el2 = document.createElement("input");
-    el2.setAttribute("hidden",true);
-    el2.setAttribute("type","text");
-    el2.setAttribute("id","form"+a1.id);
-    el2.setAttribute("name","form"+a1.id);
-    el2.setAttribute("value",a1.value);
-    dataform.appendChild(el2);
-    var d2 = document.createElement("span");
-    d2.innerHTML = " " + a2.value;
-    var el3 = document.createElement("input");
-    el3.setAttribute("hidden",true);
-    el3.setAttribute("type","text");
-    el3.setAttribute("id","form"+a2.id);
-    el3.setAttribute("name","form"+a2.id);
-    el3.setAttribute("value",a2.value);
-    dataform.appendChild(el3);
-    div.replaceChild(d, q); 
-    div.replaceChild(d1, a1);
-    div.replaceChild(d2, a2);
-    var b1 = document.getElementById("q"+v+"addanswer");
-    var b2 = document.getElementById("q"+v+"save");
-    div.removeChild(b1);
-    div.removeChild(b2);
-    var x = 3;
-    while (x < 11) {
-      var answerdiv = document.getElementById("q"+v+"a"+x);
-      if (answerdiv) {
-      	var answer = document.getElementById("q"+v+"answer"+x);
-      	var del = document.getElementById("q"+v+"a"+x+"del");
-      	var d = document.createElement("span");
-      	d.innerHTML = " " + answer.value;
-      	var el = document.createElement("input");
-        el.setAttribute("hidden",true);
-        el.setAttribute("type","text");
-        el.setAttribute("id","form"+answer.id);
-        el.setAttribute("name","form"+answer.id);
-        el.setAttribute("value",answer.value);
-        dataform.appendChild(el);
-      	answerdiv.replaceChild(d,answer);
-      	answerdiv.removeChild(del);
-      }
-      x++;
-    }
-    var el4 = document.createElement("input");
-    el4.setAttribute("hidden",true);
-    el4.setAttribute("type","text");
-    el4.setAttribute("id","form"+dropdown.id);
-    el4.setAttribute("name","form"+dropdown.id);
-    el4.setAttribute("value",dropdown.value);
-    dataform.appendChild(el4);
-  }
-  function ask() {
-    var div1 = document.getElementById("txt");
-    var div2 = document.getElementById("squestions");
-    var text = document.createElement("div");
-    var text2 = document.createElement("span");
-    var b = document.createElement("i");
-    b.setAttribute("onclick","vote(this)");
-    b.setAttribute("onmouseover","this.style.color='gray';")
-    b.setAttribute("class","fa fa-thumbs-up");
-    text2.innerHTML = div1.value + " ";
-    text.appendChild(text2);
-    text.appendChild(b);
-    div2.appendChild(text);
-  }
-  function vote(b) {
-    b.style.color = 'blue';
-  }
-  function allowDrop(ev) {
-    ev.preventDefault();
-  }
-  function noAllowDrop(ev) {
-    ev.stopPropagation();
-  }
-  function noDrag(id) {
-    var doc = document.getElementById(id);
-    doc.setAttribute("draggable","false");
-    doc.classList.add("dragged");
-  }
-  function drag(ev) {
-    var element = document.getElementById(ev.target.id);
-    element.classList.add("draggable");
-  }
-  function dragEnd(ev) {
-    var element = document.getElementById(ev.target.id);
-    element.classList.remove("draggable");
-  }
-  function drop(ev) {
-    ev.preventDefault();
-    if (ev.target.childElementCount==0) {
-      var evid = ev.target.id;
-      var doc = document.getElementsByClassName("draggable");
-      var id = doc[0].id;
-      setItems(ev.target, id);
-      doc[0].classList.remove("draggable");
-      if (id=='question') {
-    	 document.getElementById(ev.target.id+"value").value = id+localStorage.getItem("question");
-      } else {
-    	 document.getElementById(ev.target.id+"value").value = id;
-      }
-    }
-  }
-
-  function createChart() {
-    var ctx = document.getElementById("myChart").getContext('2d');
+  function createChart(id) {
+    var ctx = document.getElementById(id).getContext('2d');
     var button1 = document.getElementById("button1");
     var button2 = document.getElementById("button2");
     var button3 = document.getElementById("button3");
@@ -419,48 +312,124 @@
       myChart.update();
     };
   }
-
+  function save(v) {
+    var dataform = document.getElementById("dataform");
+    var div = document.getElementById("q"+v);
+    var q = document.getElementById("question"+v);
+    var a1 = document.getElementById("q"+v+"answer1");
+    var a2 = document.getElementById("q"+v+"answer2");
+    var dropdown = document.getElementById("q"+v+"correctanswer");
+    var d = document.createElement("span");
+    d.innerHTML = " " + q.value;
+    var el1 = document.createElement("input");
+    el1.setAttribute("hidden",true);
+    el1.setAttribute("type","text");
+    el1.setAttribute("id","form"+q.id);
+    el1.setAttribute("name","form"+q.id);
+    el1.setAttribute("value",q.value);
+    dataform.appendChild(el1);
+    var d1 = document.createElement("span");
+    d1.innerHTML = " " + a1.value;
+    var el2 = document.createElement("input");
+    el2.setAttribute("hidden",true);
+    el2.setAttribute("type","text");
+    el2.setAttribute("id","form"+a1.id);
+    el2.setAttribute("name","form"+a1.id);
+    el2.setAttribute("value",a1.value);
+    dataform.appendChild(el2);
+    var d2 = document.createElement("span");
+    d2.innerHTML = " " + a2.value;
+    var el3 = document.createElement("input");
+    el3.setAttribute("hidden",true);
+    el3.setAttribute("type","text");
+    el3.setAttribute("id","form"+a2.id);
+    el3.setAttribute("name","form"+a2.id);
+    el3.setAttribute("value",a2.value);
+    dataform.appendChild(el3);
+    div.replaceChild(d, q); 
+    div.replaceChild(d1, a1);
+    div.replaceChild(d2, a2);
+    var b1 = document.getElementById("q"+v+"addanswer");
+    var b2 = document.getElementById("q"+v+"save");
+    div.removeChild(b1);
+    div.removeChild(b2);
+    var x = 3;
+    while (x < 11) {
+      var answerdiv = document.getElementById("q"+v+"a"+x);
+      if (answerdiv) {
+        var answer = document.getElementById("q"+v+"answer"+x);
+        var del = document.getElementById("q"+v+"a"+x+"del");
+        var d = document.createElement("span");
+        d.innerHTML = " " + answer.value;
+        var el = document.createElement("input");
+        el.setAttribute("hidden",true);
+        el.setAttribute("type","text");
+        el.setAttribute("id","form"+answer.id);
+        el.setAttribute("name","form"+answer.id);
+        el.setAttribute("value",answer.value);
+        dataform.appendChild(el);
+        answerdiv.replaceChild(d,answer);
+        answerdiv.removeChild(del);
+      }
+      x++;
+    }
+    var el4 = document.createElement("input");
+    el4.setAttribute("hidden",true);
+    el4.setAttribute("type","text");
+    el4.setAttribute("id","form"+dropdown.id);
+    el4.setAttribute("name","form"+dropdown.id);
+    el4.setAttribute("value",dropdown.value);
+    dataform.appendChild(el4);
+  }
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  function noAllowDrop(ev) {
+    ev.stopPropagation();
+  }
+  function noDrag(id) {
+    var doc = document.getElementById(id);
+    doc.setAttribute("draggable","false");
+    doc.classList.add("dragged");
+  }
+  function drag(ev) {
+    var element = document.getElementById(ev.target.id);
+    element.classList.add("draggable");
+  }
+  function dragEnd(ev) {
+    var element = document.getElementById(ev.target.id);
+    element.classList.remove("draggable");
+  }
+  function drop(ev) {
+    ev.preventDefault();
+    if (ev.target.childElementCount==0) {
+      var evid = ev.target.id;
+      var doc = document.getElementsByClassName("draggable");
+      var id = doc[0].id;
+      setItems(ev.target, id);
+      doc[0].classList.remove("draggable");
+      if (id=='question') {
+       document.getElementById(ev.target.id+"value").value = id+localStorage.getItem("question");
+      } else {
+       document.getElementById(ev.target.id+"value").value = id;
+      }
+    }
+  }
   function submit(q) {
-    localStorage.setItem("submit"+q,0);
     var doc = document.getElementsByName("q"+q+"answer");
     for (var i=0; i < doc.length; i++)
       if (doc[i].checked)
         location.replace("{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&question="+q+"&answer="+doc[i].value);
   }
   function getResults(q) {
-    localStorage.setItem("results"+q,1);
-    window.location = "/tools?username={{ username }}&course={{ co }}&lecture={{ le }}&question="+q+"&results=true";
+    location.replace("{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&question="+q+"&results=true");
   }
   function showResults(div, q) {
-    var len = parseInt("{{ slist|length }}") - 1;
-    var s = "<p><strong>Results</strong></p><p><u>Question:</u> "+"{{ slist.0.0 }}"+"</p>";
-    x = 1;
-    while (x<=len) {
-       switch (x) {
-            case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.1.0 }}"+"<br><u>Correct:</u> "+"{{ slist.1.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.2 }}"+"</p>";
-                    break;
-            case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.2.0 }}"+"<br><u>Correct:</u> "+"{{ slist.2.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.2 }}"+"</p>";
-                    break;
-            case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.3.0 }}"+"<br><u>Correct:</u> "+"{{ slist.3.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.2 }}"+"</p>";
-                    break;
-            case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.4.0 }}"+"<br><u>Correct:</u> "+"{{ slist.4.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.2 }}"+"</p>";
-                    break;
-            case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.5.0 }}"+"<br><u>Correct:</u> "+"{{ slist.5.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.2 }}"+"</p>";
-                    break;
-            case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.6.0 }}"+"<br><u>Correct:</u> "+"{{ slist.6.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.2 }}"+"</p>";
-                    break;
-            case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.7.0 }}"+"<br><u>Correct:</u> "+"{{ slist.7.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.2 }}"+"</p>";
-                    break;
-            case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.8.0 }}"+"<br><u>Correct:</u> "+"{{ slist.8.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.2 }}"+"</p>";
-                    break;
-            case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.9.0 }}"+"<br><u>Correct:</u> "+"{{ slist.9.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.9.2 }}"+"</p>";
-                    break;
-            case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.10.0 }}"+"<br><u>Correct:</u> "+"{{ slist.10.1 }}"+"<br><u>Students Answered:</u> "+"{{ slist.10.2 }}"+"</p>";
-                    break;
-          }
-          x = x+1
-    }
-    div.innerHTML = s;
+    var length = parseInt(q.substring(8,q.length));
+    var div1 = document.createElement("div");
+    div1.setAttribute("id","q"+length+"chart");
+    div1.setAttribute("style","height: 300px; width: 100%;");
+    div.appendChild(div1);
   }
   function setItems(ev, id) {
     var cleanbtn = document.createElement("button");
@@ -523,7 +492,7 @@
       b3.setAttribute("class","btn btn-outline-warning");
       b3.innerHTML = "Could you give an example?";
       ev.appendChild(b3);
-      createChart();
+      createChart("myChart");
     } else if (id=="question") {
       var v = parseInt(localStorage.getItem("question"));
       if (v!=9) {
@@ -623,9 +592,10 @@
       ev.appendChild(txt);
       var br2 = document.createElement("br");
       ev.appendChild(br2);
-      var btn = document.createElement("button");
-      btn.setAttribute("onclick","ask()");
-      btn.innerHTML = "Send";
+      var btn = document.createElement("input");
+      btn.setAttribute("id","ask");
+      btn.setAttribute("type","button");
+      btn.setAttribute("value","Send");
       ev.appendChild(btn);
     } else if (id=="feedback") {
       noDrag('feedback');
@@ -646,492 +616,1445 @@
     }
   }
   function setSlots(d,s) {
-    if (s=='question1') {
+    if (s=="buttons") {
+      noDrag('buttons');
+      var x = document.createElement("canvas");
+      x.setAttribute("id","myChart");
+      x.setAttribute("style","max-width:100%;max-height:100%;");
+      d.appendChild(x);
+      var b1 = document.createElement("button");
+      b1.setAttribute("id","button1");
+      b1.setAttribute("type","button");
+      b1.setAttribute("class","btn btn-outline-danger");
+      b1.innerHTML = "I don't understand";
+      d.appendChild(b1);
+      var b2 = document.createElement("button");
+      b2.setAttribute("id","button2");
+      b2.setAttribute("type","button");
+      b2.setAttribute("class","btn btn-outline-primary");
+      b2.innerHTML = "Could you slow down?";
+      d.appendChild(b2);
+      var b3 = document.createElement("button");
+      b3.setAttribute("id","button3");
+      b3.setAttribute("type","button");
+      b3.setAttribute("class","btn btn-outline-warning");
+      b3.innerHTML = "Could you give an example?";
+      d.appendChild(b3);
+    } else if (s=="questions") {
+      noDrag('questions');
       var div = document.createElement("div");
-        div.setAttribute("id","q1");
-        var x = document.createElement("label");
-        x.setAttribute("id","question1");
-        x.setAttribute("name","question1");
-        x.innerHTML = "{{ qlist.0.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.0|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.0.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q1answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q1answer"+i);
-          z.setAttribute("name","q1answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.0.2 }}";
-                    break;
-            case 2: a = "{{ qlist.0.3 }}";
-                    break;
-            case 3: a = "{{ qlist.0.4 }}";
-                    break;
-            case 4: a = "{{ qlist.0.5 }}";
-                    break;
-            case 5: a = "{{ qlist.0.6 }}";
-                    break;
-            case 6: a = "{{ qlist.0.7 }}";
-                    break;
-            case 7: a = "{{ qlist.0.8 }}";
-                    break;
-            case 8: a = "{{ qlist.0.9 }}";
-                    break;
-            case 9: a = "{{ qlist.0.10 }}";
-                    break;
-          }
-          i=i+1;
+      div.setAttribute("id","squestions");
+      div.setAttribute("style","border:solid; overflow-x:scroll; overflow-y:scroll; height:50%; width:100%;");
+      d.appendChild(div);
+      var br1 = document.createElement("br");
+      d.appendChild(br1);
+      var title = document.createElement("div");
+      title.innerHTML = "Ask a question:";
+      d.appendChild(title);
+      var txt = document.createElement("textarea");
+      txt.setAttribute("id","txt");
+      txt.setAttribute("rows","4");
+      txt.setAttribute("cols","33");
+      d.appendChild(txt);
+      var br2 = document.createElement("br");
+      d.appendChild(br2);
+      var btn = document.createElement("input");
+      btn.setAttribute("id","ask");
+      btn.setAttribute("type","button");
+      btn.setAttribute("value","Send");
+      d.appendChild(btn);
+    } else if (s=="feedback") {
+      noDrag('feedback');
+      var title = document.createElement("div");
+      title.innerHTML = "Send your feedback:";
+      d.appendChild(title);
+      var txt = document.createElement("textarea");
+      txt.setAttribute("id","txt");
+      txt.setAttribute("rows","4");
+      txt.setAttribute("cols","33");
+      d.appendChild(txt);
+      var br2 = document.createElement("br");
+      d.appendChild(br2);
+      var btn = document.createElement("button");
+      btn.setAttribute("onclick","sendfeedback()");
+      btn.innerHTML = "Send";
+      d.appendChild(btn);
+    } else if (s=='question1') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q1");
+      var x = document.createElement("label");
+      x.setAttribute("id","question1");
+      x.setAttribute("name","question1");
+      x.innerHTML = "{{ qlist.0.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.0|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.0.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q1answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q1answer"+i);
+        z.setAttribute("name","q1answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.0.2 }}";
+                  break;
+          case 2: a = "{{ qlist.0.3 }}";
+                  break;
+          case 3: a = "{{ qlist.0.4 }}";
+                  break;
+          case 4: a = "{{ qlist.0.5 }}";
+                  break;
+          case 5: a = "{{ qlist.0.6 }}";
+                  break;
+          case 6: a = "{{ qlist.0.7 }}";
+                  break;
+          case 7: a = "{{ qlist.0.8 }}";
+                  break;
+          case 8: a = "{{ qlist.0.9 }}";
+                  break;
+          case 9: a = "{{ qlist.0.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
-    } else 
-    if (s=='question2') {
-      var div = document.createElement("form");
-        div.setAttribute("id","q2");
-        var x = document.createElement("label");
-        x.setAttribute("id","question2");
-        x.setAttribute("name","question2");
-        x.innerHTML = "{{ qlist.1.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.1|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.1.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q2answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q2answer"+i);
-          z.setAttribute("name","q2answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.1.2 }}";
-                    break;
-            case 2: a = "{{ qlist.1.3 }}";
-                    break;
-            case 3: a = "{{ qlist.1.4 }}";
-                    break;
-            case 4: a = "{{ qlist.1.5 }}";
-                    break;
-            case 5: a = "{{ qlist.1.6 }}";
-                    break;
-            case 6: a = "{{ qlist.1.7 }}";
-                    break;
-            case 7: a = "{{ qlist.1.8 }}";
-                    break;
-            case 8: a = "{{ qlist.1.9 }}";
-                    break;
-            case 9: a = "{{ qlist.1.10 }}";
-                    break;
-          }
-          i=i+1;
+        i=i+1;
+      }
+      d.appendChild(div);
+    } else if (s=='question2') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q2");
+      var x = document.createElement("label");
+      x.setAttribute("id","question2");
+      x.setAttribute("name","question2");
+      x.innerHTML = "{{ qlist.1.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.1|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.1.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q2answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q2answer"+i);
+        z.setAttribute("name","q2answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.1.2 }}";
+                  break;
+          case 2: a = "{{ qlist.1.3 }}";
+                  break;
+          case 3: a = "{{ qlist.1.4 }}";
+                  break;
+          case 4: a = "{{ qlist.1.5 }}";
+                  break;
+          case 5: a = "{{ qlist.1.6 }}";
+                  break;
+          case 6: a = "{{ qlist.1.7 }}";
+                  break;
+          case 7: a = "{{ qlist.1.8 }}";
+                  break;
+          case 8: a = "{{ qlist.1.9 }}";
+                  break;
+          case 9: a = "{{ qlist.1.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
-    } else
-    if (s=='question3') {
-      var div = document.createElement("form");
-        div.setAttribute("id","q3");
-        var x = document.createElement("label");
-        x.setAttribute("id","question3");
-        x.setAttribute("name","question3");
-        x.innerHTML = "{{ qlist.2.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.2|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.2.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q3answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q3answer"+i);
-          z.setAttribute("name","q3answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.2.2 }}";
-                    break;
-            case 2: a = "{{ qlist.2.3 }}";
-                    break;
-            case 3: a = "{{ qlist.2.4 }}";
-                    break;
-            case 4: a = "{{ qlist.2.5 }}";
-                    break;
-            case 5: a = "{{ qlist.2.6 }}";
-                    break;
-            case 6: a = "{{ qlist.2.7 }}";
-                    break;
-            case 7: a = "{{ qlist.2.8 }}";
-                    break;
-            case 8: a = "{{ qlist.2.9 }}";
-                    break;
-            case 9: a = "{{ qlist.2.10 }}";
-                    break;
-          }
-          i=i+1;
+        i=i+1;
+      }
+      d.appendChild(div);
+    } else if (s=='question3') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q3");
+      var x = document.createElement("label");
+      x.setAttribute("id","question3");
+      x.setAttribute("name","question3");
+      x.innerHTML = "{{ qlist.2.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.2|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.2.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q3answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q3answer"+i);
+        z.setAttribute("name","q3answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.2.2 }}";
+                  break;
+          case 2: a = "{{ qlist.2.3 }}";
+                  break;
+          case 3: a = "{{ qlist.2.4 }}";
+                  break;
+          case 4: a = "{{ qlist.2.5 }}";
+                  break;
+          case 5: a = "{{ qlist.2.6 }}";
+                  break;
+          case 6: a = "{{ qlist.2.7 }}";
+                  break;
+          case 7: a = "{{ qlist.2.8 }}";
+                  break;
+          case 8: a = "{{ qlist.2.9 }}";
+                  break;
+          case 9: a = "{{ qlist.2.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
-    } else 
-    if (s=='question4') {
-      var div = document.createElement("form");
-        div.setAttribute("id","q4");
-        var x = document.createElement("label");
-        x.setAttribute("id","question4");
-        x.setAttribute("name","question4");
-        x.innerHTML = "{{ qlist.3.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.3|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.3.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q4answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q4answer"+i);
-          z.setAttribute("name","q4answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.3.2 }}";
-                    break;
-            case 2: a = "{{ qlist.3.3 }}";
-                    break;
-            case 3: a = "{{ qlist.3.4 }}";
-                    break;
-            case 4: a = "{{ qlist.3.5 }}";
-                    break;
-            case 5: a = "{{ qlist.3.6 }}";
-                    break;
-            case 6: a = "{{ qlist.3.7 }}";
-                    break;
-            case 7: a = "{{ qlist.3.8 }}";
-                    break;
-            case 8: a = "{{ qlist.3.9 }}";
-                    break;
-            case 9: a = "{{ qlist.3.10 }}";
-                    break;
-          }
-          i=i+1;
+        i=i+1;
+      }
+      d.appendChild(div);
+    } else if (s=='question4') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q4");
+      var x = document.createElement("label");
+      x.setAttribute("id","question4");
+      x.setAttribute("name","question4");
+      x.innerHTML = "{{ qlist.3.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.3|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.3.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q4answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q4answer"+i);
+        z.setAttribute("name","q4answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.3.2 }}";
+                  break;
+          case 2: a = "{{ qlist.3.3 }}";
+                  break;
+          case 3: a = "{{ qlist.3.4 }}";
+                  break;
+          case 4: a = "{{ qlist.3.5 }}";
+                  break;
+          case 5: a = "{{ qlist.3.6 }}";
+                  break;
+          case 6: a = "{{ qlist.3.7 }}";
+                  break;
+          case 7: a = "{{ qlist.3.8 }}";
+                  break;
+          case 8: a = "{{ qlist.3.9 }}";
+                  break;
+          case 9: a = "{{ qlist.3.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
-    } else 
-    if (s=='question5') {
-      var div = document.createElement("form");
-        div.setAttribute("id","q5");
-        var x = document.createElement("label");
-        x.setAttribute("id","question5");
-        x.setAttribute("name","question5");
-        x.innerHTML = "{{ qlist.4.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.4|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.4.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q5answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q5answer"+i);
-          z.setAttribute("name","q5answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.4.2 }}";
-                    break;
-            case 2: a = "{{ qlist.4.3 }}";
-                    break;
-            case 3: a = "{{ qlist.4.4 }}";
-                    break;
-            case 4: a = "{{ qlist.4.5 }}";
-                    break;
-            case 5: a = "{{ qlist.4.6 }}";
-                    break;
-            case 6: a = "{{ qlist.4.7 }}";
-                    break;
-            case 7: a = "{{ qlist.4.8 }}";
-                    break;
-            case 8: a = "{{ qlist.4.9 }}";
-                    break;
-            case 9: a = "{{ qlist.4.10 }}";
-                    break;
-          }
-          i=i+1;
+        i=i+1;
+      }
+      d.appendChild(div);
+    } else if (s=='question5') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q5");
+      var x = document.createElement("label");
+      x.setAttribute("id","question5");
+      x.setAttribute("name","question5");
+      x.innerHTML = "{{ qlist.4.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.4|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.4.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q5answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q5answer"+i);
+        z.setAttribute("name","q5answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.4.2 }}";
+                  break;
+          case 2: a = "{{ qlist.4.3 }}";
+                  break;
+          case 3: a = "{{ qlist.4.4 }}";
+                  break;
+          case 4: a = "{{ qlist.4.5 }}";
+                  break;
+          case 5: a = "{{ qlist.4.6 }}";
+                  break;
+          case 6: a = "{{ qlist.4.7 }}";
+                  break;
+          case 7: a = "{{ qlist.4.8 }}";
+                  break;
+          case 8: a = "{{ qlist.4.9 }}";
+                  break;
+          case 9: a = "{{ qlist.4.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
-    } else 
-    if (s=='question6') {
-      var div = document.createElement("form");
-        div.setAttribute("id","q6");
-        var x = document.createElement("label");
-        x.setAttribute("id","question6");
-        x.setAttribute("name","question6");
-        x.innerHTML = "{{ qlist.5.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.5|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.5.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q6answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q6answer"+i);
-          z.setAttribute("name","q6answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.5.2 }}";
-                    break;
-            case 2: a = "{{ qlist.5.3 }}";
-                    break;
-            case 3: a = "{{ qlist.5.4 }}";
-                    break;
-            case 4: a = "{{ qlist.5.5 }}";
-                    break;
-            case 5: a = "{{ qlist.5.6 }}";
-                    break;
-            case 6: a = "{{ qlist.5.7 }}";
-                    break;
-            case 7: a = "{{ qlist.5.8 }}";
-                    break;
-            case 8: a = "{{ qlist.5.9 }}";
-                    break;
-            case 9: a = "{{ qlist.5.10 }}";
-                    break;
-          }
-          i=i+1;
+        i=i+1;
+      }
+      d.appendChild(div);
+    } else if (s=='question6') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q6");
+      var x = document.createElement("label");
+      x.setAttribute("id","question6");
+      x.setAttribute("name","question6");
+      x.innerHTML = "{{ qlist.5.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.5|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.5.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q6answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q6answer"+i);
+        z.setAttribute("name","q6answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.5.2 }}";
+                   break;
+          case 2: a = "{{ qlist.5.3 }}";
+                  break;
+          case 3: a = "{{ qlist.5.4 }}";
+                  break;
+          case 4: a = "{{ qlist.5.5 }}";
+                  break;
+          case 5: a = "{{ qlist.5.6 }}";
+                  break;
+           case 6: a = "{{ qlist.5.7 }}";
+                  break;
+          case 7: a = "{{ qlist.5.8 }}";
+                  break;
+          case 8: a = "{{ qlist.5.9 }}";
+                  break;
+          case 9: a = "{{ qlist.5.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
-    } else 
-    if (s=='question7') {
-      var div = document.createElement("form");
-        div.setAttribute("id","q7");
-        var x = document.createElement("label");
-        x.setAttribute("id","question7");
-        x.setAttribute("name","question7");
-        x.innerHTML = "{{ qlist.6.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.6|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.6.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q7answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q7answer"+i);
-          z.setAttribute("name","q7answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.6.2 }}";
-                    break;
-            case 2: a = "{{ qlist.6.3 }}";
-                    break;
-            case 3: a = "{{ qlist.6.4 }}";
-                    break;
-            case 4: a = "{{ qlist.6.5 }}";
-                    break;
-            case 5: a = "{{ qlist.6.6 }}";
-                    break;
-            case 6: a = "{{ qlist.6.7 }}";
-                    break;
-            case 7: a = "{{ qlist.6.8 }}";
-                    break;
-            case 8: a = "{{ qlist.6.9 }}";
-                    break;
-            case 9: a = "{{ qlist.6.10 }}";
-                    break;
-          }
-          i=i+1;
+        i=i+1;
+      }
+      d.appendChild(div);
+    } else if (s=='question7') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q7");
+      var x = document.createElement("label");
+      x.setAttribute("id","question7");
+      x.setAttribute("name","question7");
+      x.innerHTML = "{{ qlist.6.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.6|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.6.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q7answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q7answer"+i);
+        z.setAttribute("name","q7answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.6.2 }}";
+                  break;
+          case 2: a = "{{ qlist.6.3 }}";
+                  break;
+          case 3: a = "{{ qlist.6.4 }}";
+                  break;
+          case 4: a = "{{ qlist.6.5 }}";
+                  break;
+          case 5: a = "{{ qlist.6.6 }}";
+                  break;
+          case 6: a = "{{ qlist.6.7 }}";
+                  break;
+          case 7: a = "{{ qlist.6.8 }}";
+                  break;
+          case 8: a = "{{ qlist.6.9 }}";
+                  break;
+          case 9: a = "{{ qlist.6.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
-    } else 
-    if (s=='question8') {
-      var div = document.createElement("form");
-        div.setAttribute("id","q8");
-        var x = document.createElement("label");
-        x.setAttribute("id","question8");
-        x.setAttribute("name","question8");
-        x.innerHTML = "{{ qlist.7.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.7|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.7.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q8answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q8answer"+i);
-          z.setAttribute("name","q8answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.7.2 }}";
-                    break;
-            case 2: a = "{{ qlist.7.3 }}";
-                    break;
-            case 3: a = "{{ qlist.7.4 }}";
-                    break;
-            case 4: a = "{{ qlist.7.5 }}";
-                    break;
-            case 5: a = "{{ qlist.7.6 }}";
-                    break;
-            case 6: a = "{{ qlist.7.7 }}";
-                    break;
-            case 7: a = "{{ qlist.7.8 }}";
-                    break;
-            case 8: a = "{{ qlist.7.9 }}";
-                    break;
-            case 9: a = "{{ qlist.7.10 }}";
-                    break;
-          }
-          i=i+1;
+        i=i+1;
+      }
+      d.appendChild(div);
+    } else if (s=='question8') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q8");
+      var x = document.createElement("label");
+      x.setAttribute("id","question8");
+      x.setAttribute("name","question8");
+      x.innerHTML = "{{ qlist.7.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.7|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.7.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q8answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q8answer"+i);
+        z.setAttribute("name","q8answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.7.2 }}";
+                  break;
+          case 2: a = "{{ qlist.7.3 }}";
+                  break;
+          case 3: a = "{{ qlist.7.4 }}";
+                  break;
+          case 4: a = "{{ qlist.7.5 }}";
+                  break;
+          case 5: a = "{{ qlist.7.6 }}";
+                  break;
+          case 6: a = "{{ qlist.7.7 }}";
+                  break;
+          case 7: a = "{{ qlist.7.8 }}";
+                  break;
+          case 8: a = "{{ qlist.7.9 }}";
+                  break;
+          case 9: a = "{{ qlist.7.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
-    } else 
-    if (s=='question9') {
-      var div = document.createElement("form");
-        div.setAttribute("id","q9");
-        var x = document.createElement("label");
-        x.setAttribute("id","question9");
-        x.setAttribute("name","question9");
-        x.innerHTML = "{{ qlist.8.0 }}";
-        div.appendChild(x);
-        var br1 = document.createElement("br");
-        div.appendChild(br1);
-        var len = parseInt("{{ qlist.8|length }}") - 1;
-        i = 1;
-        var a = "{{ qlist.8.1 }}";
-        while (i <= len) {
-          var y = document.createElement("input");
-          y.setAttribute("type","radio");
-          y.setAttribute("name","q9answer");
-          {% if role is false %}
-          y.setAttribute("required",true);
-          {% endif %}
-          y.setAttribute("value",i);
-          div.appendChild(y);
-          z = document.createElement("label");
-          z.setAttribute("id","q9answer"+i);
-          z.setAttribute("name","q9answer"+i);
-          z.innerHTML = a;
-          div.appendChild(z);
-          var br = document.createElement("br");
-          div.appendChild(br);
-          switch (i) {
-            case 1: a = "{{ qlist.8.2 }}";
-                    break;
-            case 2: a = "{{ qlist.8.3 }}";
-                    break;
-            case 3: a = "{{ qlist.8.4 }}";
-                    break;
-            case 4: a = "{{ qlist.8.5 }}";
-                    break;
-            case 5: a = "{{ qlist.8.6 }}";
-                    break;
-            case 6: a = "{{ qlist.8.7 }}";
-                    break;
-            case 7: a = "{{ qlist.8.8 }}";
-                    break;
-            case 8: a = "{{ qlist.8.9 }}";
-                    break;
-            case 9: a = "{{ qlist.8.10 }}";
-                    break;
-          }
-          i=i+1;
+        i=i+1;
+      }
+      d.appendChild(div);
+    } else if (s=='question9') {
+      var div = document.createElement("div");
+      div.setAttribute("id","q9");
+      var x = document.createElement("label");
+      x.setAttribute("id","question9");
+      x.setAttribute("name","question9");
+      x.innerHTML = "{{ qlist.8.0 }}";
+      div.appendChild(x);
+      var br1 = document.createElement("br");
+      div.appendChild(br1);
+      var len = parseInt("{{ qlist.8|length }}") - 1;
+      i = 1;
+      var a = "{{ qlist.8.1 }}";
+      while (i <= len) {
+        var y = document.createElement("input");
+        y.setAttribute("type","radio");
+        y.setAttribute("name","q9answer");
+        {% if role is false %}
+        y.setAttribute("required",true);
+        {% endif %}
+        y.setAttribute("value",i);
+        div.appendChild(y);
+        z = document.createElement("label");
+        z.setAttribute("id","q9answer"+i);
+        z.setAttribute("name","q9answer"+i);
+        z.innerHTML = a;
+        div.appendChild(z);
+        var br = document.createElement("br");
+        div.appendChild(br);
+        switch (i) {
+          case 1: a = "{{ qlist.8.2 }}";
+                  break;
+          case 2: a = "{{ qlist.8.3 }}";
+                  break;
+          case 3: a = "{{ qlist.8.4 }}";
+                  break;
+          case 4: a = "{{ qlist.8.5 }}";
+                  break;
+          case 5: a = "{{ qlist.8.6 }}";
+                  break;
+          case 6: a = "{{ qlist.8.7 }}";
+                  break;
+          case 7: a = "{{ qlist.8.8 }}";
+                  break;
+          case 8: a = "{{ qlist.8.9 }}";
+                  break;
+          case 9: a = "{{ qlist.8.10 }}";
+                  break;
         }
-        d.appendChild(div);
-
+        i=i+1;
+      }
+      d.appendChild(div);
     }
+  }
+</script>
+<script type="text/javascript">
+  window.onload = function () {
+    {% if buttons %}
+      var ctx = document.getElementById("myChart").getContext('2d');
+      var button1 = document.getElementById("button1");
+      var button2 = document.getElementById("button2");
+      var button3 = document.getElementById("button3");
+      var count1 = 0;
+      var count2 = 0;
+      var count3 = 0;
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["Red", "Blue", "Yellow"],
+          datasets: [{
+            label: 'Number of Votes',
+            data: [count1, count2, count3],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+      {% if role is False %}
+        var div = document.getElementById("myChart");
+        div.setAttribute("style","display:none;");
+      {% endif %}
+    {% endif %}
+    {% if squestions %}
+      var qnumber = 0;
+
+      var roomName = "{{ co }}lecture{{ le }}";
+
+      var chatSocket = new WebSocket('ws://' + window.location.host + '/ws/page/tools/'+ roomName + '/');
+
+      chatSocket.onmessage = function(e) {
+          var data = JSON.parse(e.data);
+          var message = data['message'];
+          {% if buttons is False %}
+            if (message=="qnumber") {
+              {% if role %}
+                var message1 = '4' + qnumber;
+                chatSocket.send(JSON.stringify({
+                  'message': message1
+                }));
+              {% endif %}
+            } else if (message[0]=='0') {
+              var id = message.substring(1,message.length);
+              document.querySelector('#'+id).innerHTML = parseInt(document.querySelector('#'+id).innerHTML) + 1;
+            } else if (message[0]=='4') {
+              var qn = message.substring(1,message.length);
+              qnumber = parseInt(qn);
+            } else {
+              qnumber += 1;
+              document.querySelector('#squestions').innerHTML += (message + ' <i class="vote fa fa-thumbs-up"><span id="span'+qnumber+'">0</span></i><br>');
+            }
+          {% else %}
+            if (message=="qnumber") {
+              {% if role %}
+                var message1 = '4' + qnumber;
+                chatSocket.send(JSON.stringify({
+                  'message': message1
+                }));
+              {% endif %}
+            } else if (message=='1') {
+              myChart.data.datasets[0].data[0] += 1;
+              myChart.update();
+            } else if (message=='2') {
+              myChart.data.datasets[0].data[1] += 1;
+              myChart.update();
+            } else if (message=='3') {
+              myChart.data.datasets[0].data[2] += 1;
+              myChart.update(); 
+            } else if (message[0]=='4') {
+              var qn = message.substring(1,message.length);
+              qnumber = parseInt(qn);
+            } else if (message[0]=='0') {
+              var id = message.substring(1,message.length);
+              document.querySelector('#'+id).innerHTML = parseInt(document.querySelector('#'+id).innerHTML) + 1;
+            } else {
+              qnumber += 1;
+              document.querySelector('#squestions').innerHTML += (message + ' <i class="vote fa fa-thumbs-up"><span id="span'+qnumber+'">0</span></i><br>');
+            }
+          {% endif %}
+          var voteItems = document.getElementsByClassName('vote');
+          for (var i=0; i<voteItems.length; i++) {
+            voteItems[i].onclick = function(e) {
+              var message = '0' + this.firstChild.id;
+              this.style.color = 'blue';
+              chatSocket.send(JSON.stringify({
+                'message': message
+              }));
+            }
+          }
+      };
+
+      //{% if role is False %}
+      //  var message = "qnumber";
+      //  chatSocket.send(JSON.stringify({
+      //        'message': message
+      //    }));
+      //{% endif %}
+
+      chatSocket.onclose = function(e) {
+          console.error('Chat socket closed unexpectedly');
+      };
+
+      document.querySelector('#txt').focus();
+      document.querySelector('#txt').onkeyup = function(e) {
+          if (e.keyCode === 13) {  // enter, return
+              document.querySelector('#ask').click();
+          }
+      };
+
+      document.querySelector('#ask').onclick = function(e) {
+          var messageInputDom = document.querySelector('#txt');
+          var message = messageInputDom.value;
+          chatSocket.send(JSON.stringify({
+              'message': message
+          }));
+          messageInputDom.value = '';
+      };
+    {% endif %}
+    {% if buttons %}
+      {% if squestions is False %}
+        var roomName = "{{ co }}lecture{{ le }}";
+
+        var chatSocket = new WebSocket('ws://' + window.location.host + '/ws/page/tools/'+ roomName + '/');
+
+        chatSocket.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+            var message = data['message'];
+            if (message=='1') 
+              myChart.data.datasets[0].data[0] += 1;
+            else if (message=='2')
+              myChart.data.datasets[0].data[1] += 1;
+            else if (message=='3')
+              myChart.data.datasets[0].data[2] += 1;
+            myChart.update();
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+      {% endif %}
+
+      document.querySelector('#button1').onclick = function(e) {
+          var message = '1';
+          chatSocket.send(JSON.stringify({
+              'message': message
+          }));
+      };
+      document.querySelector('#button2').onclick = function(e) {
+          var message = '2';
+          chatSocket.send(JSON.stringify({
+              'message': message
+          }));
+      };
+      document.querySelector('#button3').onclick = function(e) {
+          var message = '3';
+          chatSocket.send(JSON.stringify({
+              'message': message
+          }));
+      };
+    {% endif %}
+    var len = parseInt("{{ slist|length }}");
+    {% if results1 %}
+      var dps1 = [];
+      var chart1 = new CanvasJS.Chart("q1chart", {
+        title :{
+          text: "{{ slist.0.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps1
+        }]
+      });
+      var len1 = (parseInt("{{ slist.0|length }}")-1)/3;
+      y = 1;
+      while (y<=len1) {
+        switch (y) {
+          case 1: var c1 = "{{ slist.0.2 }}";
+                  if (c1=="True")
+                    dps1.push({ label: "{{ slist.0.1 }}", y: parseInt("{{ slist.0.3 }}"), color: "Green"});
+                  else
+                    dps1.push({ label: "{{ slist.0.1 }}", y: parseInt("{{ slist.0.3 }}"), color: "Red"});
+                  break;
+          case 2: var c1 = "{{ slist.0.5 }}";
+                  if (c1=="True")
+                    dps1.push({ label: "{{ slist.0.4 }}", y: parseInt("{{ slist.0.6 }}"), color: "Green"});
+                  else
+                    dps1.push({ label: "{{ slist.0.4 }}", y: parseInt("{{ slist.0.6 }}"), color: "Red"});
+                  break;
+          case 3: var c1 = "{{ slist.0.8 }}";
+                  if (c1=="True")
+                    dps1.push({ label: "{{ slist.0.7 }}", y: parseInt("{{ slist.0.9 }}"), color: "Green"});
+                  else
+                    dps1.push({ label: "{{ slist.0.7 }}", y: parseInt("{{ slist.0.9 }}"), color: "Red"});
+                  break;
+          case 4: var c1 = "{{ slist.0.11 }}";
+                  if (c1=="True")
+                    dps1.push({ label: "{{ slist.0.10 }}", y: parseInt("{{ slist.0.12 }}"), color: "Green"});
+                  else
+                    dps1.push({ label: "{{ slist.0.10 }}", y: parseInt("{{ slist.0.12 }}"), color: "Red"});
+                  break;
+            case 5: var c1 = "{{ slist.0.14 }}";
+                    if (c1=="True")
+                      dps1.push({ label: "{{ slist.0.13 }}", y: parseInt("{{ slist.0.15 }}"), color: "Green"});
+                    else
+                      dps1.push({ label: "{{ slist.0.13 }}", y: parseInt("{{ slist.0.15 }}"), color: "Red"});
+                    break;
+            case 6: var c1 = "{{ slist.0.17 }}";
+                    if (c1=="True")
+                      dps1.push({ label: "{{ slist.0.16 }}", y: parseInt("{{ slist.0.18 }}"), color: "Green"});
+                    else
+                      dps1.push({ label: "{{ slist.0.16 }}", y: parseInt("{{ slist.0.18 }}"), color: "Red"});
+                    break;
+            case 7: var c1 = "{{ slist.0.20 }}";
+                    if (c1=="True")
+                      dps1.push({ label: "{{ slist.0.19 }}", y: parseInt("{{ slist.0.21 }}"), color: "Green"});
+                    else
+                      dps1.push({ label: "{{ slist.0.19 }}", y: parseInt("{{ slist.0.21 }}"), color: "Red"});
+                    break;
+            case 8: var c1 = "{{ slist.0.23 }}";
+                    if (c1=="True")
+                      dps1.push({ label: "{{ slist.0.22 }}", y: parseInt("{{ slist.0.24 }}"), color: "Green"});
+                    else
+                      dps1.push({ label: "{{ slist.0.22 }}", y: parseInt("{{ slist.0.24 }}"), color: "Red"});
+                    break;
+            case 9: var c1 = "{{ slist.0.26 }}";
+                    if (c1=="True")
+                      dps1.push({ label: "{{ slist.0.25 }}", y: parseInt("{{ slist.0.27 }}"), color: "Green"});
+                    else
+                      dps1.push({ label: "{{ slist.0.25 }}", y: parseInt("{{ slist.0.27 }}"), color: "Red"});
+                    break;
+            case 10:var c1 = "{{ slist.0.29 }}";
+                    if (c1=="True")
+                      dps1.push({ label: "{{ slist.0.28 }}", y: parseInt("{{ slist.0.30 }}"), color: "Green"});
+                    else
+                      dps1.push({ label: "{{ slist.0.28 }}", y: parseInt("{{ slist.0.30 }}"), color: "Red"});
+                    break;
+        }
+        y = y+1
+      }
+      chart1.render();
+    {% endif  %}
+    {% if results2 %}
+      var dps2 = [];
+      var chart2 = new CanvasJS.Chart("q2chart", {
+        title :{
+          text: "{{ slist.1.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps2
+        }]
+      });
+      var len2 = (parseInt("{{ slist.1|length }}")-1)/3;
+      y = 1;
+      while (y<=len2) {
+        switch (y) {
+          case 1: var c2 = "{{ slist.1.2 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.1 }}", y: parseInt("{{ slist.1.3 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.1 }}", y: parseInt("{{ slist.1.3 }}"), color: "Red"});
+                  break;
+          case 2: var c2 = "{{ slist.1.5 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.4 }}", y: parseInt("{{ slist.1.6 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.4 }}", y: parseInt("{{ slist.1.6 }}"), color: "Red"});
+                  break;
+          case 3: var c2 = "{{ slist.1.8 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.7 }}", y: parseInt("{{ slist.1.9 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.7 }}", y: parseInt("{{ slist.1.9 }}"), color: "Red"});
+                  break;
+          case 4: var c2 = "{{ slist.1.11 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.10 }}", y: parseInt("{{ slist.1.12 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.10 }}", y: parseInt("{{ slist.1.12 }}"), color: "Red"});
+                  break;
+          case 5: var c2 = "{{ slist.1.14 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.13 }}", y: parseInt("{{ slist.1.15 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.13 }}", y: parseInt("{{ slist.1.15 }}"), color: "Red"});
+                  break;
+          case 6: var c2 = "{{ slist.1.17 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.16 }}", y: parseInt("{{ slist.1.18 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.16 }}", y: parseInt("{{ slist.1.18 }}"), color: "Red"});
+                  break;
+          case 7: var c2 = "{{ slist.1.20 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.19 }}", y: parseInt("{{ slist.1.21 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.19 }}", y: parseInt("{{ slist.1.21 }}"), color: "Red"});
+                  break;
+          case 8: var c2 = "{{ slist.1.23 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.22 }}", y: parseInt("{{ slist.1.24 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.22 }}", y: parseInt("{{ slist.1.24 }}"), color: "Red"});
+                  break;
+          case 9: var c2 = "{{ slist.1.26 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.25 }}", y: parseInt("{{ slist.1.27 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.25 }}", y: parseInt("{{ slist.1.27 }}"), color: "Red"});
+                  break;
+          case 10:var c2 = "{{ slist.1.29 }}";
+                  if (c2=="True")
+                    dps2.push({ label: "{{ slist.1.28 }}", y: parseInt("{{ slist.1.30 }}"), color: "Green"});
+                  else
+                    dps2.push({ label: "{{ slist.1.28 }}", y: parseInt("{{ slist.1.30 }}"), color: "Red"});
+                  break;
+        }
+        y = y+1
+      }
+      chart2.render();
+    {% endif %}
+    {% if results3 %}
+      var dps3 = [];
+      var chart3 = new CanvasJS.Chart("q3chart", {
+        title :{
+          text: "{{ slist.2.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps3
+        }]
+      });
+      var len3 = (parseInt("{{ slist.2|length }}")-1)/3;
+      y = 1;
+      while (y<=len3) {
+        switch (y) {
+          case 1: var c3 = "{{ slist.2.2 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.1 }}", y: parseInt("{{ slist.2.3 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.1 }}", y: parseInt("{{ slist.2.3 }}"), color: "Red"});
+                  break;
+          case 2: var c3 = "{{ slist.2.5 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.4 }}", y: parseInt("{{ slist.2.6 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.4 }}", y: parseInt("{{ slist.2.6 }}"), color: "Red"});
+                  break;
+          case 3: var c3 = "{{ slist.2.8 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.7 }}", y: parseInt("{{ slist.2.9 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.7 }}", y: parseInt("{{ slist.2.9 }}"), color: "Red"});
+                  break;
+          case 4: var c3 = "{{ slist.2.11 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.10 }}", y: parseInt("{{ slist.2.12 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.10 }}", y: parseInt("{{ slist.2.12 }}"), color: "Red"});
+                  break;
+          case 5: var c3 = "{{ slist.2.14 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.13 }}", y: parseInt("{{ slist.2.15 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.13 }}", y: parseInt("{{ slist.2.15 }}"), color: "Red"});
+                  break;
+          case 6: var c3 = "{{ slist.2.17 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.16 }}", y: parseInt("{{ slist.2.18 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.16 }}", y: parseInt("{{ slist.2.18 }}"), color: "Red"});
+                  break;
+          case 7: var c3 = "{{ slist.2.20 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.19 }}", y: parseInt("{{ slist.2.21 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.19 }}", y: parseInt("{{ slist.2.21 }}"), color: "Red"});
+                  break;
+          case 8: var c3 = "{{ slist.2.23 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.22 }}", y: parseInt("{{ slist.2.24 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.22 }}", y: parseInt("{{ slist.2.24 }}"), color: "Red"});
+                  break;
+          case 9: var c3 = "{{ slist.2.26 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.25 }}", y: parseInt("{{ slist.2.27 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.25 }}", y: parseInt("{{ slist.2.27 }}"), color: "Red"});
+                  break;
+          case 10:var c3 = "{{ slist.2.29 }}";
+                  if (c3=="True")
+                    dps3.push({ label: "{{ slist.2.28 }}", y: parseInt("{{ slist.2.30 }}"), color: "Green"});
+                  else
+                    dps3.push({ label: "{{ slist.2.28 }}", y: parseInt("{{ slist.2.30 }}"), color: "Red"});
+                  break;
+        }
+        y = y+1
+      }
+      chart3.render();
+    {% endif %}
+    {% if results4 %}
+      var dps4 = [];
+      var chart4 = new CanvasJS.Chart("q4chart", {
+        title :{
+          text: "{{ slist.3.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps4
+        }]
+      });
+      var len4 = (parseInt("{{ slist.3|length }}")-1)/3;
+      y = 1;
+      while (y<=len4) {
+        switch (y) {
+          case 1: var c4 = "{{ slist.3.2 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.1 }}", y: parseInt("{{ slist.3.3 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.1 }}", y: parseInt("{{ slist.3.3 }}"), color: "Red"});
+                  break;
+          case 2: var c4 = "{{ slist.3.5 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.4 }}", y: parseInt("{{ slist.3.6 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.4 }}", y: parseInt("{{ slist.3.6 }}"), color: "Red"});
+                  break;
+          case 3: var c4 = "{{ slist.3.8 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.7 }}", y: parseInt("{{ slist.3.9 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.7 }}", y: parseInt("{{ slist.3.9 }}"), color: "Red"});
+                  break;
+          case 4: var c4 = "{{ slist.3.11 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.10 }}", y: parseInt("{{ slist.3.12 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.10 }}", y: parseInt("{{ slist.3.12 }}"), color: "Red"});
+                  break;
+          case 5: var c4 = "{{ slist.3.14 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.13 }}", y: parseInt("{{ slist.3.15 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.13 }}", y: parseInt("{{ slist.3.15 }}"), color: "Red"});
+                  break;
+          case 6: var c4 = "{{ slist.3.17 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.16 }}", y: parseInt("{{ slist.3.18 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.16 }}", y: parseInt("{{ slist.3.18 }}"), color: "Red"});
+                  break;
+          case 7: var c4 = "{{ slist.3.20 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.19 }}", y: parseInt("{{ slist.3.21 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.19 }}", y: parseInt("{{ slist.3.21 }}"), color: "Red"});
+                  break;
+          case 8: var c4 = "{{ slist.3.23 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.22 }}", y: parseInt("{{ slist.3.24 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.22 }}", y: parseInt("{{ slist.3.24 }}"), color: "Red"});
+                  break;
+          case 9: var c4 = "{{ slist.3.26 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.25 }}", y: parseInt("{{ slist.3.27 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.25 }}", y: parseInt("{{ slist.3.27 }}"), color: "Red"});
+                  break;
+          case 10:var c4 = "{{ slist.3.29 }}";
+                  if (c4=="True")
+                    dps4.push({ label: "{{ slist.3.28 }}", y: parseInt("{{ slist.3.30 }}"), color: "Green"});
+                  else
+                    dps4.push({ label: "{{ slist.3.28 }}", y: parseInt("{{ slist.3.30 }}"), color: "Red"});
+                  break;
+        }
+        y = y+1
+      }
+      chart4.render();
+    {% endif %}
+    {% if results5 %}
+      var dps5 = [];
+      var chart5 = new CanvasJS.Chart("q5chart", {
+        title :{
+          text: "{{ slist.4.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps5
+        }]
+      });
+      var len5 = (parseInt("{{ slist.4|length }}")-1)/3;
+      y = 1;
+      while (y<=len5) {
+        switch (y) {
+          case 1: var c5 = "{{ slist.4.2 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.1 }}", y: parseInt("{{ slist.4.3 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.1 }}", y: parseInt("{{ slist.4.3 }}"), color: "Red"});
+                  break;
+          case 2: var c5 = "{{ slist.4.5 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.4 }}", y: parseInt("{{ slist.4.6 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.4 }}", y: parseInt("{{ slist.4.6 }}"), color: "Red"});
+                  break;
+          case 3: var c5 = "{{ slist.4.8 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.7 }}", y: parseInt("{{ slist.4.9 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.7 }}", y: parseInt("{{ slist.4.9 }}"), color: "Red"});
+                  break;
+          case 4: var c5 = "{{ slist.4.11 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.10 }}", y: parseInt("{{ slist.4.12 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.10 }}", y: parseInt("{{ slist.4.12 }}"), color: "Red"});
+                  break;
+          case 5: var c5 = "{{ slist.4.14 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.13 }}", y: parseInt("{{ slist.4.15 }}"), color: "Green"});
+                  else 
+                    dps5.push({ label: "{{ slist.4.13 }}", y: parseInt("{{ slist.4.15 }}"), color: "Red"});
+                  break;
+          case 6: var c5 = "{{ slist.4.17 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.16 }}", y: parseInt("{{ slist.4.18 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.16 }}", y: parseInt("{{ slist.4.18 }}"), color: "Red"});
+                  break;
+          case 7: var c5 = "{{ slist.4.20 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.19 }}", y: parseInt("{{ slist.4.21 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.19 }}", y: parseInt("{{ slist.4.21 }}"), color: "Red"});
+                  break;
+          case 8: var c5 = "{{ slist.4.23 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.22 }}", y: parseInt("{{ slist.4.24 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.22 }}", y: parseInt("{{ slist.4.24 }}"), color: "Red"});
+                  break;
+          case 9: var c5 = "{{ slist.4.26 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.25 }}", y: parseInt("{{ slist.4.27 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.25 }}", y: parseInt("{{ slist.4.27 }}"), color: "Red"});
+                  break;
+          case 10:var c5 = "{{ slist.4.29 }}";
+                  if (c5=="True")
+                    dps5.push({ label: "{{ slist.4.28 }}", y: parseInt("{{ slist.4.30 }}"), color: "Green"});
+                  else
+                    dps5.push({ label: "{{ slist.4.28 }}", y: parseInt("{{ slist.4.30 }}"), color: "Red"});
+                  break;
+        }
+        y = y+1
+      }
+      chart5.render();
+    {% endif %}
+    {% if results6 %}
+      var dps6 = [];
+      var chart6 = new CanvasJS.Chart("q6chart", {
+        title :{
+          text: "{{ slist.5.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps6
+        }]
+      });
+      var len6 = (parseInt("{{ slist.5|length }}")-1)/3;
+      y = 1;
+      while (y<=len6) {
+        switch (y) {
+          case 1: var c6 = "{{ slist.5.2 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.1 }}", y: parseInt("{{ slist.5.3 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.1 }}", y: parseInt("{{ slist.5.3 }}"), color: "Red"});
+                  break;
+          case 2: var c6 = "{{ slist.5.5 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.4 }}", y: parseInt("{{ slist.5.6 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.4 }}", y: parseInt("{{ slist.5.6 }}"), color: "Red"});
+                  break;
+          case 3: var c6 = "{{ slist.5.8 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.7 }}", y: parseInt("{{ slist.5.9 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.7 }}", y: parseInt("{{ slist.5.9 }}"), color: "Red"});
+                  break;
+          case 4: var c6 = "{{ slist.5.11 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.10 }}", y: parseInt("{{ slist.5.12 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.10 }}", y: parseInt("{{ slist.5.12 }}"), color: "Red"});
+                  break;
+          case 5: var c6 = "{{ slist.5.14 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.13 }}", y: parseInt("{{ slist.5.15 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.13 }}", y: parseInt("{{ slist.5.15 }}"), color: "Red"});
+                  break;
+          case 6: var c6 = "{{ slist.5.17 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.16 }}", y: parseInt("{{ slist.5.18 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.16 }}", y: parseInt("{{ slist.5.18 }}"), color: "Red"});
+                  break;
+          case 7: var c6 = "{{ slist.5.20 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.19 }}", y: parseInt("{{ slist.5.21 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.19 }}", y: parseInt("{{ slist.5.21 }}"), color: "Red"});
+                  break;
+          case 8: var c6 = "{{ slist.5.23 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.22 }}", y: parseInt("{{ slist.5.24 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.22 }}", y: parseInt("{{ slist.5.24 }}"), color: "Red"});
+                  break;
+          case 9: var c6 = "{{ slist.5.26 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.25 }}", y: parseInt("{{ slist.5.27 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.25 }}", y: parseInt("{{ slist.5.27 }}"), color: "Red"});
+                  break;
+          case 10:var c6 = "{{ slist.5.29 }}";
+                  if (c6=="True")
+                    dps6.push({ label: "{{ slist.5.28 }}", y: parseInt("{{ slist.5.30 }}"), color: "Green"});
+                  else
+                    dps6.push({ label: "{{ slist.5.28 }}", y: parseInt("{{ slist.5.30 }}"), color: "Red"});
+                  break;
+        }
+        y = y+1
+      }
+      chart6.render();
+    {% endif %}
+    {% if results7 %}
+      var dps7 = [];
+      var chart7 = new CanvasJS.Chart("q7chart", {
+        title :{
+          text: "{{ slist.6.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps7
+        }]
+      });
+      var len7 = (parseInt("{{ slist.6|length }}")-1)/3;
+      y = 1;
+      while (y<=len7) {
+        switch (y) {
+          case 1: var c7 = "{{ slist.6.2 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.1 }}", y: parseInt("{{ slist.6.3 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.1 }}", y: parseInt("{{ slist.6.3 }}"), color: "Red"});
+                  break;
+          case 2: var c7 = "{{ slist.6.5 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.4 }}", y: parseInt("{{ slist.6.6 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.4 }}", y: parseInt("{{ slist.6.6 }}"), color: "Red"});
+                  break;
+          case 3: var c7 = "{{ slist.6.8 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.7 }}", y: parseInt("{{ slist.6.9 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.7 }}", y: parseInt("{{ slist.6.9 }}"), color: "Red"});
+                  break;
+          case 4: var c7 = "{{ slist.6.11 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.10 }}", y: parseInt("{{ slist.6.12 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.10 }}", y: parseInt("{{ slist.6.12 }}"), color: "Red"});
+                  break;
+          case 5: var c7 = "{{ slist.6.14 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.13 }}", y: parseInt("{{ slist.6.15 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.13 }}", y: parseInt("{{ slist.6.15 }}"), color: "Red"});
+                  break;
+          case 6: var c7 = "{{ slist.6.17 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.16 }}", y: parseInt("{{ slist.6.18 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.16 }}", y: parseInt("{{ slist.6.18 }}"), color: "Red"});
+                  break;
+          case 7: var c7 = "{{ slist.6.20 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.19 }}", y: parseInt("{{ slist.6.21 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.19 }}", y: parseInt("{{ slist.6.21 }}"), color: "Red"});
+                  break;
+          case 8: var c7 = "{{ slist.6.23 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.22 }}", y: parseInt("{{ slist.6.24 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.22 }}", y: parseInt("{{ slist.6.24 }}"), color: "Red"});
+                  break;
+          case 9: var c7 = "{{ slist.6.26 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.25 }}", y: parseInt("{{ slist.6.27 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.25 }}", y: parseInt("{{ slist.6.27 }}"), color: "Red"});
+                  break;
+          case 10:var c7 = "{{ slist.6.29 }}";
+                  if (c7=="True")
+                    dps7.push({ label: "{{ slist.6.28 }}", y: parseInt("{{ slist.6.30 }}"), color: "Green"});
+                  else
+                    dps7.push({ label: "{{ slist.6.28 }}", y: parseInt("{{ slist.6.30 }}"), color: "Red"});
+                  break;
+        }
+        y = y+1
+      }
+      chart7.render();
+    {% endif %}
+    {% if results8 %}
+      var dps8 = [];
+      var chart8 = new CanvasJS.Chart("q8chart", {
+        title :{
+          text: "{{ slist.7.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps8
+        }]
+      });
+      var len8 = (parseInt("{{ slist.7|length }}")-1)/3;
+      y = 1;
+      while (y<=len8) {
+        switch (y) {
+          case 1: var c8 = "{{ slist.7.2 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.1 }}", y: parseInt("{{ slist.7.3 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.1 }}", y: parseInt("{{ slist.7.3 }}"), color: "Red"});
+                  break;
+          case 2: var c8 = "{{ slist.7.5 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.4 }}", y: parseInt("{{ slist.7.6 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.4 }}", y: parseInt("{{ slist.7.6 }}"), color: "Red"});
+                  break;
+          case 3: var c8 = "{{ slist.7.8 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.7 }}", y: parseInt("{{ slist.7.9 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.7 }}", y: parseInt("{{ slist.7.9 }}"), color: "Red"});
+                  break;
+          case 4: var c8 = "{{ slist.7.11 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.10 }}", y: parseInt("{{ slist.7.12 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.10 }}", y: parseInt("{{ slist.7.12 }}"), color: "Red"});
+                  break;
+          case 5: var c8 = "{{ slist.7.14 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.13 }}", y: parseInt("{{ slist.7.15 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.13 }}", y: parseInt("{{ slist.7.15 }}"), color: "Red"});
+                  break;
+          case 6: var c8 = "{{ slist.7.17 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.16 }}", y: parseInt("{{ slist.7.18 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.16 }}", y: parseInt("{{ slist.7.18 }}"), color: "Red"});
+                  break;
+          case 7: var c8 = "{{ slist.7.20 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.19 }}", y: parseInt("{{ slist.7.21 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.19 }}", y: parseInt("{{ slist.7.21 }}"), color: "Red"});
+                  break;
+          case 8: var c8 = "{{ slist.7.23 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.22 }}", y: parseInt("{{ slist.7.24 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.22 }}", y: parseInt("{{ slist.7.24 }}"), color: "Red"});
+                  break;
+          case 9: var c8 = "{{ slist.7.26 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.25 }}", y: parseInt("{{ slist.7.27 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.25 }}", y: parseInt("{{ slist.7.27 }}"), color: "Red"});
+                  break;
+          case 10:var c8 = "{{ slist.7.29 }}";
+                  if (c8=="True")
+                    dps8.push({ label: "{{ slist.7.28 }}", y: parseInt("{{ slist.7.30 }}"), color: "Green"});
+                  else
+                    dps8.push({ label: "{{ slist.7.28 }}", y: parseInt("{{ slist.7.30 }}"), color: "Red"});
+                  break;
+        }
+        y = y+1
+      }
+      chart8.render();
+    {% endif %}
+    {% if results9 %} 
+      var doc9 = document.getElementById("q9chart");
+      doc9.style.display = 'block';
+      var dps9 = [];
+      var chart9 = new CanvasJS.Chart("q9chart", {
+        title :{
+          text: "{{ slist.8.0 }}"
+        },
+        data: [{
+          type: "column",
+          dataPoints: dps9
+        }]
+      });
+      var len9 = (parseInt("{{ slist.8|length }}")-1)/3;
+      y = 1;
+      while (y<=len9) {
+        switch (y) {
+          case 1: var c9 = "{{ slist.8.2 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.1 }}", y: parseInt("{{ slist.8.3 }}"), color: "Green"});
+                  else 
+                    dps9.push({ label: "{{ slist.8.1 }}", y: parseInt("{{ slist.8.3 }}"), color: "Red"});
+                  break;
+          case 2: var c9 = "{{ slist.8.5 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.4 }}", y: parseInt("{{ slist.8.6 }}"), color: "Green"});
+                  else
+                    dps9.push({ label: "{{ slist.8.4 }}", y: parseInt("{{ slist.8.6 }}"), color: "Red"});
+                  break;
+          case 3: var c9 = "{{ slist.8.8 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.7 }}", y: parseInt("{{ slist.8.9 }}"), color: "Green"});
+                  else
+                    dps9.push({ label: "{{ slist.8.7 }}", y: parseInt("{{ slist.8.9 }}"), color: "Red"});
+                  break;
+          case 4: var c9 = "{{ slist.8.11 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.10 }}", y: parseInt("{{ slist.8.12 }}"), color: "Green"});
+                  else
+                    dps9.push({ label: "{{ slist.8.10 }}", y: parseInt("{{ slist.8.12 }}"), color: "Red"});
+                  break;
+          case 5: var c9 = "{{ slist.8.14 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.13 }}", y: parseInt("{{ slist.8.15 }}"), color: "Green"});
+                  else
+                    dps9.push({ label: "{{ slist.8.13 }}", y: parseInt("{{ slist.8.15 }}"), color: "Red"});
+                  break;
+          case 6: var c9 = "{{ slist.8.17 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.16 }}", y: parseInt("{{ slist.8.18 }}"), color: "Green"});
+                  else
+                    dps9.push({ label: "{{ slist.8.16 }}", y: parseInt("{{ slist.8.18 }}"), color: "Red"});
+                  break;
+          case 7: var c9 = "{{ slist.8.20 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.19 }}", y: parseInt("{{ slist.8.21 }}"), color: "Green"});
+                  else
+                    dps9.push({ label: "{{ slist.8.19 }}", y: parseInt("{{ slist.8.21 }}"), color: "Red"});
+                  break;
+          case 8: var c9 = "{{ slist.8.23 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.22 }}", y: parseInt("{{ slist.8.24 }}"), color: "Green"});
+                  else
+                    dps9.push({ label: "{{ slist.8.22 }}", y: parseInt("{{ slist.8.24 }}"), color: "Red"});
+                  break;
+          case 9: var c9 = "{{ slist.8.26 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.25 }}", y: parseInt("{{ slist.8.27 }}"), color: "Green"});
+                  else
+                    dps9.push({ label: "{{ slist.8.25 }}", y: parseInt("{{ slist.8.27 }}"), color: "Red"});
+                  break;
+          case 10:var c9 = "{{ slist.8.29 }}";
+                  if (c9=="True")
+                    dps9.push({ label: "{{ slist.8.28 }}", y: parseInt("{{ slist.8.30 }}"), color: "Green"});
+                  else 
+                    dps9.push({ label: "{{ slist.8.28 }}", y: parseInt("{{ slist.8.30 }}"), color: "Red"});
+                  break;
+        }
+        y = y+1
+      }
+      chart9.render();
+    {% endif %}
   }
 </script>
 {% if interface_exists %}
@@ -1146,376 +2069,6 @@
   var doc8 = document.getElementById('col8');
   var doc9 = document.getElementById('col9');
   var source = document.getElementById('sourceitems');
-  var s1 = '{{ slot1 }}';
-  var s2 = '{{ slot2 }}';
-  var s3 = '{{ slot3 }}';
-  var s4 = '{{ slot4 }}';
-  var s5 = '{{ slot5 }}';
-  var s6 = '{{ slot6 }}';
-  var s7 = '{{ slot7 }}';
-  var s8 = '{{ slot8 }}';
-  var s9 = '{{ slot9 }}';
-  var results1 = parseInt(localStorage.getItem("results1"));
-  var results2 = parseInt(localStorage.getItem("results2"));
-  var results3 = parseInt(localStorage.getItem("results3"));
-  var results4 = parseInt(localStorage.getItem("results4"));
-  var results5 = parseInt(localStorage.getItem("results5"));
-  var results6 = parseInt(localStorage.getItem("results6"));
-  var results7 = parseInt(localStorage.getItem("results7"));
-  var results8 = parseInt(localStorage.getItem("results8"));
-  var results9 = parseInt(localStorage.getItem("results9"));
-
-  if (results1==1) {
-    if (s1 =='question1')
-      showResults(doc1,s1);
-    else if (s2 =='question1')
-      showResults(doc2,s2);
-    else if (s3 =='question1')
-      showResults(doc3,s3);
-    else if (s4 =='question1')
-      showResults(doc4,s4);
-    else if (s5 =='question1')
-      showResults(doc5,s5);
-    else if (s6 =='question1')
-      showResults(doc6,s6);
-    else if (s7 =='question1')
-      showResults(doc7,s7);
-    else if (s8 =='question1')
-      showResults(doc8,s8);
-    else if (s9 =='question1')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question1')
-      setSlots(doc1,s1);
-    else if (s2 =='question1')
-      setSlots(doc2,s2);
-    else if (s3 =='question1')
-      setSlots(doc3,s3);
-    else if (s4 =='question1')
-      setSlots(doc4,s4);
-    else if (s5 =='question1')
-      setSlots(doc5,s5);
-    else if (s6 =='question1')
-      setSlots(doc6,s6);
-    else if (s7 =='question1')
-      setSlots(doc7,s7);
-    else if (s8 =='question1')
-      setSlots(doc8,s8);
-    else if (s9 =='question1')
-      setSlots(doc9,s9);
-  }
-  if (results2==1) {
-    if (s1 =='question2')
-      showResults(doc1,s1);
-    else if (s2 =='question2')
-      showResults(doc2,s2);
-    else if (s3 =='question2')
-      showResults(doc3,s3);
-    else if (s4 =='question2')
-      showResults(doc4,s4);
-    else if (s5 =='question2')
-      showResults(doc5,s5);
-    else if (s6 =='question2')
-      showResults(doc6,s6);
-    else if (s7 =='question2')
-      showResults(doc7,s7);
-    else if (s8 =='question2')
-      showResults(doc8,s8);
-    else if (s9 =='question2')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question2')
-      setSlots(doc1,s1);
-    else if (s2 =='question2')
-      setSlots(doc2,s2);
-    else if (s3 =='question2')
-      setSlots(doc3,s3);
-    else if (s4 =='question2')
-      setSlots(doc4,s4);
-    else if (s5 =='question2')
-      setSlots(doc5,s5);
-    else if (s6 =='question2')
-      setSlots(doc6,s6);
-    else if (s7 =='question2')
-      setSlots(doc7,s7);
-    else if (s8 =='question2')
-      setSlots(doc8,s8);
-    else if (s9 =='question2')
-      setSlots(doc9,s9);
-  }
-  if (results3==1) {
-    if (s1 =='question3')
-      showResults(doc1,s1);
-    else if (s2 =='question3')
-      showResults(doc2,s2);
-    else if (s3 =='question3')
-      showResults(doc3,s3);
-    else if (s4 =='question3')
-      showResults(doc4,s4);
-    else if (s5 =='question3')
-      showResults(doc5,s5);
-    else if (s6 =='question3')
-      showResults(doc6,s6);
-    else if (s7 =='question3')
-      showResults(doc7,s7);
-    else if (s8 =='question3')
-      showResults(doc8,s8);
-    else if (s9 =='question3')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question3')
-      setSlots(doc1,s1);
-    else if (s2 =='question3')
-      setSlots(doc2,s2);
-    else if (s3 =='question3')
-      setSlots(doc3,s3);
-    else if (s4 =='question3')
-      setSlots(doc4,s4);
-    else if (s5 =='question3')
-      setSlots(doc5,s5);
-    else if (s6 =='question3')
-      setSlots(doc6,s6);
-    else if (s7 =='question3')
-      setSlots(doc7,s7);
-    else if (s8 =='question3')
-      setSlots(doc8,s8);
-    else if (s9 =='question3')
-      setSlots(doc9,s9);
-  }
-  if (results4==1) {
-    if (s1 =='question4')
-      showResults(doc1,s1);
-    else if (s2 =='question4')
-      showResults(doc2,s2);
-    else if (s3 =='question4')
-      showResults(doc3,s3);
-    else if (s4 =='question4')
-      showResults(doc4,s4);
-    else if (s5 =='question4')
-      showResults(doc5,s5);
-    else if (s6 =='question4')
-      showResults(doc6,s6);
-    else if (s7 =='question4')
-      showResults(doc7,s7);
-    else if (s8 =='question4')
-      showResults(doc8,s8);
-    else if (s9 =='question4')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question4')
-      setSlots(doc1,s1);
-    else if (s2 =='question4')
-      setSlots(doc2,s2);
-    else if (s3 =='question4')
-      setSlots(doc3,s3);
-    else if (s4 =='question4')
-      setSlots(doc4,s4);
-    else if (s5 =='question4')
-      setSlots(doc5,s5);
-    else if (s6 =='question4')
-      setSlots(doc6,s6);
-    else if (s7 =='question4')
-      setSlots(doc7,s7);
-    else if (s8 =='question4')
-      setSlots(doc8,s8);
-    else if (s9 =='question4')
-      setSlots(doc9,s9);
-  }
-  if (results5==1) {
-    if (s1 =='question5')
-      showResults(doc1,s1);
-    else if (s2 =='question5')
-      showResults(doc2,s2);
-    else if (s3 =='question5')
-      showResults(doc3,s3);
-    else if (s4 =='question5')
-      showResults(doc4,s4);
-    else if (s5 =='question5')
-      showResults(doc5,s5);
-    else if (s6 =='question5')
-      showResults(doc6,s6);
-    else if (s7 =='question5')
-      showResults(doc7,s7);
-    else if (s8 =='question5')
-      showResults(doc8,s8);
-    else if (s9 =='question5')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question5')
-      setSlots(doc1,s1);
-    else if (s2 =='question5')
-      setSlots(doc2,s2);
-    else if (s3 =='question5')
-      setSlots(doc3,s3);
-    else if (s4 =='question5')
-      setSlots(doc4,s4);
-    else if (s5 =='question5')
-      setSlots(doc5,s5);
-    else if (s6 =='question5')
-      setSlots(doc6,s6);
-    else if (s7 =='question5')
-      setSlots(doc7,s7);
-    else if (s8 =='question5')
-      setSlots(doc8,s8);
-    else if (s9 =='question5')
-      setSlots(doc9,s9);
-  }
-  if (results6==1) {
-    if (s1 =='question6')
-      showResults(doc1,s1);
-    else if (s2 =='question6')
-      showResults(doc2,s2);
-    else if (s3 =='question6')
-      showResults(doc3,s3);
-    else if (s4 =='question6')
-      showResults(doc4,s4);
-    else if (s5 =='question6')
-      showResults(doc5,s5);
-    else if (s6 =='question6')
-      showResults(doc6,s6);
-    else if (s7 =='question6')
-      showResults(doc7,s7);
-    else if (s8 =='question6')
-      showResults(doc8,s8);
-    else if (s9 =='question6')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question6')
-      setSlots(doc1,s1);
-    else if (s2 =='question6')
-      setSlots(doc2,s2);
-    else if (s3 =='question6')
-      setSlots(doc3,s3);
-    else if (s4 =='question6')
-      setSlots(doc4,s4);
-    else if (s5 =='question6')
-      setSlots(doc5,s5);
-    else if (s6 =='question6')
-      setSlots(doc6,s6);
-    else if (s7 =='question6')
-      setSlots(doc7,s7);
-    else if (s8 =='question6')
-      setSlots(doc8,s8);
-    else if (s9 =='question6')
-      setSlots(doc9,s9);
-  }
-  if (results7==1) {
-    if (s1 =='question7')
-      showResults(doc1,s1);
-    else if (s2 =='question7')
-      showResults(doc2,s2);
-    else if (s3 =='question7')
-      showResults(doc3,s3);
-    else if (s4 =='question7')
-      showResults(doc4,s4);
-    else if (s5 =='question7')
-      showResults(doc5,s5);
-    else if (s6 =='question7')
-      showResults(doc6,s6);
-    else if (s7 =='question7')
-      showResults(doc7,s7);
-    else if (s8 =='question7')
-      showResults(doc8,s8);
-    else if (s9 =='question7')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question7')
-      setSlots(doc1,s1);
-    else if (s2 =='question7')
-      setSlots(doc2,s2);
-    else if (s3 =='question7')
-      setSlots(doc3,s3);
-    else if (s4 =='question7')
-      setSlots(doc4,s4);
-    else if (s5 =='question7')
-      setSlots(doc5,s5);
-    else if (s6 =='question7')
-      setSlots(doc6,s6);
-    else if (s7 =='question7')
-      setSlots(doc7,s7);
-    else if (s8 =='question7')
-      setSlots(doc8,s8);
-    else if (s9 =='question7')
-      setSlots(doc9,s9);
-  }
-  if (results8==1) {
-    if (s1 =='question8')
-      showResults(doc1,s1);
-    else if (s2 =='question8')
-      showResults(doc2,s2);
-    else if (s3 =='question8')
-      showResults(doc3,s3);
-    else if (s4 =='question8')
-      showResults(doc4,s4);
-    else if (s5 =='question8')
-      showResults(doc5,s5);
-    else if (s6 =='question8')
-      showResults(doc6,s6);
-    else if (s7 =='question8')
-      showResults(doc7,s7);
-    else if (s8 =='question8')
-      showResults(doc8,s8);
-    else if (s9 =='question8')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question8')
-      setSlots(doc1,s1);
-    else if (s2 =='question8')
-      setSlots(doc2,s2);
-    else if (s3 =='question8')
-      setSlots(doc3,s3);
-    else if (s4 =='question8')
-      setSlots(doc4,s4);
-    else if (s5 =='question8')
-      setSlots(doc5,s5);
-    else if (s6 =='question8')
-      setSlots(doc6,s6);
-    else if (s7 =='question8')
-      setSlots(doc7,s7);
-    else if (s8 =='question8')
-      setSlots(doc8,s8);
-    else if (s9 =='question8')
-      setSlots(doc9,s9);
-  }
-  if (results9==1) {
-    if (s1 =='question9')
-      showResults(doc1,s1);
-    else if (s2 =='question9')
-      showResults(doc2,s2);
-    else if (s3 =='question9')
-      showResults(doc3,s3);
-    else if (s4 =='question9')
-      showResults(doc4,s4);
-    else if (s5 =='question9')
-      showResults(doc5,s5);
-    else if (s6 =='question9')
-      showResults(doc6,s6);
-    else if (s7 =='question9')
-      showResults(doc7,s7);
-    else if (s8 =='question9')
-      showResults(doc8,s8);
-    else if (s9 =='question9')
-      showResults(doc9,s9);
-  } else {
-    if (s1 =='question9')
-      setSlots(doc1,s1);
-    else if (s2 =='question9')
-      setSlots(doc2,s2);
-    else if (s3 =='question9')
-      setSlots(doc3,s3);
-    else if (s4 =='question9')
-      setSlots(doc4,s4);
-    else if (s5 =='question9')
-      setSlots(doc5,s5);
-    else if (s6 =='question9')
-      setSlots(doc6,s6);
-    else if (s7 =='question9')
-      setSlots(doc7,s7);
-    else if (s8 =='question9')
-      setSlots(doc8,s8);
-    else if (s9 =='question9')
-      setSlots(doc9,s9);
-  }
   doc1.style.border = 'none';
   doc2.style.border = 'none';
   doc3.style.border = 'none';
@@ -1526,6 +2079,456 @@
   doc8.style.border = 'none';
   doc9.style.border = 'none';
   source.style.display = 'none';
+  var s1 = '{{ slot1 }}';
+  var s2 = '{{ slot2 }}';
+  var s3 = '{{ slot3 }}';
+  var s4 = '{{ slot4 }}';
+  var s5 = '{{ slot5 }}';
+  var s6 = '{{ slot6 }}';
+  var s7 = '{{ slot7 }}';
+  var s8 = '{{ slot8 }}';
+  var s9 = '{{ slot9 }}';
+  if (s1 == 'buttons' || s1 == 'questions')
+    setSlots(doc1,s1);
+  if (s2 == 'buttons' || s2 == 'questions')
+    setSlots(doc2,s2);
+  if (s3 == 'buttons' || s3 == 'questions')
+    setSlots(doc3,s3);
+  if (s4 == 'buttons' || s4 == 'questions')
+    setSlots(doc4,s4);
+  if (s5 == 'buttons' || s5 == 'questions')
+    setSlots(doc5,s5);
+  if (s6 == 'buttons' || s6 == 'questions')
+    setSlots(doc6,s6);
+  if (s7 == 'buttons' || s7 == 'questions')
+    setSlots(doc7,s7);
+  if (s8 == 'buttons' || s8 == 'questions')
+    setSlots(doc8,s8);
+  if (s9 == 'buttons' || s9 == 'questions')
+    setSlots(doc9,s9);
+  if (s1 == 'feedback')
+    {% if role %}
+      setSlots(doc1,s1);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc1,s1);
+      {% endif %}
+    {% endif %}
+  if (s2 == 'feedback')
+    {% if role %}
+      setSlots(doc2,s2);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc2,s2);
+      {% endif %}
+    {% endif %}
+  if (s3 == 'feedback')
+    {% if role %}
+      setSlots(doc3,s3);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc3,s3);
+      {% endif %}
+    {% endif %}
+  if (s4 == 'feedback')
+    {% if role %}
+      setSlots(doc4,s4);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc4,s4);
+      {% endif %}
+    {% endif %}
+  if (s5 == 'feedback')
+    {% if role %}
+      setSlots(doc5,s5);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc5,s5);
+      {% endif %}
+    {% endif %}
+  if (s6 == 'feedback')
+    {% if role %}
+      setSlots(doc6,s6);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc6,s6);
+      {% endif %}
+    {% endif %}
+  if (s7 == 'feedback')
+    {% if role %}
+      setSlots(doc7,s7);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc7,s7);
+      {% endif %}
+    {% endif %}
+  if (s8 == 'feedback')
+    {% if role %}
+      setSlots(doc8,s8);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc8,s8);
+      {% endif %}
+    {% endif %}
+  if (s9 == 'feedback')
+    {% if role %}
+      setSlots(doc9,s9);
+    {% else %}
+      {% if feedback is False %}
+        setSlots(doc9,s9);
+      {% endif %}
+    {% endif %}
+  {% if results1 %}
+    if (s1 =='question1')
+      showResults(doc1,s1);
+    else if (s2 =='question1')
+      showResults(doc2,s2);
+    else if (s3 =='question1')
+      showResults(doc3,s3);
+    else if (s4 =='question1')
+      showResults(doc4,s4);
+    else if (s5 =='question1')
+      showResults(doc5,s5);
+    else if (s6 =='question1')
+      showResults(doc6,s6);
+    else if (s7 =='question1')
+      showResults(doc7,s7);
+    else if (s8 =='question1')
+      showResults(doc8,s8);
+    else if (s9 =='question1')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question1')
+      setSlots(doc1,s1);
+    else if (s2 =='question1')
+      setSlots(doc2,s2);
+    else if (s3 =='question1')
+      setSlots(doc3,s3);
+    else if (s4 =='question1')
+      setSlots(doc4,s4);
+    else if (s5 =='question1')
+      setSlots(doc5,s5);
+    else if (s6 =='question1')
+      setSlots(doc6,s6);
+    else if (s7 =='question1')
+      setSlots(doc7,s7);
+    else if (s8 =='question1')
+      setSlots(doc8,s8);
+    else if (s9 =='question1')
+      setSlots(doc9,s9);
+  {% endif %}
+  {% if results2 %}
+    if (s1 =='question2')
+      showResults(doc1,s1);
+    else if (s2 =='question2')
+      showResults(doc2,s2);
+    else if (s3 =='question2')
+      showResults(doc3,s3);
+    else if (s4 =='question2')
+      showResults(doc4,s4);
+    else if (s5 =='question2')
+      showResults(doc5,s5);
+    else if (s6 =='question2')
+      showResults(doc6,s6);
+    else if (s7 =='question2')
+      showResults(doc7,s7);
+    else if (s8 =='question2')
+      showResults(doc8,s8);
+    else if (s9 =='question2')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question2')
+      setSlots(doc1,s1);
+    else if (s2 =='question2')
+      setSlots(doc2,s2);
+    else if (s3 =='question2')
+      setSlots(doc3,s3);
+    else if (s4 =='question2')
+      setSlots(doc4,s4);
+    else if (s5 =='question2')
+      setSlots(doc5,s5);
+    else if (s6 =='question2')
+      setSlots(doc6,s6);
+    else if (s7 =='question2')
+      setSlots(doc7,s7);
+    else if (s8 =='question2')
+      setSlots(doc8,s8);
+    else if (s9 =='question2')
+      setSlots(doc9,s9);
+  {% endif %}
+  {% if results3 %}
+    if (s1 =='question3')
+      showResults(doc1,s1);
+    else if (s2 =='question3')
+      showResults(doc2,s2);
+    else if (s3 =='question3')
+      showResults(doc3,s3);
+    else if (s4 =='question3')
+      showResults(doc4,s4);
+    else if (s5 =='question3')
+      showResults(doc5,s5);
+    else if (s6 =='question3')
+      showResults(doc6,s6);
+    else if (s7 =='question3')
+      showResults(doc7,s7);
+    else if (s8 =='question3')
+      showResults(doc8,s8);
+    else if (s9 =='question3')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question3')
+      setSlots(doc1,s1);
+    else if (s2 =='question3')
+      setSlots(doc2,s2);
+    else if (s3 =='question3')
+      setSlots(doc3,s3);
+    else if (s4 =='question3')
+      setSlots(doc4,s4);
+    else if (s5 =='question3')
+      setSlots(doc5,s5);
+    else if (s6 =='question3')
+      setSlots(doc6,s6);
+    else if (s7 =='question3')
+      setSlots(doc7,s7);
+    else if (s8 =='question3')
+      setSlots(doc8,s8);
+    else if (s9 =='question3')
+      setSlots(doc9,s9);
+  {% endif %}
+  {% if results4 %}
+    if (s1 =='question4')
+      showResults(doc1,s1);
+    else if (s2 =='question4')
+      showResults(doc2,s2);
+    else if (s3 =='question4')
+      showResults(doc3,s3);
+    else if (s4 =='question4')
+      showResults(doc4,s4);
+    else if (s5 =='question4')
+      showResults(doc5,s5);
+    else if (s6 =='question4')
+      showResults(doc6,s6);
+    else if (s7 =='question4')
+      showResults(doc7,s7);
+    else if (s8 =='question4')
+      showResults(doc8,s8);
+    else if (s9 =='question4')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question4')
+      setSlots(doc1,s1);
+    else if (s2 =='question4')
+      setSlots(doc2,s2);
+    else if (s3 =='question4')
+      setSlots(doc3,s3);
+    else if (s4 =='question4')
+      setSlots(doc4,s4);
+    else if (s5 =='question4')
+      setSlots(doc5,s5);
+    else if (s6 =='question4')
+      setSlots(doc6,s6);
+    else if (s7 =='question4')
+      setSlots(doc7,s7);
+    else if (s8 =='question4')
+      setSlots(doc8,s8);
+    else if (s9 =='question4')
+      setSlots(doc9,s9);
+  {% endif %}
+  {% if results5 %}
+    if (s1 =='question5')
+      showResults(doc1,s1);
+    else if (s2 =='question5')
+      showResults(doc2,s2);
+    else if (s3 =='question5')
+      showResults(doc3,s3);
+    else if (s4 =='question5')
+      showResults(doc4,s4);
+    else if (s5 =='question5')
+      showResults(doc5,s5);
+    else if (s6 =='question5')
+      showResults(doc6,s6);
+    else if (s7 =='question5')
+      showResults(doc7,s7);
+    else if (s8 =='question5')
+      showResults(doc8,s8);
+    else if (s9 =='question5')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question5')
+      setSlots(doc1,s1);
+    else if (s2 =='question5')
+      setSlots(doc2,s2);
+    else if (s3 =='question5')
+      setSlots(doc3,s3);
+    else if (s4 =='question5')
+      setSlots(doc4,s4);
+    else if (s5 =='question5')
+      setSlots(doc5,s5);
+    else if (s6 =='question5')
+      setSlots(doc6,s6);
+    else if (s7 =='question5')
+      setSlots(doc7,s7);
+    else if (s8 =='question5')
+      setSlots(doc8,s8);
+    else if (s9 =='question5')
+      setSlots(doc9,s9);
+  {% endif %}
+  {% if results6 %}
+    if (s1 =='question6')
+      showResults(doc1,s1);
+    else if (s2 =='question6')
+      showResults(doc2,s2);
+    else if (s3 =='question6')
+      showResults(doc3,s3);
+    else if (s4 =='question6')
+      showResults(doc4,s4);
+    else if (s5 =='question6')
+      showResults(doc5,s5);
+    else if (s6 =='question6')
+      showResults(doc6,s6);
+    else if (s7 =='question6')
+      showResults(doc7,s7);
+    else if (s8 =='question6')
+      showResults(doc8,s8);
+    else if (s9 =='question6')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question6')
+      setSlots(doc1,s1);
+    else if (s2 =='question6')
+      setSlots(doc2,s2);
+    else if (s3 =='question6')
+      setSlots(doc3,s3);
+    else if (s4 =='question6')
+      setSlots(doc4,s4);
+    else if (s5 =='question6')
+      setSlots(doc5,s5);
+    else if (s6 =='question6')
+      setSlots(doc6,s6);
+    else if (s7 =='question6')
+      setSlots(doc7,s7);
+    else if (s8 =='question6')
+      setSlots(doc8,s8);
+    else if (s9 =='question6')
+      setSlots(doc9,s9);
+  {% endif %}
+  {% if results7 %}
+    if (s1 =='question7')
+      showResults(doc1,s1);
+    else if (s2 =='question7')
+      showResults(doc2,s2);
+    else if (s3 =='question7')
+      showResults(doc3,s3);
+    else if (s4 =='question7')
+      showResults(doc4,s4);
+    else if (s5 =='question7')
+      showResults(doc5,s5);
+    else if (s6 =='question7')
+      showResults(doc6,s6);
+    else if (s7 =='question7')
+      showResults(doc7,s7);
+    else if (s8 =='question7')
+      showResults(doc8,s8);
+    else if (s9 =='question7')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question7')
+      setSlots(doc1,s1);
+    else if (s2 =='question7')
+      setSlots(doc2,s2);
+    else if (s3 =='question7')
+      setSlots(doc3,s3);
+    else if (s4 =='question7')
+      setSlots(doc4,s4);
+    else if (s5 =='question7')
+      setSlots(doc5,s5);
+    else if (s6 =='question7')
+      setSlots(doc6,s6);
+    else if (s7 =='question7')
+      setSlots(doc7,s7);
+    else if (s8 =='question7')
+      setSlots(doc8,s8);
+    else if (s9 =='question7')
+      setSlots(doc9,s9);
+  {% endif %}
+  {% if results8 %}
+    if (s1 =='question8')
+      showResults(doc1,s1);
+    else if (s2 =='question8')
+      showResults(doc2,s2);
+    else if (s3 =='question8')
+      showResults(doc3,s3);
+    else if (s4 =='question8')
+      showResults(doc4,s4);
+    else if (s5 =='question8')
+      showResults(doc5,s5);
+    else if (s6 =='question8')
+      showResults(doc6,s6);
+    else if (s7 =='question8')
+      showResults(doc7,s7);
+    else if (s8 =='question8')
+      showResults(doc8,s8);
+    else if (s9 =='question8')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question8')
+      setSlots(doc1,s1);
+    else if (s2 =='question8')
+      setSlots(doc2,s2);
+    else if (s3 =='question8')
+      setSlots(doc3,s3);
+    else if (s4 =='question8')
+      setSlots(doc4,s4);
+    else if (s5 =='question8')
+      setSlots(doc5,s5);
+    else if (s6 =='question8')
+      setSlots(doc6,s6);
+    else if (s7 =='question8')
+      setSlots(doc7,s7);
+    else if (s8 =='question8')
+      setSlots(doc8,s8);
+    else if (s9 =='question8')
+      setSlots(doc9,s9);
+  {% endif %}
+  {% if results9 %}
+    if (s1 =='question9')
+      showResults(doc1,s1);
+    else if (s2 =='question9')
+      showResults(doc2,s2);
+    else if (s3 =='question9')
+      showResults(doc3,s3);
+    else if (s4 =='question9')
+      showResults(doc4,s4);
+    else if (s5 =='question9')
+      showResults(doc5,s5);
+    else if (s6 =='question9')
+      showResults(doc6,s6);
+    else if (s7 =='question9')
+      showResults(doc7,s7);
+    else if (s8 =='question9')
+      showResults(doc8,s8);
+    else if (s9 =='question9')
+      showResults(doc9,s9);
+  {% else %}
+    if (s1 =='question9')
+      setSlots(doc1,s1);
+    else if (s2 =='question9')
+      setSlots(doc2,s2);
+    else if (s3 =='question9')
+      setSlots(doc3,s3);
+    else if (s4 =='question9')
+      setSlots(doc4,s4);
+    else if (s5 =='question9')
+      setSlots(doc5,s5);
+    else if (s6 =='question9')
+      setSlots(doc6,s6);
+    else if (s7 =='question9')
+      setSlots(doc7,s7);
+    else if (s8 =='question9')
+      setSlots(doc8,s8);
+    else if (s9 =='question9')
+      setSlots(doc9,s9);
+  {% endif %}
 </script>
 {% endif %}
 {% if role is False %}
@@ -1559,250 +2562,194 @@
 {% if interface_exists %}
   {% if role %}
   <script type='text/javascript'>
-    var btn1 = document.getElementById('savebtn');
-    var btn2 = document.getElementById('editbtn');
-    var btn3 = document.getElementById('deletebtn');
-    var btn4 = document.getElementById('hidebtn');
-    btn1.style.display = 'none';
-    btn2.style.display = 'block';
-    btn3.style.display = 'block';
-    btn4.style.display = 'block';
+    var sbtn = document.getElementById('savebtn');
+    var dbtn = document.getElementById('deletebtn');
+    var hbtn = document.getElementById('hidebtn');
+    sbtn.style.display = 'none';
+    dbtn.style.display = 'block';
+    hbtn.style.display = 'block';
     var doc1 = document.getElementById('q1');
     if (doc1) {
-      var x1 = parseInt(localStorage.getItem("results1"));
-      if (x1==0) {
+      {% if results1 is False %}
         var b1 = document.createElement('button');
         b1.setAttribute("id","b1");
         b1.setAttribute("onclick","getResults(1)");
         b1.innerHTML = "Get Results";
         doc1.appendChild(b1);
-      }
+      {% endif %}
     }
     var doc2 = document.getElementById('q2');
     if (doc2) {
-      var x2 = parseInt(localStorage.getItem("results2"));
-      if (x2==0) {
+      {% if results2 is False %}
         var b2 = document.createElement('button');
         b2.setAttribute("id","b2");
         b2.setAttribute("onclick","getResults(2)");
         b2.innerHTML = "Get Results";
         doc2.appendChild(b2);
-      }
+      {% endif %}
     }
     var doc3 = document.getElementById('q3');
     if (doc3) {
-      var x = parseInt(localStorage.getItem("results3"));
-      if (x==0) {
+      {% if results3 is False %}
         var b = document.createElement('button');
         b.setAttribute("id","b3");
         b.setAttribute("onclick","getResults(3)");
         b.innerHTML = "Get Results";
         doc3.appendChild(b);
-      }
+      {% endif %}
     }
     var doc4 = document.getElementById('q4');
     if (doc4) {
-      var x = parseInt(localStorage.getItem("results4"));
-      if (x==0) {
+      {% if results4 is False %}
         var b = document.createElement('button');
         b.setAttribute("id","b4");
         b.setAttribute("onclick","getResults(4)");
         b.innerHTML = "Get Results";
         doc4.appendChild(b);
-      }
+      {% endif %}
     }
     var doc5 = document.getElementById('q5');
     if (doc5) {
-      var x = parseInt(localStorage.getItem("results5"));
-      if (x==0) {
+      {% if results5 is False %}
         var b = document.createElement('button');
         b.setAttribute("id","b5");
         b.setAttribute("onclick","getResults(5)");
         b.innerHTML = "Get Results";
         doc5.appendChild(b);
-      }
+      {% endif %}
     }
     var doc6 = document.getElementById('q6');
     if (doc6) {
-      var x = parseInt(localStorage.getItem("results6"));
-      if (x==0) {
+      {% if results6 is False %}
         var b = document.createElement('button');
         b.setAttribute("id","b6");
         b.setAttribute("onclick","getResults(6)");
         b.innerHTML = "Get Results";
         doc6.appendChild(b);
-      }
+      {% endif %}
     }
     var doc7 = document.getElementById('q7');
     if (doc7) {
-      var x = parseInt(localStorage.getItem("results7"));
-      if (x==0) {
+      {% if results7 is False %}
         var b = document.createElement('button');
         b.setAttribute("id","b7");
         b.setAttribute("onclick","getResults(7)");
         b.innerHTML = "Get Results";
         doc7.appendChild(b);
-      }
+      {% endif %}
     }
     var doc8 = document.getElementById('q8');
     if (doc8) {
-      var x = parseInt(localStorage.getItem("results8"));
-      if (x==0) {
+     {% if results8 is False %}
         var b = document.createElement('button');
         b.setAttribute("id","b8");
         b.setAttribute("onclick","getResults(8)");
         b.innerHTML = "Get Results";
         doc8.appendChild(b);
-      }
+      {% endif %}
     }
     var doc9 = document.getElementById('q9');
     if (doc9) {
-      var x = parseInt(localStorage.getItem("results9"));
-      if (x==0) {
+      {% if results9 is False %}
         var b = document.createElement('button');
         b.setAttribute("id","b9");
         b.setAttribute("onclick","getResults(9)");
         b.innerHTML = "Get Results";
         doc9.appendChild(b);
-      }
+      {% endif %}
     }
   </script>
   {% else %}
   <script type='text/javascript'>
     var doc1 = document.getElementById('q1');
     if (doc1) {
-      var x = localStorage.getItem("submit1");
-      if (x==null)  {
-            localStorage.setItem("submit1",0);
-            x = parseInt(localStorage.getItem("submit1"));
-      }
-      if (x==0) {
+      {% if submit1 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub1");
         sub.setAttribute("onclick","submit(1)");
         sub.innerHTML = "Submit";
         doc1.appendChild(sub);
-      }
+      {% endif %}
     }
     var doc2 = document.getElementById('q2');
     if (doc2) {
-      var x = localStorage.getItem("submit2");
-      if (x==null)  {
-            localStorage.setItem("submit2",0);
-            x = parseInt(localStorage.getItem("submit2"));
-      }
-      if (x==0) {
+      {% if submit2 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub2");
         sub.setAttribute("onclick","submit(2)");
         sub.innerHTML = "Submit";
         doc2.appendChild(sub);
-      }
+      {% endif %}
     }
     var doc3 = document.getElementById('q3');
     if (doc3) {
-      var x = localStorage.getItem("submit3");
-      if (x==null)  {
-            localStorage.setItem("submit3",0);
-            x = parseInt(localStorage.getItem("submit3"));
-      }
-      if (x==0) {
+      {% if submit3 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub3");
         sub.setAttribute("onclick","submit(3)");
         sub.innerHTML = "Submit";
         doc3.appendChild(sub);
-      }
+      {% endif %}
     }
     var doc4 = document.getElementById('q4');
     if (doc4) {
-      var x = localStorage.getItem("submit4");
-      if (x==null)  {
-            localStorage.setItem("submit4",0);
-            x = parseInt(localStorage.getItem("submit4"));
-      }
-      if (x==0) {
+      {% if submit4 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub4");
         sub.setAttribute("onclick","submit(4)");
         sub.innerHTML = "Submit";
         doc4.appendChild(sub);
-      }
+      {% endif %}
     }
     var doc5 = document.getElementById('q5');
     if (doc5) {
-      var x = localStorage.getItem("submit5");
-      if (x==null)  {
-            localStorage.setItem("submit5",0);
-            x = parseInt(localStorage.getItem("submit5"));
-      }
-      if (x==0) {
+      {% if submit5 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub5");
         sub.setAttribute("onclick","submit(5)");
         sub.innerHTML = "Submit";
         doc5.appendChild(sub);
-      }
+      {% endif %}
     }
     var doc6 = document.getElementById('q6');
     if (doc6) {
-      var x = localStorage.getItem("submit6");
-      if (x==null)  {
-            localStorage.setItem("submit6",0);
-            x = parseInt(localStorage.getItem("submit6"));
-      }
-      if (x==0) {
+      {% if submit6 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub6");
         sub.setAttribute("onclick","submit(6)");
         sub.innerHTML = "Submit";
         doc6.appendChild(sub);
-      }
+      {% endif %}
     }
     var doc7 = document.getElementById('q7');
     if (doc7) {
-      var x = localStorage.getItem("submit7");
-      if (x==null)  {
-            localStorage.setItem("submit7",0);
-            x = parseInt(localStorage.getItem("submit7"));
-      }
-      if (x==0) {
+      {% if submit7 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub7");
         sub.setAttribute("onclick","submit(7)");
         sub.innerHTML = "Submit";
         doc7.appendChild(sub);
-      }
+      {% endif %}
     }
     var doc8 = document.getElementById('q8');
     if (doc8) {
-      var x = localStorage.getItem("submit8");
-      if (x==null)  {
-            localStorage.setItem("submit8",0);
-            x = parseInt(localStorage.getItem("submit8"));
-      }
-      if (x==0) {
+      {% if submit8 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub8");
         sub.setAttribute("onclick","submit(8)");
         sub.innerHTML = "Submit";
         doc8.appendChild(sub);
-      }
+      {% endif %}
     }
     var doc9 = document.getElementById('q9');
     if (doc9) {
-      var x = localStorage.getItem("submit9");
-      if (x==null)  {
-            localStorage.setItem("submit9",0);
-            x = parseInt(localStorage.getItem("submit9"));
-      }
-      if (x==0) {
+      {% if submit9 is False %}
         var sub = document.createElement('button');
         sub.setAttribute("id","sub9");
         sub.setAttribute("onclick","submit(9)");
         sub.innerHTML = "Submit";
         doc9.appendChild(sub);
-      }
+      {% endif %}
     }
   </script>
   {% endif %}
@@ -1848,10 +2795,55 @@
     {% endif %}
     {% endif %}
   {% endif %}
+
+  {% if h1 %}
+  <script type="text/javascript">
+    var doc1 = document.getElementById('col1');
+    doc1.style.display = 'none';
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var hidebtn = document.getElementById("hidebtn1");
+    var showbtn = document.getElementById("showbtn1");
+    hidebtn.style.display = 'none';
+    showbtn.style.display = 'block';
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s1 %}
+      {% if role %}
+      <script type="text/javascript">
+        var hidebtn = document.getElementById("hidebtn1");
+        var showbtn = document.getElementById("showbtn1");
+        hidebtn.style.display = 'block';
+        showbtn.style.display = 'none';
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
   {% if d %}
   <script type="text/javascript">
     var btn = document.getElementById("hidebtn");
     var showbtn = document.getElementById("showbtn");
+    var btn1 = document.getElementById("hidebtn1");
+    var showbtn1 = document.getElementById("showbtn1");
+    var btn2 = document.getElementById("hidebtn2");
+    var showbtn2 = document.getElementById("showbtn2");
+    var btn3 = document.getElementById("hidebtn3");
+    var showbtn3 = document.getElementById("showbtn3");
+    var btn4 = document.getElementById("hidebtn4");
+    var showbtn4 = document.getElementById("showbtn4");
+    var btn5 = document.getElementById("hidebtn5");
+    var showbtn5 = document.getElementById("showbtn5");
+    var btn6 = document.getElementById("hidebtn6");
+    var showbtn6 = document.getElementById("showbtn6");
+    var btn7 = document.getElementById("hidebtn7");
+    var showbtn7 = document.getElementById("showbtn7");
+    var btn8 = document.getElementById("hidebtn8");
+    var showbtn8 = document.getElementById("showbtn8");
+    var btn9 = document.getElementById("hidebtn9");
+    var showbtn9 = document.getElementById("showbtn9");
     btn.style.display = 'none';
     showbtn.style.display = 'none';
     var doc1 = document.getElementById('col1');

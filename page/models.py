@@ -54,10 +54,19 @@ class Student(models.Model):
 	def __str__(self):
 		return self.username.username
 
+class Feedback(models.Model):
+	interface = models.ForeignKey(Interface, on_delete=models.CASCADE)
+	text = models.TextField()
+	student = models.ForeignKey(Student, on_delete=models.CASCADE)
+	def __str__(self):
+		return self.interface.course.code + " " + str(self.interface.lecture.number)
+
 class Question(models.Model):
 	interface = models.ForeignKey(Interface, on_delete=models.CASCADE)
 	question_number = models.IntegerField()
 	question = models.TextField()
+	submitted = models.ManyToManyField(Student)
+	results = models.BooleanField()
 	def __str__(self):
 		return self.interface.course.code + " " + str(self.interface.lecture.number) + " " + str(self.question_number)
 

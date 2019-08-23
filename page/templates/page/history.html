@@ -17,9 +17,36 @@
 
   <!-- Page Content -->
   <div class="container">
+    <div id="q1chart" style="display:none; height: 300px; width: 100%;"></div>
+    <div id="q2chart" style="display:none; height: 300px; width: 100%;"></div>
+    <div id="q3chart" style="display:none; height: 300px; width: 100%;"></div>
+    <div id="q4chart" style="display:none; height: 300px; width: 100%;"></div>
+    <div id="q5chart" style="display:none; height: 300px; width: 100%;"></div>
+    <div id="q6chart" style="display:none; height: 300px; width: 100%;"></div>
+    <div id="q7chart" style="display:none; height: 300px; width: 100%;"></div>
+    <div id="q8chart" style="display:none; height: 300px; width: 100%;"></div>
+    <div id="q9chart" style="display:none; height: 300px; width: 100%;"></div>
     <h1>Questions/Answers</h1>
     <div id="historyquestions">
     </div>
+    <h1>Feedback</h1>
+    <div class="row">
+      <div class="col">
+        {% for stl in stlist %}
+        <p>{{ stl }}</p>
+        {% endfor %}
+      </div>
+      <div class="col">
+      {% for fl in flist %}
+        <p>{{ fl }}</p>
+        {% endfor %}
+      </div>
+      <div class="col">
+      </div>
+      <div class="col">
+      </div>
+    </div>
+
   </div>
   <!-- /.container -->
   {% else %}
@@ -58,281 +85,747 @@
     location.replace(href="{% url 'history' %}?username={{ username }}&course={{ co }}&lecture="+selectedValue);
   }
   </script>
+
   {% if course_lecture %}
-   <script type="text/javascript">
-    var s = "<hr>";
-    var div = document.getElementById("historyquestions");
-    var len = parseInt("{{ slist|length }}");
-    var len1 = (parseInt("{{ slist.0|length }}")-1)/3;
-    x = 0;
-    while (x<len) {
-      switch (x) {
-        case 0: s = s + "<p><u>Question:</u> "+"{{ slist.0.0 }}"+"</p>";
-                var len1 = (parseInt("{{ slist.0|length }}")-1)/3;
-                y = 1;
-                while (y<=len1) {
-                  switch (y) {
-                    case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.0.1 }}"+"<br><u>Correct:</u> "+"{{ slist.0.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.3 }}"+"</p>";
-                            break;
-                    case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.0.4 }}"+"<br><u>Correct:</u> "+"{{ slist.0.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.6 }}"+"</p>";
-                            break;
-                    case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.0.7 }}"+"<br><u>Correct:</u> "+"{{ slist.0.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.9 }}"+"</p>";
-                            break;
-                    case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.0.10 }}"+"<br><u>Correct:</u> "+"{{ slist.0.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.12 }}"+"</p>";
-                            break;
-                    case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.0.13 }}"+"<br><u>Correct:</u> "+"{{ slist.0.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.15 }}"+"</p>";
-                            break;
-                    case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.0.16 }}"+"<br><u>Correct:</u> "+"{{ slist.0.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.18 }}"+"</p>";
-                            break;
-                    case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.0.19 }}"+"<br><u>Correct:</u> "+"{{ slist.0.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.21 }}"+"</p>";
-                            break;
-                    case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.0.22 }}"+"<br><u>Correct:</u> "+"{{ slist.0.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.24 }}"+"</p>";
-                            break;
-                    case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.0.25 }}"+"<br><u>Correct:</u> "+"{{ slist.0.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.27 }}"+"</p>";
-                            break;
-                    case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.0.28 }}"+"<br><u>Correct:</u> "+"{{ slist.0.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.0.30 }}"+"</p>";
-                            break;
+  <script type="text/javascript">
+    window.onload = function () {
+      var len = parseInt("{{ slist|length }}");
+      x = 0;
+      while (x<len) {
+        switch (x) {
+          case 0: var doc1 = document.getElementById("q1chart");
+                  doc1.style.display = 'block';
+                  var dps1 = [];
+                  var chart1 = new CanvasJS.Chart("q1chart", {
+                    title :{
+                      text: "{{ slist.0.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps1
+                    }]
+                  });
+                  var len1 = (parseInt("{{ slist.0|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len1) {
+                    switch (y) {
+                      case 1: var c1 = "{{ slist.0.2 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.1 }}", y: parseInt("{{ slist.0.3 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.1 }}", y: parseInt("{{ slist.0.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c1 = "{{ slist.0.5 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.4 }}", y: parseInt("{{ slist.0.6 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.4 }}", y: parseInt("{{ slist.0.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c1 = "{{ slist.0.8 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.7 }}", y: parseInt("{{ slist.0.9 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.7 }}", y: parseInt("{{ slist.0.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c1 = "{{ slist.0.11 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.10 }}", y: parseInt("{{ slist.0.12 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.10 }}", y: parseInt("{{ slist.0.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c1 = "{{ slist.0.14 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.13 }}", y: parseInt("{{ slist.0.15 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.13 }}", y: parseInt("{{ slist.0.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c1 = "{{ slist.0.17 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.16 }}", y: parseInt("{{ slist.0.18 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.16 }}", y: parseInt("{{ slist.0.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c1 = "{{ slist.0.20 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.19 }}", y: parseInt("{{ slist.0.21 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.19 }}", y: parseInt("{{ slist.0.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c1 = "{{ slist.0.23 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.22 }}", y: parseInt("{{ slist.0.24 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.22 }}", y: parseInt("{{ slist.0.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c1 = "{{ slist.0.26 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.25 }}", y: parseInt("{{ slist.0.27 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.25 }}", y: parseInt("{{ slist.0.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c1 = "{{ slist.0.29 }}";
+                              if (c1=="True")
+                                dps1.push({ label: "{{ slist.0.28 }}", y: parseInt("{{ slist.0.30 }}"), color: "Green"});
+                              else
+                                dps1.push({ label: "{{ slist.0.28 }}", y: parseInt("{{ slist.0.30 }}"), color: "Red"});
+                              break;
                   }
                   y = y+1
                 }
+                chart1.render();
                 break;
-        case 1: s = s + "<p><u>Question:</u> "+"{{ slist.1.0 }}"+"</p>";
-                    var len1 = (parseInt("{{ slist.1|length }}")-1)/3;
-                    y = 1;
-                    while (y<=len1) {
-                      switch (y) {
-                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.1.1 }}"+"<br><u>Correct:</u> "+"{{ slist.1.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.3 }}"+"</p>";
-                        break;
-                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.1.4 }}"+"<br><u>Correct:</u> "+"{{ slist.1.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.6 }}"+"</p>";
-                        break;
-                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.1.7 }}"+"<br><u>Correct:</u> "+"{{ slist.1.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.9 }}"+"</p>";
-                        break;
-                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.1.10 }}"+"<br><u>Correct:</u> "+"{{ slist.1.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.12 }}"+"</p>";
-                        break;
-                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.1.13 }}"+"<br><u>Correct:</u> "+"{{ slist.1.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.15 }}"+"</p>";
-                        break;
-                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.1.16 }}"+"<br><u>Correct:</u> "+"{{ slist.1.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.18 }}"+"</p>";
-                        break;
-                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.1.19 }}"+"<br><u>Correct:</u> "+"{{ slist.1.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.21 }}"+"</p>";
-                        break;
-                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.1.22 }}"+"<br><u>Correct:</u> "+"{{ slist.1.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.24 }}"+"</p>";
-                        break;
-                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.1.25 }}"+"<br><u>Correct:</u> "+"{{ slist.1.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.27 }}"+"</p>";
-                        break;
-                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.1.28 }}"+"<br><u>Correct:</u> "+"{{ slist.1.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.1.30 }}"+"</p>";
-                        break;
-                      }
-                      y = y+1
-                    }
-                    break;
-            case 2: s = s + "<p><u>Question:</u> "+"{{ slist.2.0 }}"+"</p>";
-                    var len1 = (parseInt("{{ slist.2|length }}")-1)/3;
-                    y = 1;
-                    while (y<=len1) {
-                      switch (y) {
-                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.2.1 }}"+"<br><u>Correct:</u> "+"{{ slist.2.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.3 }}"+"</p>";
-                        break;
-                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.2.4 }}"+"<br><u>Correct:</u> "+"{{ slist.2.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.6 }}"+"</p>";
-                        break;
-                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.2.7 }}"+"<br><u>Correct:</u> "+"{{ slist.2.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.9 }}"+"</p>";
-                        break;
-                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.2.10 }}"+"<br><u>Correct:</u> "+"{{ slist.2.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.12 }}"+"</p>";
-                        break;
-                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.2.13 }}"+"<br><u>Correct:</u> "+"{{ slist.2.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.15 }}"+"</p>";
-                        break;
-                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.2.16 }}"+"<br><u>Correct:</u> "+"{{ slist.2.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.18 }}"+"</p>";
-                        break;
-                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.2.19 }}"+"<br><u>Correct:</u> "+"{{ slist.2.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.21 }}"+"</p>";
-                        break;
-                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.2.22 }}"+"<br><u>Correct:</u> "+"{{ slist.2.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.24 }}"+"</p>";
-                        break;
-                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.2.25 }}"+"<br><u>Correct:</u> "+"{{ slist.2.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.27 }}"+"</p>";
-                        break;
-                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.2.28 }}"+"<br><u>Correct:</u> "+"{{ slist.2.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.2.30 }}"+"</p>";
-                        break;
-                      }
-                      y = y+1
-                    }
-                    break;
-            case 3: s = s + "<p><u>Question:</u> "+"{{ slist.3.0 }}"+"</p>";
-                    var len1 = (parseInt("{{ slist.3|length }}")-1)/3;
-                    y = 1;
-                    while (y<=len1) {
-                      switch (y) {
-                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.3.1 }}"+"<br><u>Correct:</u> "+"{{ slist.3.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.3 }}"+"</p>";
-                        break;
-                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.3.4 }}"+"<br><u>Correct:</u> "+"{{ slist.3.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.6 }}"+"</p>";
-                        break;
-                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.3.7 }}"+"<br><u>Correct:</u> "+"{{ slist.3.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.9 }}"+"</p>";
-                        break;
-                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.3.10 }}"+"<br><u>Correct:</u> "+"{{ slist.3.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.12 }}"+"</p>";
-                        break;
-                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.3.13 }}"+"<br><u>Correct:</u> "+"{{ slist.3.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.15 }}"+"</p>";
-                        break;
-                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.3.16 }}"+"<br><u>Correct:</u> "+"{{ slist.3.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.18 }}"+"</p>";
-                        break;
-                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.3.19 }}"+"<br><u>Correct:</u> "+"{{ slist.3.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.21 }}"+"</p>";
-                        break;
-                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.3.22 }}"+"<br><u>Correct:</u> "+"{{ slist.3.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.24 }}"+"</p>";
-                        break;
-                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.3.25 }}"+"<br><u>Correct:</u> "+"{{ slist.3.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.27 }}"+"</p>";
-                        break;
-                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.3.28 }}"+"<br><u>Correct:</u> "+"{{ slist.3.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.3.30 }}"+"</p>";
-                        break;
-                      }
-                      y = y+1
-                    }
-                    break;
-            case 4: s = s + "<p><u>Question:</u> "+"{{ slist.4.0 }}"+"</p>";
-                    var len1 = (parseInt("{{ slist.4|length }}")-1)/3;
-                    y = 1;
-                    while (y<=len1) {
-                      switch (y) {
-                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.4.1 }}"+"<br><u>Correct:</u> "+"{{ slist.4.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.3 }}"+"</p>";
-                        break;
-                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.4.4 }}"+"<br><u>Correct:</u> "+"{{ slist.4.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.6 }}"+"</p>";
-                        break;
-                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.4.7 }}"+"<br><u>Correct:</u> "+"{{ slist.4.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.9 }}"+"</p>";
-                        break;
-                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.4.10 }}"+"<br><u>Correct:</u> "+"{{ slist.4.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.12 }}"+"</p>";
-                        break;
-                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.4.13 }}"+"<br><u>Correct:</u> "+"{{ slist.4.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.15 }}"+"</p>";
-                        break;
-                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.4.16 }}"+"<br><u>Correct:</u> "+"{{ slist.4.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.18 }}"+"</p>";
-                        break;
-                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.4.19 }}"+"<br><u>Correct:</u> "+"{{ slist.4.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.21 }}"+"</p>";
-                        break;
-                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.4.22 }}"+"<br><u>Correct:</u> "+"{{ slist.4.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.24 }}"+"</p>";
-                        break;
-                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.4.25 }}"+"<br><u>Correct:</u> "+"{{ slist.4.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.27 }}"+"</p>";
-                        break;
-                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.4.28 }}"+"<br><u>Correct:</u> "+"{{ slist.4.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.4.30 }}"+"</p>";
-                        break;
-                      }
-                      y = y+1
-                    }
-                    break;
-            case 5: s = s + "<p><u>Question:</u> "+"{{ slist.5.0 }}"+"</p>";
-                    var len1 = (parseInt("{{ slist.5|length }}")-1)/3;
-                    y = 1;
-                    while (y<=len1) {
-                      switch (y) {
-                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.5.1 }}"+"<br><u>Correct:</u> "+"{{ slist.5.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.3 }}"+"</p>";
-                        break;
-                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.5.4 }}"+"<br><u>Correct:</u> "+"{{ slist.5.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.6 }}"+"</p>";
-                        break;
-                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.5.7 }}"+"<br><u>Correct:</u> "+"{{ slist.5.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.9 }}"+"</p>";
-                        break;
-                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.5.10 }}"+"<br><u>Correct:</u> "+"{{ slist.5.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.12 }}"+"</p>";
-                        break;
-                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.5.13 }}"+"<br><u>Correct:</u> "+"{{ slist.5.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.15 }}"+"</p>";
-                        break;
-                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.5.16 }}"+"<br><u>Correct:</u> "+"{{ slist.5.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.18 }}"+"</p>";
-                        break;
-                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.5.19 }}"+"<br><u>Correct:</u> "+"{{ slist.5.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.21 }}"+"</p>";
-                        break;
-                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.5.22 }}"+"<br><u>Correct:</u> "+"{{ slist.5.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.24 }}"+"</p>";
-                        break;
-                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.5.25 }}"+"<br><u>Correct:</u> "+"{{ slist.5.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.27 }}"+"</p>";
-                        break;
-                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.5.28 }}"+"<br><u>Correct:</u> "+"{{ slist.5.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.5.30 }}"+"</p>";
-                        break;
-                      }
-                      y = y+1
-                    }
-                    break;
-            case 6: s = s + "<p><u>Question:</u> "+"{{ slist.6.0 }}"+"</p>";
-                    var len1 = (parseInt("{{ slist.6|length }}")-1)/3;
-                    y = 1;
-                    while (y<=len1) {
-                      switch (y) {
-                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.6.1 }}"+"<br><u>Correct:</u> "+"{{ slist.6.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.3 }}"+"</p>";
-                        break;
-                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.6.4 }}"+"<br><u>Correct:</u> "+"{{ slist.6.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.6 }}"+"</p>";
-                        break;
-                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.6.7 }}"+"<br><u>Correct:</u> "+"{{ slist.6.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.9 }}"+"</p>";
-                        break;
-                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.6.10 }}"+"<br><u>Correct:</u> "+"{{ slist.6.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.12 }}"+"</p>";
-                        break;
-                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.6.13 }}"+"<br><u>Correct:</u> "+"{{ slist.6.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.15 }}"+"</p>";
-                        break;
-                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.6.16 }}"+"<br><u>Correct:</u> "+"{{ slist.6.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.18 }}"+"</p>";
-                        break;
-                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.6.19 }}"+"<br><u>Correct:</u> "+"{{ slist.6.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.21 }}"+"</p>";
-                        break;
-                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.6.22 }}"+"<br><u>Correct:</u> "+"{{ slist.6.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.24 }}"+"</p>";
-                        break;
-                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.6.25 }}"+"<br><u>Correct:</u> "+"{{ slist.6.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.27 }}"+"</p>";
-                        break;
-                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.6.28 }}"+"<br><u>Correct:</u> "+"{{ slist.6.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.6.30 }}"+"</p>";
-                        break;
-                      }
-                      y = y+1
-                    }
-                    break;
-            case 7: s = s + "<p><u>Question:</u> "+"{{ slist.7.0 }}"+"</p>";
-                    var len1 = (parseInt("{{ slist.7|length }}")-1)/3;
-                    y = 1;
-                    while (y<=len1) {
-                      switch (y) {
-                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.7.1 }}"+"<br><u>Correct:</u> "+"{{ slist.7.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.3 }}"+"</p>";
-                        break;
-                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.7.4 }}"+"<br><u>Correct:</u> "+"{{ slist.7.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.6 }}"+"</p>";
-                        break;
-                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.7.7 }}"+"<br><u>Correct:</u> "+"{{ slist.7.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.9 }}"+"</p>";
-                        break;
-                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.7.10 }}"+"<br><u>Correct:</u> "+"{{ slist.7.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.12 }}"+"</p>";
-                        break;
-                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.7.13 }}"+"<br><u>Correct:</u> "+"{{ slist.7.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.15 }}"+"</p>";
-                        break;
-                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.7.16 }}"+"<br><u>Correct:</u> "+"{{ slist.7.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.18 }}"+"</p>";
-                        break;
-                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.7.19 }}"+"<br><u>Correct:</u> "+"{{ slist.7.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.21 }}"+"</p>";
-                        break;
-                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.7.22 }}"+"<br><u>Correct:</u> "+"{{ slist.7.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.24 }}"+"</p>";
-                        break;
-                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.7.25 }}"+"<br><u>Correct:</u> "+"{{ slist.7.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.27 }}"+"</p>";
-                        break;
-                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.7.28 }}"+"<br><u>Correct:</u> "+"{{ slist.7.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.7.30 }}"+"</p>";
-                        break;
-                      }
-                      y = y+1
-                    }
-                    break;
-            case 8: s = s + "<p><u>Question:</u> "+"{{ slist.8.0 }}"+"</p>";
-                    var len1 = (parseInt("{{ slist.8|length }}")-1)/3;
-                    y = 1;
-                    while (y<=len1) {
-                      switch (y) {
-                        case 1: s = s + "<p><u>Answer:</u> "+"{{ slist.8.1 }}"+"<br><u>Correct:</u> "+"{{ slist.8.2 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.3 }}"+"</p>";
-                        break;
-                        case 2: s = s + "<p><u>Answer:</u> "+"{{ slist.8.4 }}"+"<br><u>Correct:</u> "+"{{ slist.8.5 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.6 }}"+"</p>";
-                        break;
-                        case 3: s = s + "<p><u>Answer:</u> "+"{{ slist.8.7 }}"+"<br><u>Correct:</u> "+"{{ slist.8.8 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.9 }}"+"</p>";
-                        break;
-                        case 4: s = s + "<p><u>Answer:</u> "+"{{ slist.8.10 }}"+"<br><u>Correct:</u> "+"{{ slist.8.11 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.12 }}"+"</p>";
-                        break;
-                        case 5: s = s + "<p><u>Answer:</u> "+"{{ slist.8.13 }}"+"<br><u>Correct:</u> "+"{{ slist.8.14 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.15 }}"+"</p>";
-                        break;
-                        case 6: s = s + "<p><u>Answer:</u> "+"{{ slist.8.16 }}"+"<br><u>Correct:</u> "+"{{ slist.8.17 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.18 }}"+"</p>";
-                        break;
-                        case 7: s = s + "<p><u>Answer:</u> "+"{{ slist.8.19 }}"+"<br><u>Correct:</u> "+"{{ slist.8.20 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.21 }}"+"</p>";
-                        break;
-                        case 8: s = s + "<p><u>Answer:</u> "+"{{ slist.8.22 }}"+"<br><u>Correct:</u> "+"{{ slist.8.23 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.24 }}"+"</p>";
-                        break;
-                        case 9: s = s + "<p><u>Answer:</u> "+"{{ slist.8.25 }}"+"<br><u>Correct:</u> "+"{{ slist.8.26 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.27 }}"+"</p>";
-                        break;
-                        case 10: s = s + "<p><u>Answer:</u> "+"{{ slist.8.28 }}"+"<br><u>Correct:</u> "+"{{ slist.8.29 }}"+"<br><u>Students Answered:</u> "+"{{ slist.8.30 }}"+"</p>";
-                        break;
-                      }
-                      y = y+1
-                    }
-                    break;
+          case 1: var doc2 = document.getElementById("q2chart");
+                  doc2.style.display = 'block';
+                  var dps2 = [];
+                  var chart2 = new CanvasJS.Chart("q2chart", {
+                    title :{
+                      text: "{{ slist.1.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps2
+                    }]
+                  });
+                  var len2 = (parseInt("{{ slist.1|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len2) {
+                    switch (y) {
+                      case 1: var c2 = "{{ slist.1.2 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.1 }}", y: parseInt("{{ slist.1.3 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.1 }}", y: parseInt("{{ slist.1.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c2 = "{{ slist.1.5 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.4 }}", y: parseInt("{{ slist.1.6 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.4 }}", y: parseInt("{{ slist.1.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c2 = "{{ slist.1.8 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.7 }}", y: parseInt("{{ slist.1.9 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.7 }}", y: parseInt("{{ slist.1.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c2 = "{{ slist.1.11 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.10 }}", y: parseInt("{{ slist.1.12 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.10 }}", y: parseInt("{{ slist.1.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c2 = "{{ slist.1.14 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.13 }}", y: parseInt("{{ slist.1.15 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.13 }}", y: parseInt("{{ slist.1.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c2 = "{{ slist.1.17 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.16 }}", y: parseInt("{{ slist.1.18 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.16 }}", y: parseInt("{{ slist.1.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c2 = "{{ slist.1.20 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.19 }}", y: parseInt("{{ slist.1.21 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.19 }}", y: parseInt("{{ slist.1.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c2 = "{{ slist.1.23 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.22 }}", y: parseInt("{{ slist.1.24 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.22 }}", y: parseInt("{{ slist.1.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c2 = "{{ slist.1.26 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.25 }}", y: parseInt("{{ slist.1.27 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.25 }}", y: parseInt("{{ slist.1.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c2 = "{{ slist.1.29 }}";
+                              if (c2=="True")
+                                dps2.push({ label: "{{ slist.1.28 }}", y: parseInt("{{ slist.1.30 }}"), color: "Green"});
+                              else
+                                dps2.push({ label: "{{ slist.1.28 }}", y: parseInt("{{ slist.1.30 }}"), color: "Red"});
+                              break;
+                  }
+                  y = y+1
+                }
+                chart2.render();
+                break;
+          case 2: var doc3 = document.getElementById("q3chart");
+                  doc3.style.display = 'block';
+                  var dps3 = [];
+                  var chart3 = new CanvasJS.Chart("q3chart", {
+                    title :{
+                      text: "{{ slist.2.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps3
+                    }]
+                  });
+                  var len3 = (parseInt("{{ slist.2|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len3) {
+                    switch (y) {
+                      case 1: var c3 = "{{ slist.2.2 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.1 }}", y: parseInt("{{ slist.2.3 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.1 }}", y: parseInt("{{ slist.2.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c3 = "{{ slist.2.5 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.4 }}", y: parseInt("{{ slist.2.6 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.4 }}", y: parseInt("{{ slist.2.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c3 = "{{ slist.2.8 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.7 }}", y: parseInt("{{ slist.2.9 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.7 }}", y: parseInt("{{ slist.2.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c3 = "{{ slist.2.11 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.10 }}", y: parseInt("{{ slist.2.12 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.10 }}", y: parseInt("{{ slist.2.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c3 = "{{ slist.2.14 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.13 }}", y: parseInt("{{ slist.2.15 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.13 }}", y: parseInt("{{ slist.2.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c3 = "{{ slist.2.17 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.16 }}", y: parseInt("{{ slist.2.18 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.16 }}", y: parseInt("{{ slist.2.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c3 = "{{ slist.2.20 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.19 }}", y: parseInt("{{ slist.2.21 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.19 }}", y: parseInt("{{ slist.2.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c3 = "{{ slist.2.23 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.22 }}", y: parseInt("{{ slist.2.24 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.22 }}", y: parseInt("{{ slist.2.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c3 = "{{ slist.2.26 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.25 }}", y: parseInt("{{ slist.2.27 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.25 }}", y: parseInt("{{ slist.2.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c3 = "{{ slist.2.29 }}";
+                              if (c3=="True")
+                                dps3.push({ label: "{{ slist.2.28 }}", y: parseInt("{{ slist.2.30 }}"), color: "Green"});
+                              else
+                                dps3.push({ label: "{{ slist.2.28 }}", y: parseInt("{{ slist.2.30 }}"), color: "Red"});
+                              break;
+                  }
+                  y = y+1
+                }
+                chart3.render();
+                break;
+          case 3: var doc4 = document.getElementById("q4chart");
+                  doc4.style.display = 'block';
+                  var dps4 = [];
+                  var chart4 = new CanvasJS.Chart("q4chart", {
+                    title :{
+                      text: "{{ slist.3.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps4
+                    }]
+                  });
+                  var len4 = (parseInt("{{ slist.3|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len4) {
+                    switch (y) {
+                      case 1: var c4 = "{{ slist.3.2 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.1 }}", y: parseInt("{{ slist.3.3 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.1 }}", y: parseInt("{{ slist.3.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c4 = "{{ slist.3.5 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.4 }}", y: parseInt("{{ slist.3.6 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.4 }}", y: parseInt("{{ slist.3.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c4 = "{{ slist.3.8 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.7 }}", y: parseInt("{{ slist.3.9 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.7 }}", y: parseInt("{{ slist.3.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c4 = "{{ slist.3.11 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.10 }}", y: parseInt("{{ slist.3.12 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.10 }}", y: parseInt("{{ slist.3.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c4 = "{{ slist.3.14 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.13 }}", y: parseInt("{{ slist.3.15 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.13 }}", y: parseInt("{{ slist.3.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c4 = "{{ slist.3.17 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.16 }}", y: parseInt("{{ slist.3.18 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.16 }}", y: parseInt("{{ slist.3.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c4 = "{{ slist.3.20 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.19 }}", y: parseInt("{{ slist.3.21 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.19 }}", y: parseInt("{{ slist.3.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c4 = "{{ slist.3.23 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.22 }}", y: parseInt("{{ slist.3.24 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.22 }}", y: parseInt("{{ slist.3.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c4 = "{{ slist.3.26 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.25 }}", y: parseInt("{{ slist.3.27 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.25 }}", y: parseInt("{{ slist.3.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c4 = "{{ slist.3.29 }}";
+                              if (c4=="True")
+                                dps4.push({ label: "{{ slist.3.28 }}", y: parseInt("{{ slist.3.30 }}"), color: "Green"});
+                              else
+                                dps4.push({ label: "{{ slist.3.28 }}", y: parseInt("{{ slist.3.30 }}"), color: "Red"});
+                              break;
+                  }
+                  y = y+1
+                }
+                chart4.render();
+                break;
+          case 4: var doc5 = document.getElementById("q5chart");
+                  doc5.style.display = 'block';
+                  var dps5 = [];
+                  var chart5 = new CanvasJS.Chart("q5chart", {
+                    title :{
+                      text: "{{ slist.4.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps5
+                    }]
+                  });
+                  var len5 = (parseInt("{{ slist.4|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len5) {
+                    switch (y) {
+                      case 1: var c5 = "{{ slist.4.2 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.1 }}", y: parseInt("{{ slist.4.3 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.1 }}", y: parseInt("{{ slist.4.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c5 = "{{ slist.4.5 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.4 }}", y: parseInt("{{ slist.4.6 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.4 }}", y: parseInt("{{ slist.4.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c5 = "{{ slist.4.8 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.7 }}", y: parseInt("{{ slist.4.9 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.7 }}", y: parseInt("{{ slist.4.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c5 = "{{ slist.4.11 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.10 }}", y: parseInt("{{ slist.4.12 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.10 }}", y: parseInt("{{ slist.4.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c5 = "{{ slist.4.14 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.13 }}", y: parseInt("{{ slist.4.15 }}"), color: "Green"});
+                              else 
+                                dps5.push({ label: "{{ slist.4.13 }}", y: parseInt("{{ slist.4.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c5 = "{{ slist.4.17 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.16 }}", y: parseInt("{{ slist.4.18 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.16 }}", y: parseInt("{{ slist.4.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c5 = "{{ slist.4.20 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.19 }}", y: parseInt("{{ slist.4.21 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.19 }}", y: parseInt("{{ slist.4.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c5 = "{{ slist.4.23 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.22 }}", y: parseInt("{{ slist.4.24 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.22 }}", y: parseInt("{{ slist.4.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c5 = "{{ slist.4.26 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.25 }}", y: parseInt("{{ slist.4.27 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.25 }}", y: parseInt("{{ slist.4.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c5 = "{{ slist.4.29 }}";
+                              if (c5=="True")
+                                dps5.push({ label: "{{ slist.4.28 }}", y: parseInt("{{ slist.4.30 }}"), color: "Green"});
+                              else
+                                dps5.push({ label: "{{ slist.4.28 }}", y: parseInt("{{ slist.4.30 }}"), color: "Red"});
+                              break;
+                  }
+                  y = y+1
+                }
+                chart5.render();
+                break;
+          case 5: var doc6 = document.getElementById("q6chart");
+                  doc6.style.display = 'block';
+                  var dps6 = [];
+                  var chart6 = new CanvasJS.Chart("q6chart", {
+                    title :{
+                      text: "{{ slist.5.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps6
+                    }]
+                  });
+                  var len6 = (parseInt("{{ slist.5|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len6) {
+                    switch (y) {
+                      case 1: var c6 = "{{ slist.5.2 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.1 }}", y: parseInt("{{ slist.5.3 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.1 }}", y: parseInt("{{ slist.5.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c6 = "{{ slist.5.5 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.4 }}", y: parseInt("{{ slist.5.6 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.4 }}", y: parseInt("{{ slist.5.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c6 = "{{ slist.5.8 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.7 }}", y: parseInt("{{ slist.5.9 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.7 }}", y: parseInt("{{ slist.5.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c6 = "{{ slist.5.11 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.10 }}", y: parseInt("{{ slist.5.12 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.10 }}", y: parseInt("{{ slist.5.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c6 = "{{ slist.5.14 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.13 }}", y: parseInt("{{ slist.5.15 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.13 }}", y: parseInt("{{ slist.5.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c6 = "{{ slist.5.17 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.16 }}", y: parseInt("{{ slist.5.18 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.16 }}", y: parseInt("{{ slist.5.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c6 = "{{ slist.5.20 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.19 }}", y: parseInt("{{ slist.5.21 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.19 }}", y: parseInt("{{ slist.5.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c6 = "{{ slist.5.23 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.22 }}", y: parseInt("{{ slist.5.24 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.22 }}", y: parseInt("{{ slist.5.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c6 = "{{ slist.5.26 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.25 }}", y: parseInt("{{ slist.5.27 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.25 }}", y: parseInt("{{ slist.5.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c6 = "{{ slist.5.29 }}";
+                              if (c6=="True")
+                                dps6.push({ label: "{{ slist.5.28 }}", y: parseInt("{{ slist.5.30 }}"), color: "Green"});
+                              else
+                                dps6.push({ label: "{{ slist.5.28 }}", y: parseInt("{{ slist.5.30 }}"), color: "Red"});
+                              break;
+                  }
+                  y = y+1
+                }
+                chart6.render();
+                break;
+          case 6: var doc7 = document.getElementById("q7chart");
+                  doc7.style.display = 'block';
+                  var dps7 = [];
+                  var chart7 = new CanvasJS.Chart("q7chart", {
+                    title :{
+                      text: "{{ slist.6.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps7
+                    }]
+                  });
+                  var len7 = (parseInt("{{ slist.6|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len7) {
+                    switch (y) {
+                      case 1: var c7 = "{{ slist.6.2 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.1 }}", y: parseInt("{{ slist.6.3 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.1 }}", y: parseInt("{{ slist.6.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c7 = "{{ slist.6.5 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.4 }}", y: parseInt("{{ slist.6.6 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.4 }}", y: parseInt("{{ slist.6.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c7 = "{{ slist.6.8 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.7 }}", y: parseInt("{{ slist.6.9 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.7 }}", y: parseInt("{{ slist.6.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c7 = "{{ slist.6.11 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.10 }}", y: parseInt("{{ slist.6.12 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.10 }}", y: parseInt("{{ slist.6.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c7 = "{{ slist.6.14 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.13 }}", y: parseInt("{{ slist.6.15 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.13 }}", y: parseInt("{{ slist.6.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c7 = "{{ slist.6.17 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.16 }}", y: parseInt("{{ slist.6.18 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.16 }}", y: parseInt("{{ slist.6.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c7 = "{{ slist.6.20 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.19 }}", y: parseInt("{{ slist.6.21 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.19 }}", y: parseInt("{{ slist.6.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c7 = "{{ slist.6.23 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.22 }}", y: parseInt("{{ slist.6.24 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.22 }}", y: parseInt("{{ slist.6.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c7 = "{{ slist.6.26 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.25 }}", y: parseInt("{{ slist.6.27 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.25 }}", y: parseInt("{{ slist.6.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c7 = "{{ slist.6.29 }}";
+                              if (c7=="True")
+                                dps7.push({ label: "{{ slist.6.28 }}", y: parseInt("{{ slist.6.30 }}"), color: "Green"});
+                              else
+                                dps7.push({ label: "{{ slist.6.28 }}", y: parseInt("{{ slist.6.30 }}"), color: "Red"});
+                              break;
+                  }
+                  y = y+1
+                }
+                chart7.render();
+                break;
+          case 7: var doc8 = document.getElementById("q8chart");
+                  doc8.style.display = 'block';
+                  var dps8 = [];
+                  var chart8 = new CanvasJS.Chart("q8chart", {
+                    title :{
+                      text: "{{ slist.7.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps8
+                    }]
+                  });
+                  var len8 = (parseInt("{{ slist.7|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len8) {
+                    switch (y) {
+                      case 1: var c8 = "{{ slist.7.2 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.1 }}", y: parseInt("{{ slist.7.3 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.1 }}", y: parseInt("{{ slist.7.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c8 = "{{ slist.7.5 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.4 }}", y: parseInt("{{ slist.7.6 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.4 }}", y: parseInt("{{ slist.7.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c8 = "{{ slist.7.8 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.7 }}", y: parseInt("{{ slist.7.9 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.7 }}", y: parseInt("{{ slist.7.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c8 = "{{ slist.7.11 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.10 }}", y: parseInt("{{ slist.7.12 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.10 }}", y: parseInt("{{ slist.7.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c8 = "{{ slist.7.14 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.13 }}", y: parseInt("{{ slist.7.15 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.13 }}", y: parseInt("{{ slist.7.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c8 = "{{ slist.7.17 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.16 }}", y: parseInt("{{ slist.7.18 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.16 }}", y: parseInt("{{ slist.7.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c8 = "{{ slist.7.20 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.19 }}", y: parseInt("{{ slist.7.21 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.19 }}", y: parseInt("{{ slist.7.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c8 = "{{ slist.7.23 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.22 }}", y: parseInt("{{ slist.7.24 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.22 }}", y: parseInt("{{ slist.7.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c8 = "{{ slist.7.26 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.25 }}", y: parseInt("{{ slist.7.27 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.25 }}", y: parseInt("{{ slist.7.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c8 = "{{ slist.7.29 }}";
+                              if (c8=="True")
+                                dps8.push({ label: "{{ slist.7.28 }}", y: parseInt("{{ slist.7.30 }}"), color: "Green"});
+                              else
+                                dps8.push({ label: "{{ slist.7.28 }}", y: parseInt("{{ slist.7.30 }}"), color: "Red"});
+                              break;
+                  }
+                  y = y+1
+                }
+                chart8.render();
+                break;
+          case 8: var doc9 = document.getElementById("q9chart");
+                  doc9.style.display = 'block';
+                  var dps9 = [];
+                  var chart9 = new CanvasJS.Chart("q9chart", {
+                    title :{
+                      text: "{{ slist.8.0 }}"
+                    },
+                    data: [{
+                      type: "column",
+                      dataPoints: dps9
+                    }]
+                  });
+                  var len9 = (parseInt("{{ slist.8|length }}")-1)/3;
+                  y = 1;
+                  while (y<=len9) {
+                    switch (y) {
+                      case 1: var c9 = "{{ slist.8.2 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.1 }}", y: parseInt("{{ slist.8.3 }}"), color: "Green"});
+                              else 
+                                dps9.push({ label: "{{ slist.8.1 }}", y: parseInt("{{ slist.8.3 }}"), color: "Red"});
+                              break;
+                      case 2: var c9 = "{{ slist.8.5 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.4 }}", y: parseInt("{{ slist.8.6 }}"), color: "Green"});
+                              else
+                                dps9.push({ label: "{{ slist.8.4 }}", y: parseInt("{{ slist.8.6 }}"), color: "Red"});
+                              break;
+                      case 3: var c9 = "{{ slist.8.8 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.7 }}", y: parseInt("{{ slist.8.9 }}"), color: "Green"});
+                              else
+                                dps9.push({ label: "{{ slist.8.7 }}", y: parseInt("{{ slist.8.9 }}"), color: "Red"});
+                              break;
+                      case 4: var c9 = "{{ slist.8.11 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.10 }}", y: parseInt("{{ slist.8.12 }}"), color: "Green"});
+                              else
+                                dps9.push({ label: "{{ slist.8.10 }}", y: parseInt("{{ slist.8.12 }}"), color: "Red"});
+                              break;
+                      case 5: var c9 = "{{ slist.8.14 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.13 }}", y: parseInt("{{ slist.8.15 }}"), color: "Green"});
+                              else
+                                dps9.push({ label: "{{ slist.8.13 }}", y: parseInt("{{ slist.8.15 }}"), color: "Red"});
+                              break;
+                      case 6: var c9 = "{{ slist.8.17 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.16 }}", y: parseInt("{{ slist.8.18 }}"), color: "Green"});
+                              else
+                                dps9.push({ label: "{{ slist.8.16 }}", y: parseInt("{{ slist.8.18 }}"), color: "Red"});
+                              break;
+                      case 7: var c9 = "{{ slist.8.20 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.19 }}", y: parseInt("{{ slist.8.21 }}"), color: "Green"});
+                              else
+                                dps9.push({ label: "{{ slist.8.19 }}", y: parseInt("{{ slist.8.21 }}"), color: "Red"});
+                              break;
+                      case 8: var c9 = "{{ slist.8.23 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.22 }}", y: parseInt("{{ slist.8.24 }}"), color: "Green"});
+                              else
+                                dps9.push({ label: "{{ slist.8.22 }}", y: parseInt("{{ slist.8.24 }}"), color: "Red"});
+                              break;
+                      case 9: var c9 = "{{ slist.8.26 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.25 }}", y: parseInt("{{ slist.8.27 }}"), color: "Green"});
+                              else
+                                dps9.push({ label: "{{ slist.8.25 }}", y: parseInt("{{ slist.8.27 }}"), color: "Red"});
+                              break;
+                      case 10:var c9 = "{{ slist.8.29 }}";
+                              if (c9=="True")
+                                dps9.push({ label: "{{ slist.8.28 }}", y: parseInt("{{ slist.8.30 }}"), color: "Green"});
+                              else 
+                                dps9.push({ label: "{{ slist.8.28 }}", y: parseInt("{{ slist.8.30 }}"), color: "Red"});
+                              break;
+                  }
+                  y = y+1
+                }
+                chart9.render();
+                break;
         }
         x = x + 1
-        s = s + "<hr>";
+      }
     }
-    div.innerHTML = s;
   </script>
   {% endif %}
 {% endblock %}

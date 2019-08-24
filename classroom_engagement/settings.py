@@ -84,6 +84,9 @@ DATABASES = {
         'PASSWORD': 'imperial4518!',
         'HOST': 'classroomengagement.mysql.database.azure.com',
         'PORT': '3306',
+        'OPTIONS': {
+            'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}
+        }
     }
 }
 

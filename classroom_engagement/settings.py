@@ -134,8 +134,8 @@ ASGI_APPLICATION = 'classroom_engagement.routing.application'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379), ('51.144.101.50', 6379)],
-        },
+        'PASSWORD': 'bdJU9LJtWkhZrAX1CyUuRm4AdPKnl02z1PIM2vF+UKs=',
+        'HOST': 'classroomengagement.redis.cache.windows.net',
+        'PORT': '6379',
     },
 }

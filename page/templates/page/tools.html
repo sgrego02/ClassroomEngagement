@@ -1263,6 +1263,7 @@
               }));
             }
           }
+          return false;
       };
 
       //{% if role is False %}
@@ -1310,6 +1311,7 @@
             else if (message=='3')
               myChart.data.datasets[0].data[2] += 1;
             myChart.update();
+            return false;
         };
 
         chatSocket.onclose = function(e) {

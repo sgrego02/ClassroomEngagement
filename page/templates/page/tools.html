@@ -1258,7 +1258,7 @@
 
         var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
-        var chatSocket = new WebSocket(ws_scheme+'://' + window.location.hostname + ':6380/ws/page/tools/'+ roomName + '/');
+        var chatSocket = new WebSocket(ws_scheme+'://' + window.location.hostname + ':443/ws/page/tools/'+ roomName + '/');
 
         chatSocket.onmessage = function(e) {
             var data = JSON.parse(e.data);

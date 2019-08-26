@@ -1200,9 +1200,8 @@
       var roomName = "{{ co }}lecture{{ le }}";
 
       var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-      var ws_port = window.location.protocol == "https:" ? "443" : "80";
 
-      var chatSocket = new WebSocket(ws_scheme+'://' + window.location.host + ':' + ws_port + '/ws/page/tools/'+ roomName + '/');
+      var chatSocket = new WebSocket(ws_scheme+'://' + window.location.hostname + '/ws/page/tools/'+ roomName + '/');
 
       chatSocket.onmessage = function(e) {
           var data = JSON.parse(e.data);
@@ -1258,9 +1257,8 @@
         var roomName = "{{ co }}lecture{{ le }}";
 
         var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
-        var ws_port = window.location.protocol == "https:" ? "443" : "80";
 
-        var chatSocket = new WebSocket(ws_scheme+'://' + window.location.host + ':6001/ws/page/tools/'+ roomName + '/');
+        var chatSocket = new WebSocket(ws_scheme+'://' + window.location.hostname + ':80/ws/page/tools/'+ roomName + '/');
 
         chatSocket.onmessage = function(e) {
             var data = JSON.parse(e.data);

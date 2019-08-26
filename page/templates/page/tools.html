@@ -1224,6 +1224,10 @@
           {% endif %}
       };
    
+      chatSocket.onopen = function(e) {
+            alert("Connected");
+        };
+
       chatSocket.onclose = function(e) {
           console.error('Chat socket closed unexpectedly');
       };
@@ -1269,7 +1273,7 @@
         };
 
         chatSocket.onopen = function(e) {
-            console.error('Connected');
+            alert("Connected");
         };
 
         chatSocket.onclose = function(e) {

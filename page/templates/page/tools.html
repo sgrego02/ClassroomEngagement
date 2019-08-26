@@ -1196,7 +1196,6 @@
       {% endif %}
     {% endif %}
     {% if squestions %}
-      var qnumber = 0;
 
       var roomName = "{{ co }}lecture{{ le }}";
 
@@ -1208,32 +1207,9 @@
           var data = JSON.parse(e.data);
           var message = data['message'];
           {% if buttons is False %}
-            if (message=="qnumber") {
-              {% if role %}
-                var message1 = '4' + qnumber;
-                chatSocket.send(JSON.stringify({
-                  'message': message1
-                }));
-              {% endif %}
-            } else if (message[0]=='0') {
-              var id = message.substring(1,message.length);
-              document.querySelector('#'+id).innerHTML = parseInt(document.querySelector('#'+id).innerHTML) + 1;
-            } else if (message[0]=='4') {
-              var qn = message.substring(1,message.length);
-              qnumber = parseInt(qn);
-            } else {
-              qnumber += 1;
-              document.querySelector('#squestions').innerHTML += (message + ' <i class="vote fa fa-thumbs-up"><span id="span'+qnumber+'">0</span></i><br>');
-            }
+            document.querySelector('#squestions').innerHTML += (message + '<br>');
           {% else %}
-            if (message=="qnumber") {
-              {% if role %}
-                var message1 = '4' + qnumber;
-                chatSocket.send(JSON.stringify({
-                  'message': message1
-                }));
-              {% endif %}
-            } else if (message=='1') {
+            if (message=='1') {
               myChart.data.datasets[0].data[0] += 1;
               myChart.update();
             } else if (message=='2') {
@@ -1242,40 +1218,12 @@
             } else if (message=='3') {
               myChart.data.datasets[0].data[2] += 1;
               myChart.update(); 
-            } else if (message[0]=='4') {
-              var qn = message.substring(1,message.length);
-              qnumber = parseInt(qn);
-            } else if (message[0]=='0') {
-              var id = message.substring(1,message.length);
-              document.querySelector('#'+id).innerHTML = parseInt(document.querySelector('#'+id).innerHTML) + 1;
             } else {
-              qnumber += 1;
-              document.querySelector('#squestions').innerHTML += (message + ' <i class="vote fa fa-thumbs-up"><span id="span'+qnumber+'">0</span></i><br>');
+              document.querySelector('#squestions').innerHTML += (message + '<br>');
             }
           {% endif %}
-          var voteItems = document.getElementsByClassName('vote');
-          for (var i=0; i<voteItems.length; i++) {
-            voteItems[i].onclick = function(e) {
-              var message = '0' + this.firstChild.id;
-              this.style.color = 'blue';
-              chatSocket.send(JSON.stringify({
-                'message': message
-              }));
-            }
-          }
       };
-
-      //{% if role is False %}
-      //  var message = "qnumber";
-      //  chatSocket.send(JSON.stringify({
-      //        'message': message
-      //    }));
-      //{% endif %}
-               
-      chatSocket.onopen = function(e) {
-          console.error('Connected');
-      };
-
+   
       chatSocket.onclose = function(e) {
           console.error('Chat socket closed unexpectedly');
       };

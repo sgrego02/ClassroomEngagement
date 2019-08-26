@@ -1263,7 +1263,6 @@
               }));
             }
           }
-          return false;
       };
 
       //{% if role is False %}
@@ -1272,9 +1271,17 @@
       //        'message': message
       //    }));
       //{% endif %}
+               
+      chatSocket.onopen = function(e) {
+          console.error('Connected');
+      };
 
       chatSocket.onclose = function(e) {
           console.error('Chat socket closed unexpectedly');
+      };
+               
+      chatSocket.onerror = function(e) {
+          console.error('ERROR: ' + e.data);
       };
 
       document.querySelector('#txt').focus();
@@ -1311,11 +1318,18 @@
             else if (message=='3')
               myChart.data.datasets[0].data[2] += 1;
             myChart.update();
-            return false;
+        };
+
+        chatSocket.onopen = function(e) {
+            console.error('Connected');
         };
 
         chatSocket.onclose = function(e) {
             console.error('Chat socket closed unexpectedly');
+        };
+               
+        chatSocket.onerror = function(e) {
+            console.error('ERROR: ' + e.data);
         };
       {% endif %}
 

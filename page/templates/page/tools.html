@@ -1201,6 +1201,8 @@
 
       var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 
+      alert(ws_scheme+'://' + window.location.host + '/ws/page/tools/'+ roomName + '/');
+
       var chatSocket = new WebSocket(ws_scheme+'://' + window.location.host + '/ws/page/tools/'+ roomName + '/');
 
       chatSocket.onmessage = function(e) {
@@ -1253,6 +1255,8 @@
         var roomName = "{{ co }}lecture{{ le }}";
 
         var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+
+        alert(ws_scheme+'://' + window.location.host + '/ws/page/tools/'+ roomName + '/');
 
         var chatSocket = new WebSocket(ws_scheme+'://' + window.location.host + '/ws/page/tools/'+ roomName + '/');
 

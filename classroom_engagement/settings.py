@@ -76,6 +76,17 @@ WSGI_APPLICATION = 'classroom_engagement.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# When working locally
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'classroom_engagement',
+#        'USER': 'root',
+#        'PASSWORD': 'root',
+#    }
+#}
+
+# When working on Microsoft Azure
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -128,9 +139,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# mysite/settings.py
-# Channels
 ASGI_APPLICATION = 'classroom_engagement.routing.application'
+
+# Channels
+
+# When working locally
+#CHANNEL_LAYERS = {
+#    'default': {
+#        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#        'CONFIG': {
+#            "hosts": [('127.0.0.1', 6379)],
+#        },
+#    },
+#}
+
+# When working on Microsoft Azure
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',

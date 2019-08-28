@@ -6,12 +6,9 @@
 .source > .col {
 	border: solid;
 }
-.destination {
-	height: 30em;
-}
-.destination > .col {
+.destination > .col-md-4 {
 	border: dashed gray; 	
-
+	height: 30em;
 }
 .draggable {
     filter: alpha(opacity=60);

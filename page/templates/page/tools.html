@@ -89,48 +89,72 @@
   </form>
 
   <div class="container">
-    <div class="row destination">
+    <div class="row">
+      <div class="col-md-4">
         <button onclick="hide(1)" id="hidebtn1" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(1)" id="showbtn1" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col1" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </div>
+      </div>
+      <div class="col-md-4">
         <button onclick="hide(2)" id="hidebtn2" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(2)" id="showbtn2" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col2" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </div>
+      </div>
+      <div class="col-md-4">
         <button onclick="hide(3)" id="hidebtn3" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(3)" id="showbtn3" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col3" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+    </div>
+    <div class="row destination">
+        <div id="col1" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <div id="col2" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <div id="col3" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
         </div>
     </div>
     <!-- /.row -->
-    <div class="row destination">
+    <div class="row">
+      <div class="col-md-4">
         <button onclick="hide(4)" id="hidebtn4" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(4)" id="showbtn4" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col4" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </div>
+      </div>
+      <div class="col-md-4">
         <button onclick="hide(5)" id="hidebtn5" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(5)" id="showbtn5" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col5" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </div>
+      </div>
+      <div class="col-md-4">
         <button onclick="hide(6)" id="hidebtn6" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(6)" id="showbtn6" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col6" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+    </div>
+    <div class="row destination">
+        <div id="col4" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <div id="col5" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <div id="col6" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
         </div>
     </div>
     <!-- /.row -->
-    <div class="row destination">
+    <div class="row">
+      <div class="col-md-4">
         <button onclick="hide(7)" id="hidebtn7" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(7)" id="showbtn7" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col7" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </div>
+      </div>
+      <div class="col-md-4">
         <button onclick="hide(8)" id="hidebtn8" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(8)" id="showbtn8" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col8" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
-        </div>
+      </div>
+      <div class="col-md-4">
         <button onclick="hide(9)" id="hidebtn9" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide</i></button>
         <button onclick="show(9)" id="showbtn9" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show</i></button>
-        <div id="col9" class="col" ondrop="drop(event)" ondragover="allowDrop(event)">
+      </div>
+    </div>
+    <div class="row destination">
+        <div id="col7" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <div id="col8" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <div id="col9" class="col-md-4" ondrop="drop(event)" ondragover="allowDrop(event)">
         </div>
     </div>
     <!-- /.row -->
@@ -167,29 +191,29 @@
   var doc = document.getElementById("formquestions");
   doc.value = v;
   function hideAll() {
-    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&hide=True");
+    location.replace(href="{% url 'tools' %}?course={{ co }}&lecture={{ le }}&hide=True");
   }
   function showAll() {
-    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&show=True");
+    location.replace(href="{% url 'tools' %}?course={{ co }}&lecture={{ le }}&show=True");
   }
   function hide(id) {
-    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&hide"+id+"=True");
+    location.replace(href="{% url 'tools' %}?course={{ co }}&lecture={{ le }}&hide"+id+"=True");
   }
   function show(id) {
-    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&show"+id+"=True");
+    location.replace(href="{% url 'tools' %}?course={{ co }}&lecture={{ le }}&show"+id+"=True");
   }
   function chooseCourse() {
     var selected = document.getElementById("selectCourse");
     var selectedValue = selected.options[selected.selectedIndex].value;
-    location.replace(href="{% url 'tools' %}?username={{ username }}&course="+selectedValue);
+    location.replace(href="{% url 'tools' %}?course="+selectedValue);
   }
   function chooseLecture() {
     var selected = document.getElementById("selectLecture");
     var selectedValue = selected.options[selected.selectedIndex].value;
-    location.replace(href="{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture="+selectedValue);
+    location.replace(href="{% url 'tools' %}?course={{ co }}&lecture="+selectedValue);
   }
   function sendfeedback() {
-    var txt = document.getElementById("txt");
+    var txt = document.getElementById("ftxt");
     var val = document.getElementById("feedbackvalue");
     val.value = txt.value;
     var doc = document.getElementById("feedbackform");
@@ -419,10 +443,10 @@
     var doc = document.getElementsByName("q"+q+"answer");
     for (var i=0; i < doc.length; i++)
       if (doc[i].checked)
-        location.replace("{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&question="+q+"&answer="+doc[i].value);
+        location.replace("{% url 'tools' %}?course={{ co }}&lecture={{ le }}&question="+q+"&answer="+doc[i].value);
   }
   function getResults(q) {
-    location.replace("{% url 'tools' %}?username={{ username }}&course={{ co }}&lecture={{ le }}&question="+q+"&results=true");
+    location.replace("{% url 'tools' %}?course={{ co }}&lecture={{ le }}&question="+q+"&results=true");
   }
   function showResults(div, q) {
     var length = parseInt(q.substring(8,q.length));
@@ -448,19 +472,21 @@
           doc.classList.remove("dragged");
         }
         ev.removeChild(ev.firstChild);
-        var q1 = document.getElementById("question1");
-        var q2 = document.getElementById("question2");
-        var q3 = document.getElementById("question3");
-        var q4 = document.getElementById("question4");
-        var q5 = document.getElementById("question5");
-        var q6 = document.getElementById("question6");
-        var q7 = document.getElementById("question7");
-        var q8 = document.getElementById("question8");
-        var q9 = document.getElementById("question9");
-        if (!q1 && !q2 && !q3 && !q4 && !q5 && !q6 && !q7 && !q8 && !q9) {
-          var doc = document.getElementById("formquestions");
-          doc.value = 0;
-        }
+      }
+      var dform = document.getElementById(ev.id+"value");
+      dform.value = "";
+      var q1 = document.getElementById("question1");
+      var q2 = document.getElementById("question2");
+      var q3 = document.getElementById("question3");
+      var q4 = document.getElementById("question4");
+      var q5 = document.getElementById("question5");
+      var q6 = document.getElementById("question6");
+      var q7 = document.getElementById("question7");
+      var q8 = document.getElementById("question8");
+      var q9 = document.getElementById("question9");
+      if (!q1 && !q2 && !q3 && !q4 && !q5 && !q6 && !q7 && !q8 && !q9) {
+        var doc = document.getElementById("formquestions");
+        doc.value = 0;
       }
     }
     ev.appendChild(cleanbtn);
@@ -508,7 +534,7 @@
         x.setAttribute("name","question"+v);
         x.setAttribute("placeholder","Question "+v);
         x.setAttribute("value","");
-        x.setAttribute("size","30");
+        x.setAttribute("size","21");
         div.appendChild(x);
         var br1 = document.createElement("br");
         div.appendChild(br1);
@@ -578,7 +604,7 @@
       noDrag('questions');
       var div = document.createElement("div");
       div.setAttribute("id","squestions");
-      div.setAttribute("style","border:solid; overflow-x:scroll; overflow-y:scroll; height:50%; width:100%;");
+      div.setAttribute("style","border:solid; overflow-x:scroll; overflow-y:scroll; height:40%; width:100%;");
       ev.appendChild(div);
       var br1 = document.createElement("br");
       ev.appendChild(br1);
@@ -587,8 +613,7 @@
       ev.appendChild(title);
       var txt = document.createElement("textarea");
       txt.setAttribute("id","txt");
-      txt.setAttribute("rows","4");
-      txt.setAttribute("cols","33");
+      txt.setAttribute("style","height:20%;width:100%;");
       ev.appendChild(txt);
       var br2 = document.createElement("br");
       ev.appendChild(br2);
@@ -603,9 +628,8 @@
       title.innerHTML = "Send your feedback:";
       ev.appendChild(title);
       var txt = document.createElement("textarea");
-      txt.setAttribute("id","txt");
-      txt.setAttribute("rows","4");
-      txt.setAttribute("cols","33");
+      txt.setAttribute("id","ftxt");
+      txt.setAttribute("style","height:20%;width:100%;");
       ev.appendChild(txt);
       var br2 = document.createElement("br");
       ev.appendChild(br2);
@@ -642,19 +666,20 @@
       d.appendChild(b3);
     } else if (s=="questions") {
       noDrag('questions');
-      var div = document.createElement("div");
-      div.setAttribute("id","squestions");
-      div.setAttribute("style","border:solid; overflow-x:scroll; overflow-y:scroll; height:50%; width:100%;");
-      d.appendChild(div);
-      var br1 = document.createElement("br");
-      d.appendChild(br1);
+      {% if role %}
+        var div = document.createElement("div");
+        div.setAttribute("id","squestions");
+        div.setAttribute("style","border:solid; overflow-x:scroll; overflow-y:scroll; height:40%; width:100%;");
+        d.appendChild(div);
+        var br1 = document.createElement("br");
+        d.appendChild(br1);
+      {% endif %}
       var title = document.createElement("div");
       title.innerHTML = "Ask a question:";
       d.appendChild(title);
       var txt = document.createElement("textarea");
       txt.setAttribute("id","txt");
-      txt.setAttribute("rows","4");
-      txt.setAttribute("cols","33");
+      txt.setAttribute("style","height:20%;width:100%;");
       d.appendChild(txt);
       var br2 = document.createElement("br");
       d.appendChild(br2);
@@ -669,9 +694,8 @@
       title.innerHTML = "Send your feedback:";
       d.appendChild(title);
       var txt = document.createElement("textarea");
-      txt.setAttribute("id","txt");
-      txt.setAttribute("rows","4");
-      txt.setAttribute("cols","33");
+      txt.setAttribute("id","ftxt");
+      txt.setAttribute("style","height:20%;width:100%;");
       d.appendChild(txt);
       var br2 = document.createElement("br");
       d.appendChild(br2);
@@ -1223,10 +1247,6 @@
             }
           {% endif %}
       };
-   
-      chatSocket.onopen = function(e) {
-            alert("Connected");
-        };
 
       chatSocket.onclose = function(e) {
           console.error('Chat socket closed unexpectedly');
@@ -1250,6 +1270,7 @@
               'message': message
           }));
           messageInputDom.value = '';
+          location.replace(href="{% url 'tools' %}?course={{ co }}&lecture={{ le }}&txt="+message);
       };
     {% endif %}
     {% if buttons %}
@@ -1270,10 +1291,6 @@
             else if (message=='3')
               myChart.data.datasets[0].data[2] += 1;
             myChart.update();
-        };
-
-        chatSocket.onopen = function(e) {
-            alert("Connected");
         };
 
         chatSocket.onclose = function(e) {
@@ -2079,77 +2096,23 @@
   if (s9 == 'buttons' || s9 == 'questions')
     setSlots(doc9,s9);
   if (s1 == 'feedback')
-    {% if role %}
-      setSlots(doc1,s1);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc1,s1);
-      {% endif %}
-    {% endif %}
+    setSlots(doc1,s1);
   if (s2 == 'feedback')
-    {% if role %}
-      setSlots(doc2,s2);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc2,s2);
-      {% endif %}
-    {% endif %}
-  if (s3 == 'feedback')
-    {% if role %}
-      setSlots(doc3,s3);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc3,s3);
-      {% endif %}
-    {% endif %}
+    setSlots(doc2,s2);
+  if (s3 == 'feedback') 
+    setSlots(doc3,s3);
   if (s4 == 'feedback')
-    {% if role %}
-      setSlots(doc4,s4);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc4,s4);
-      {% endif %}
-    {% endif %}
+    setSlots(doc4,s4);
   if (s5 == 'feedback')
-    {% if role %}
-      setSlots(doc5,s5);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc5,s5);
-      {% endif %}
-    {% endif %}
+    setSlots(doc5,s5);
   if (s6 == 'feedback')
-    {% if role %}
-      setSlots(doc6,s6);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc6,s6);
-      {% endif %}
-    {% endif %}
+    setSlots(doc6,s6);
   if (s7 == 'feedback')
-    {% if role %}
-      setSlots(doc7,s7);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc7,s7);
-      {% endif %}
-    {% endif %}
+    setSlots(doc7,s7);
   if (s8 == 'feedback')
-    {% if role %}
-      setSlots(doc8,s8);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc8,s8);
-      {% endif %}
-    {% endif %}
+    setSlots(doc8,s8);
   if (s9 == 'feedback')
-    {% if role %}
-      setSlots(doc9,s9);
-    {% else %}
-      {% if feedback is False %}
-        setSlots(doc9,s9);
-      {% endif %}
-    {% endif %}
+    setSlots(doc9,s9);
   {% if results1 %}
     if (s1 =='question1')
       showResults(doc1,s1);
@@ -2537,9 +2500,45 @@
     var sbtn = document.getElementById('savebtn');
     var dbtn = document.getElementById('deletebtn');
     var hbtn = document.getElementById('hidebtn');
+    var s1 = '{{ slot1 }}';
+    var s2 = '{{ slot2 }}';
+    var s3 = '{{ slot3 }}';
+    var s4 = '{{ slot4 }}';
+    var s5 = '{{ slot5 }}';
+    var s6 = '{{ slot6 }}';
+    var s7 = '{{ slot7 }}';
+    var s8 = '{{ slot8 }}';
+    var s9 = '{{ slot9 }}';
+    var hbtn1 = document.getElementById('hidebtn1');
+    var hbtn2 = document.getElementById('hidebtn2');
+    var hbtn3 = document.getElementById('hidebtn3');
+    var hbtn4 = document.getElementById('hidebtn4');
+    var hbtn5 = document.getElementById('hidebtn5');
+    var hbtn6 = document.getElementById('hidebtn6');
+    var hbtn7 = document.getElementById('hidebtn7');
+    var hbtn8 = document.getElementById('hidebtn8');
+    var hbtn9 = document.getElementById('hidebtn9');
     sbtn.style.display = 'none';
     dbtn.style.display = 'block';
     hbtn.style.display = 'block';
+    if (s1!="")
+      hbtn1.style.display = 'block';
+    if (s2!="")
+      hbtn2.style.display = 'block';
+    if (s3!="")
+      hbtn3.style.display = 'block';
+    if (s4!="")
+      hbtn4.style.display = 'block';
+    if (s5!="")
+      hbtn5.style.display = 'block';
+    if (s6!="")
+      hbtn6.style.display = 'block';
+    if (s7!="")
+      hbtn7.style.display = 'block';
+    if (s8!="")
+      hbtn8.style.display = 'block';
+    if (s9!="")
+      hbtn9.style.display = 'block';
     var doc1 = document.getElementById('q1');
     if (doc1) {
       {% if results1 is False %}
@@ -2726,71 +2725,323 @@
   </script>
   {% endif %}
   {% endif %}
-  {% if h %}
-  <script type="text/javascript">
-    var doc1 = document.getElementById('col1');
-    var doc2 = document.getElementById('col2');
-    var doc3 = document.getElementById('col3');
-    var doc4 = document.getElementById('col4');
-    var doc5 = document.getElementById('col5');
-    var doc6 = document.getElementById('col6');
-    var doc7 = document.getElementById('col7');
-    var doc8 = document.getElementById('col8');
-    var doc9 = document.getElementById('col9');
-    doc1.style.display = 'none';
-    doc2.style.display = 'none';
-    doc3.style.display = 'none';
-    doc4.style.display = 'none';
-    doc5.style.display = 'none';
-    doc6.style.display = 'none';
-    doc7.style.display = 'none';
-    doc8.style.display = 'none';
-    doc9.style.display = 'none';
-  </script>
-    {% if role %}
-  <script type="text/javascript">
-    var hidebtn = document.getElementById("hidebtn");
-    var showbtn = document.getElementById("showbtn");
-    hidebtn.style.display = 'none';
-    showbtn.style.display = 'block';
-  </script>
-    {% endif %}
-  {% else %}
-    {% if s %}
-    {% if role %}
-  <script type="text/javascript">
-    var hidebtn = document.getElementById("hidebtn");
-    var showbtn = document.getElementById("showbtn");
-    hidebtn.style.display = 'block';
-    showbtn.style.display = 'none';
-  </script>
-    {% endif %}
-    {% endif %}
-  {% endif %}
 
   {% if h1 %}
   <script type="text/javascript">
-    var doc1 = document.getElementById('col1');
-    doc1.style.display = 'none';
+    var doc = document.getElementById('col1');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
   </script>
     {% if role %}
   <script type="text/javascript">
-    var hidebtn = document.getElementById("hidebtn1");
-    var showbtn = document.getElementById("showbtn1");
-    hidebtn.style.display = 'none';
-    showbtn.style.display = 'block';
+    var s = "{{ slot1 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn1");
+      var showbtn = document.getElementById("showbtn1");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
   </script>
     {% endif %}
   {% else %}
     {% if s1 %}
       {% if role %}
       <script type="text/javascript">
-        var hidebtn = document.getElementById("hidebtn1");
-        var showbtn = document.getElementById("showbtn1");
-        hidebtn.style.display = 'block';
-        showbtn.style.display = 'none';
+        var s = "{{ slot1 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn1");
+          var showbtn = document.getElementById("showbtn1");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
       </script>
       {% endif %}
+    {% endif %}
+  {% endif %}
+
+  {% if h2 %}
+  <script type="text/javascript">
+    var doc = document.getElementById('col2');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var s = "{{ slot2 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn2");
+      var showbtn = document.getElementById("showbtn2");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s2 %}
+      {% if role %}
+      <script type="text/javascript">
+        var s = "{{ slot2 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn2");
+          var showbtn = document.getElementById("showbtn2");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+    {% if h3 %}
+  <script type="text/javascript">
+    var doc = document.getElementById('col3');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var s = "{{ slot3 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn3");
+      var showbtn = document.getElementById("showbtn3");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s3 %}
+      {% if role %}
+      <script type="text/javascript">
+        var s = "{{ slot3 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn3");
+          var showbtn = document.getElementById("showbtn3");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+    {% if h4 %}
+  <script type="text/javascript">
+    var doc = document.getElementById('col4');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var s = "{{ slot4 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn4");
+      var showbtn = document.getElementById("showbtn4");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s4 %}
+      {% if role %}
+      <script type="text/javascript">
+        var s = "{{ slot4 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn4");
+          var showbtn = document.getElementById("showbtn4");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+    {% if h5 %}
+  <script type="text/javascript">
+    var doc = document.getElementById('col5');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var s = "{{ slot5 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn5");
+      var showbtn = document.getElementById("showbtn5");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s5 %}
+      {% if role %}
+      <script type="text/javascript">
+        var s = "{{ slot5 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn5");
+          var showbtn = document.getElementById("showbtn5");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+    {% if h6 %}
+  <script type="text/javascript">
+    var doc = document.getElementById('col6');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var s = "{{ slot6 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn6");
+      var showbtn = document.getElementById("showbtn6");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s6 %}
+      {% if role %}
+      <script type="text/javascript">
+        var s = "{{ slot6 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn6");
+          var showbtn = document.getElementById("showbtn6");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+    {% if h7 %}
+  <script type="text/javascript">
+    var doc = document.getElementById('col7');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var s = "{{ slot7 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn7");
+      var showbtn = document.getElementById("showbtn7");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s7 %}
+      {% if role %}
+      <script type="text/javascript">
+        var s = "{{ slot7 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn7");
+          var showbtn = document.getElementById("showbtn7");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+    {% if h8 %}
+  <script type="text/javascript">
+    var doc = document.getElementById('col8');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var s = "{{ slot8 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn8");
+      var showbtn = document.getElementById("showbtn8");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s8 %}
+      {% if role %}
+      <script type="text/javascript">
+        var s = "{{ slot8 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn8");
+          var showbtn = document.getElementById("showbtn8");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+    {% if h9 %}
+  <script type="text/javascript">
+    var doc1 = document.getElementById('col9');
+    while (doc.firstChild) 
+      doc.removeChild(doc.firstChild);
+  </script>
+    {% if role %}
+  <script type="text/javascript">
+    var s = "{{ slot9 }}";
+    if (s!="") {
+      var hidebtn = document.getElementById("hidebtn9");
+      var showbtn = document.getElementById("showbtn9");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+    }
+  </script>
+    {% endif %}
+  {% else %}
+    {% if s9 %}
+      {% if role %}
+      <script type="text/javascript">
+        var s = "{{ slot9 }}";
+        if (s!="") {
+          var hidebtn = document.getElementById("hidebtn9");
+          var showbtn = document.getElementById("showbtn9");
+          hidebtn.style.display = 'block';
+          showbtn.style.display = 'none';
+        }
+      </script>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+  {% if hide %}
+    {% if role %}
+      <script type="text/javascript">
+      var hidebtn = document.getElementById("hidebtn");
+      var showbtn = document.getElementById("showbtn");
+      hidebtn.style.display = 'none';
+      showbtn.style.display = 'block';
+      </script>
+    {% endif %}
+  {% endif %}
+
+  {% if show %}
+    {% if role %}
+      <script type="text/javascript">
+      var hidebtn = document.getElementById("hidebtn");
+      var showbtn = document.getElementById("showbtn");
+      hidebtn.style.display = 'block';
+      showbtn.style.display = 'none';
+      </script>
     {% endif %}
   {% endif %}
 
@@ -2818,6 +3069,24 @@
     var showbtn9 = document.getElementById("showbtn9");
     btn.style.display = 'none';
     showbtn.style.display = 'none';
+    btn1.style.display = 'none';
+    showbtn1.style.display = 'none';
+    btn2.style.display = 'none';
+    showbtn2.style.display = 'none';
+    btn3.style.display = 'none';
+    showbtn3.style.display = 'none';
+    btn4.style.display = 'none';
+    showbtn4.style.display = 'none';
+    btn5.style.display = 'none';
+    showbtn5.style.display = 'none';
+    btn6.style.display = 'none';
+    showbtn6.style.display = 'none';
+    btn7.style.display = 'none';
+    showbtn7.style.display = 'none';
+    btn8.style.display = 'none';
+    showbtn8.style.display = 'none';
+    btn9.style.display = 'none';
+    showbtn9.style.display = 'none';
     var doc1 = document.getElementById('col1');
     var doc2 = document.getElementById('col2');
     var doc3 = document.getElementById('col3');

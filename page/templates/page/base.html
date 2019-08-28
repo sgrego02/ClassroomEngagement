@@ -27,27 +27,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
-          </li>
+          </li> -->
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'index' %}?username={{ username }}">Home</a>
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'features' %}?username={{ username }}">Features</a>
+            <a class="nav-link" href="{% url 'features' %}">Features</a>
           </li>
           {% if lresults %}
            <li class="nav-item">
-            <a class="nav-link" href="{% url 'tools' %}?username={{ username }}&results=True">Tools</a>
+            <a class="nav-link" href="{% url 'tools' %}?results=True">Tools</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'tools' %}?username={{ username }}">Tools</a>
+            <a class="nav-link" href="{% url 'tools' %}">Tools</a>
           </li>
           {% endif %}
            <li class="nav-item">
-            <a class="nav-link" href="{% url 'history' %}?username={{ username }}">History</a>
+            <a class="nav-link" href="{% url 'history' %}">History</a>
           </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -59,12 +59,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'features' %}">Features</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="{% url 'page:register' %}">Register</a>
           </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'page:user_login' %}">Login</a>
-            </li>
+            </li>-->
           {% endif %}
         </ul>
       </div>

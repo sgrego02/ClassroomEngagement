@@ -1,6 +1,6 @@
 # page/admin.py
 from django.contrib import admin
-from page.models import Course, Lecturer, Lecture, Interface, Student, Question, Answer, Feedback
+from page.models import Course, Lecturer, Lecture, Interface, Student, Question, Answer, Feedback, StudentsQuestions
 # Register your models here.
 admin.site.register(Course)
 admin.site.register(Lecturer)
@@ -10,3 +10,4 @@ admin.site.register(Student)
 admin.site.register(Question)
 admin.site.register(Answer)
 admin.site.register(Feedback)
+admin.site.register(StudentsQuestions)

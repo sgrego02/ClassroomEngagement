@@ -1,7 +1,7 @@
 # page/views.py
 from django.shortcuts import render
 from page.forms import UserForm
-from page.models import Lecturer, Student, Interface, Course, Lecture, Question, Answer, Feedback
+from page.models import Lecturer, Student, Interface, Course, Lecture, Question, Answer, Feedback, StudentsQuestions
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
@@ -11,20 +11,13 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-    if request.method == 'GET':
-        username = request.GET.get('username')
-        return render(request, 'page/index.html', {'username':username})
-    else:
-        return render(request, 'page/index.html', {})
+    return render(request, 'page/index.html', {})
 
 def features(request):
-    if request.method == 'GET':
-        username = request.GET.get('username')
-        return render(request, 'page/features.html', {'username':username})
-    else:
-        return render(request, 'page/features.html', {})
+    return render(request, 'page/features.html', {})
 
 def history(request):
+    sqlist = []
     slist = []
     cl = []
     co = ""
@@ -32,7 +25,7 @@ def history(request):
     stlist = []
     course_lecture = False
     selectedCourse = False
-    username = request.GET.get('username')
+    username = request.user
     course = request.GET.get('course')
     lecture = request.GET.get('lecture')
     this_user = User.objects.get(username=username)
@@ -71,8 +64,13 @@ def history(request):
             i = Interface.objects.get(course=this_course, lecture=this_lecture)
             if role:
                 f = Feedback.objects.filter(interface=i)
+                sqs = StudentsQuestions.objects.filter(interface=i)
             else:
                 f = Feedback.objects.filter(interface=i, student=this_student)
+                sqs =  StudentsQuestions.objects.filter(interface=i, student=this_student)
+            for sq in sqs:
+                txt = getattr(sq,'question')
+                sqlist.append(txt)
             for fe in f:
                 text = getattr(fe, 'text')
                 flist.append(text)
@@ -99,7 +97,9 @@ def history(request):
                            'co':co,
                            'slist':slist,
                            'flist':flist,
-                           'stlist':stlist})
+                           'stlist':stlist,
+                           'sqlist':sqlist,
+                           'role':role})
 
 def tools(request):
     squestions = False
@@ -182,7 +182,7 @@ def tools(request):
     show7 = request.GET.get('show7')
     show8 = request.GET.get('show8')
     show9 = request.GET.get('show9')
-    username = request.GET.get('username')
+    username = request.user
     course = request.GET.get('course')
     lecture = request.GET.get('lecture')
     this_user = User.objects.get(username=username)
@@ -219,114 +219,192 @@ def tools(request):
             i = Interface.objects.get(course=this_course, lecture=this_lecture)
 
             if (hide):
-                i.hide = True
+                i.hide1 = True
+                i.hide2 = True
+                i.hide3 = True
+                i.hide4 = True
+                i.hide5 = True
+                i.hide6 = True
+                i.hide7 = True
+                i.hide8 = True
+                i.hide9 = True
+                i.show1 = False
+                i.show2 = False
+                i.show3 = False
+                i.show4 = False
+                i.show5 = False
+                i.show6 = False
+                i.show7 = False
+                i.show8 = False
+                i.show9 = False
                 i.save()
+            else: 
+                hide = False
             if (show):
-                i.hide = False
+                i.hide1 = False
+                i.hide2 = False
+                i.hide3 = False
+                i.hide4 = False
+                i.hide5 = False
+                i.hide6 = False
+                i.hide7 = False
+                i.hide8 = False
+                i.hide9 = False
+                i.show1 = True
+                i.show2 = True
+                i.show3 = True
+                i.show4 = True
+                i.show5 = True
+                i.show6 = True
+                i.show7 = True
+                i.show8 = True
+                i.show9 = True
                 i.save()
-                s = True
-            hideValue = getattr(i, 'hide')
-            if (hideValue):
-                h = True
+            else:
+                show = False
 
             if (hide1):
                 i.hide1 = True
+                i.show1 = False
                 i.save()
             if (show1):
                 i.hide1 = False
+                i.show1 = True
                 i.save()
-                s1 = True
             hide1Value = getattr(i, 'hide1')
             if (hide1Value):
                 h1 = True
+            show1Value = getattr(i, 'show1')
+            if (show1Value):
+                s1 = True
 
             if (hide2):
                 i.hide2 = True
+                i.show2 = False
                 i.save()
             if (show2):
                 i.hide2 = False
+                i.show2 = True
                 i.save()
                 s2 = True
             hide2Value = getattr(i, 'hide2')
             if (hide2Value):
                 h2 = True
+            show2Value = getattr(i, 'show2')
+            if (show2Value):
+                s2 = True
 
             if (hide3):
                 i.hide3 = True
+                i.show3 = False
                 i.save()
             if (show3):
                 i.hide3 = False
+                i.show3 = True
                 i.save()
                 s3 = True
             hide3Value = getattr(i, 'hide3')
             if (hide3Value):
                 h3 = True
+            show3Value = getattr(i, 'show3')
+            if (show3Value):
+                s3 = True
 
             if (hide4):
                 i.hide4 = True
+                i.show4 = False
                 i.save()
             if (show4):
                 i.hide4 = False
+                i.show4 = True
                 i.save()
                 s4 = True
             hide4Value = getattr(i, 'hide4')
             if (hide4Value):
                 h4 = True
+            show4Value = getattr(i, 'show4')
+            if (show4Value):
+                s4 = True
 
             if (hide5):
                 i.hide5 = True
+                i.show5 = False
                 i.save()
             if (show5):
                 i.hide5 = False
+                i.show5 = True
                 i.save()
                 s5 = True
             hide5Value = getattr(i, 'hide5')
             if (hide5Value):
                 h5 = True
+            show5Value = getattr(i, 'show5')
+            if (show5Value):
+                s5 = True
 
             if (hide6):
                 i.hide6 = True
+                i.show6 = False
                 i.save()
             if (show6):
                 i.hide6 = False
+                i.show6 = True
                 i.save()
                 s6 = True
             hide6Value = getattr(i, 'hide6')
             if (hide6Value):
                 h6 = True
+            show6Value = getattr(i, 'show6')
+            if (show6Value):
+                s6 = True
 
             if (hide7):
                 i.hide7 = True
+                i.show7 = False
                 i.save()
             if (show7):
                 i.hide7 = False
+                i.show7 = True
                 i.save()
                 s7 = True
             hide7Value = getattr(i, 'hide7')
             if (hide7Value):
                 h7 = True
+            show7Value = getattr(i, 'show7')
+            if (show7Value):
+                s7 = True
 
             if (hide8):
                 i.hide8 = True
+                i.show8 = False
                 i.save()
             if (show8):
                 i.hide8 = False
+                i.show8 = True
                 i.save()
                 s8 = True
             hide8Value = getattr(i, 'hide8')
             if (hide8Value):
                 h8 = True
+            show8Value = getattr(i, 'show8')
+            if (show8Value):
+                s8 = True
 
             if (hide9):
                 i.hide9 = True
+                i.show9 = False
                 i.save()
             if (show9):
                 i.hide9 = False
+                i.show9 = True
                 i.save()
                 s9 = True
             hide9Value = getattr(i, 'hide9')
             if (hide9Value):
                 h9 = True
+            show9Value = getattr(i, 'show9')
+            if (show9Value):
+                s9 = True
 
             qs = Question.objects.filter(interface=i)
             x = 0
@@ -362,9 +440,9 @@ def tools(request):
 
                     interface_already = Interface.objects.filter(lecturer=this_lecturer, course=this_course, lecture=this_lecture)
                     if interface_already.count()>0:
-                        interface = interface_already
+                        interface = Interface.objects.get(lecturer=this_lecturer, course=this_course, lecture=this_lecture)
                     else:
-                        interface = Interface(lecturer=this_lecturer, course=this_course, lecture=this_lecture,slot1=sl1,slot2=sl2,slot3=sl3,slot4=sl4,slot5=sl5,slot6=sl6,slot7=sl7,slot8=sl8,slot9=sl9, hide=False, hide1=False, hide2=False, hide3=False, hide4=False, hide5=False, hide6=False, hide7=False, hide8=False, hide9=False)
+                        interface = Interface(lecturer=this_lecturer, course=this_course, lecture=this_lecture,slot1=sl1,slot2=sl2,slot3=sl3,slot4=sl4,slot5=sl5,slot6=sl6,slot7=sl7,slot8=sl8,slot9=sl9, hide1=False, hide2=False, hide3=False, hide4=False, hide5=False, hide6=False, hide7=False, hide8=False, hide9=False, show1=False, show2=False, show3=False, show4=False, show5=False, show6=False, show7=False, show8=False, show9=False)
                         interface.save()
 
                     questions = int(request.POST.get('formquestions'))
@@ -392,23 +470,26 @@ def tools(request):
                     i.delete()
                     d = True
         else:
-            if request.method == 'GET':
-                i = Interface.objects.filter(course=this_course, lecture=this_lecture)
-                if i.count()>0 :
-                    i = Interface.objects.get(course=this_course, lecture=this_lecture)
-                    question = request.GET.get('question')
-                    answer = request.GET.get('answer')
-                    if (question and answer):
-                        q = Question.objects.get(interface=i,question_number=int(question))
-                        q.submitted.add(this_student)
-                        q.save()
-                        a = Answer.objects.get(question=q,answer_number=int(answer))
-                        st = getattr(a, 'students')
-                        a.students=st+1
-                        a.save()
-            else:
-                if request.method == 'POST':
+            i = Interface.objects.filter(course=this_course, lecture=this_lecture)
+            if i.count()>0 :
+                i = Interface.objects.get(course=this_course, lecture=this_lecture)
+                question = request.GET.get('question')
+                answer = request.GET.get('answer')
+                txt = request.GET.get('txt')
+                if (txt):
+                    studentsquestions = StudentsQuestions(interface=i,student=this_student,question=txt)
+                    studentsquestions.save()
+                if (question and answer):
+                    q = Question.objects.get(interface=i,question_number=int(question))
+                    q.submitted.add(this_student)
+                    q.save()
+                    a = Answer.objects.get(question=q,answer_number=int(answer))
+                    st = getattr(a, 'students')
+                    a.students=st+1
+                    a.save()
+            if request.method == 'POST':
                     feedbackvalue = request.POST.get('feedbackvalue');
+                    print(feedbackvalue)
                     if feedbackvalue:
                         f = Feedback(interface=i,text=feedbackvalue,student=this_student)
                         f.save()
@@ -558,7 +639,9 @@ def tools(request):
                            'results8':results8,
                            'results9':results9,
                            'buttons':buttons,
-                           'squestions':squestions})
+                           'squestions':squestions,
+                           'hide':hide,
+                           'show':show})
 
 @login_required
 def special(request):
@@ -609,6 +692,6 @@ def user_login(request):
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
-            return render(request, 'page/login.html', {'alert':True})
+            return render(request, 'page/index.html', {'alert':True})
     else:
-        return render(request, 'page/login.html', {})
+        return render(request, 'page/index.html', {})

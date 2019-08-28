@@ -35,7 +35,6 @@ class Interface(models.Model):
 	slot7 = models.TextField()
 	slot8 = models.TextField()
 	slot9 = models.TextField()
-	hide = models.BooleanField()
 	hide1 = models.BooleanField()
 	hide2 = models.BooleanField()
 	hide3 = models.BooleanField()
@@ -45,6 +44,15 @@ class Interface(models.Model):
 	hide7 = models.BooleanField()
 	hide8 = models.BooleanField()
 	hide9 = models.BooleanField()
+	show1 = models.BooleanField()
+	show2 = models.BooleanField()
+	show3 = models.BooleanField()
+	show4 = models.BooleanField()
+	show5 = models.BooleanField()
+	show6 = models.BooleanField()
+	show7 = models.BooleanField()
+	show8 = models.BooleanField()
+	show9 = models.BooleanField()
 	def __str__(self):
 		return self.course.code + " " + str(self.lecture.number)
 
@@ -79,3 +87,9 @@ class Answer(models.Model):
 	def __str__(self):
 		return self.question.interface.course.code + " " + str(self.question.interface.lecture.number) + " " + str(self.question.question_number) + " " + str(self.answer_number)
 
+class StudentsQuestions(models.Model):
+	interface = models.ForeignKey(Interface, on_delete=models.CASCADE)
+	student = models.ForeignKey(Student, on_delete=models.CASCADE)
+	question = models.TextField()
+	def __str__(self):
+		return self.interface.course.code + " " + str(self.interface.lecture.number) + " " + str(self.student.username)  + " " + str(self.question)

@@ -17,36 +17,40 @@
 
   <!-- Page Content -->
   <div class="container">
-    <div id="q1chart" style="display:none; height: 300px; width: 100%;"></div>
-    <div id="q2chart" style="display:none; height: 300px; width: 100%;"></div>
-    <div id="q3chart" style="display:none; height: 300px; width: 100%;"></div>
-    <div id="q4chart" style="display:none; height: 300px; width: 100%;"></div>
-    <div id="q5chart" style="display:none; height: 300px; width: 100%;"></div>
-    <div id="q6chart" style="display:none; height: 300px; width: 100%;"></div>
-    <div id="q7chart" style="display:none; height: 300px; width: 100%;"></div>
-    <div id="q8chart" style="display:none; height: 300px; width: 100%;"></div>
-    <div id="q9chart" style="display:none; height: 300px; width: 100%;"></div>
-    <h1>Questions/Answers</h1>
-    <div id="historyquestions">
+    <div align="center" id="historyquestions">
     </div>
-    <h1>Feedback</h1>
-    <div class="row">
-      <div class="col">
-        {% for stl in stlist %}
-        <p>{{ stl }}</p>
+    <div align="center">
+      <div id="q1chart" style="display:none; height: 15em; width: 30em;"></div>
+      <div id="q2chart" style="display:none; height: 15em; width: 30em;"></div>
+      <div id="q3chart" style="display:none; height: 15em; width: 30em;"></div>
+      <div id="q4chart" style="display:none; height: 15em; width: 30em;"></div>
+      <div id="q5chart" style="display:none; height: 15em; width: 30em;"></div>
+      <div id="q6chart" style="display:none; height: 15em; width: 30em;"></div>
+      <div id="q7chart" style="display:none; height: 15em; width: 30em;"></div>
+      <div id="q8chart" style="display:none; height: 15em; width: 30em;"></div>
+      <div id="q9chart" style="display:none; height: 15em; width: 30em;"></div>
+    </div>
+    <br>
+    <div align="center" id="historystudentsquestions">
+    </div>
+    <div align="center">
+      <div id="squestionsbox" style="display:none;padding:10px;border:solid; overflow-x:scroll; overflow-y:scroll; height:15em; width:50em;">
+        {% for sq in sqlist %}
+          <p align="left">{{ sq }}</p>
         {% endfor %}
       </div>
-      <div class="col">
-      {% for fl in flist %}
-        <p>{{ fl }}</p>
+    </div>
+    <br>
+    <div align="center" id="historyfeedback">
+    </div>
+    <div align="center">
+      <div id="feedbackbox" style="display:none;padding:10px;border:solid; overflow-x:scroll; overflow-y:scroll; height:15em; width:50em;">
+        {% for fl in flist %}
+          <p align="left">{{ fl }}</p>
         {% endfor %}
       </div>
-      <div class="col">
-      </div>
-      <div class="col">
-      </div>
     </div>
-
+    <br>
   </div>
   <!-- /.container -->
   {% else %}
@@ -77,12 +81,12 @@
   function chooseCourse() {
     var selected = document.getElementById("selectCourse");
     var selectedValue = selected.options[selected.selectedIndex].value;
-    location.replace(href="{% url 'history' %}?username={{ username }}&course="+selectedValue);
+    location.replace(href="{% url 'history' %}?course="+selectedValue);
   }
   function chooseLecture() {
     var selected = document.getElementById("selectLecture");
     var selectedValue = selected.options[selected.selectedIndex].value;
-    location.replace(href="{% url 'history' %}?username={{ username }}&course={{ co }}&lecture="+selectedValue);
+    location.replace(href="{% url 'history' %}?course={{ co }}&lecture="+selectedValue);
   }
   </script>
 
@@ -90,6 +94,42 @@
   <script type="text/javascript">
     window.onload = function () {
       var len = parseInt("{{ slist|length }}");
+      var len0 = parseInt("{{ stlist|length }}");
+      var len00 = parseInt("{{ sqlist|length }}");
+      if (len>0) {
+        var doc = document.getElementById("historyquestions");
+        doc.innerHTML = "<h1>Questions/Answers</h1>";
+      }
+      {% if role %}
+        if (len0>0) {
+          var doc = document.getElementById("historyfeedback");
+          doc.innerHTML = "<h1>Feedback</h1>";
+          var doc1 = document.getElementById("feedbackbox");
+          doc1.style.display = 'block';
+        }
+      {% else %}
+        if (len0>0) {
+          var doc = document.getElementById("historyfeedback");
+          doc.innerHTML = "<h1>Your Feedback</h1>";
+          var doc1 = document.getElementById("feedbackbox");
+          doc1.style.display = 'block';
+        }
+      {% endif %}
+      {% if role %}
+        if (len00>0) {
+          var doc = document.getElementById("historystudentsquestions");
+          doc.innerHTML = "<h1>Students' Questions</h1>";
+          var doc1 = document.getElementById("squestionsbox");
+          doc1.style.display = 'block';
+        }
+      {% else %}
+        if (len00>0) {
+          var doc = document.getElementById("historystudentsquestions");
+          doc.innerHTML = "<h1>Your Questions</h1>";
+          var doc1 = document.getElementById("squestionsbox");
+          doc1.style.display = 'block';
+        }
+      {% endif %}
       x = 0;
       while (x<len) {
         switch (x) {

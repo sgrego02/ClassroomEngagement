@@ -22,6 +22,7 @@ def history(request):
     cl = []
     co = ""
     cotxt = ""
+    le = 0
     flist = []
     stlist = []
     course_lecture = False

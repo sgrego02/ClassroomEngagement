@@ -79,8 +79,8 @@ def history(request):
             qs = Question.objects.filter(interface=i)
             x = 0
             for q in qs:
-                x = getattr(q,'results')
-                if (x):
+                r = getattr(q,'results')
+                if (r):
                     slist.append([])
                     slist[x].append(q.question)
                     ans = Answer.objects.filter(question=q)

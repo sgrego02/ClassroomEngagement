@@ -478,7 +478,7 @@ def tools(request):
                 txt = request.GET.get('txt')
                 if (txt):
                     studentsquestionscheck = StudentsQuestions.objects.filter(interface=i,student=this_student,question=txt)
-                    if studentsquestionscheck==0:
+                    if studentsquestionscheck.count()==0:
                         studentsquestions = StudentsQuestions(interface=i,student=this_student,question=txt)
                         studentsquestions.save()
                 if (question and answer):

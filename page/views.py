@@ -79,14 +79,16 @@ def history(request):
             qs = Question.objects.filter(interface=i)
             x = 0
             for q in qs:
-                slist.append([])
-                slist[x].append(q.question)
-                ans = Answer.objects.filter(question=q)
-                for a in ans:
-                    slist[x].append(a.answer)
-                    slist[x].append(a.correct)
-                    slist[x].append(a.students)
-                x = x + 1
+                x = gettattr(q,'results')
+                if (x):
+                    slist.append([])
+                    slist[x].append(q.question)
+                    ans = Answer.objects.filter(question=q)
+                    for a in ans:
+                        slist[x].append(a.answer)
+                        slist[x].append(a.correct)
+                        slist[x].append(a.students)
+                    x = x + 1
 
     return render(request,'page/history.html',
                           {'username':username,

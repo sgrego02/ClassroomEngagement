@@ -21,6 +21,7 @@ def history(request):
     slist = []
     cl = []
     co = ""
+    cotxt = ""
     flist = []
     stlist = []
     course_lecture = False
@@ -34,6 +35,7 @@ def history(request):
         this_course = Course.objects.get(code=course)
         selectedCourse = True
         co = course
+        cotxt = getattr(this_course,'name')
     if this_lecturer.count()>0 :
         this_lecturer = Lecturer.objects.get(username=this_user)
         role = True
@@ -97,11 +99,13 @@ def history(request):
                            'courses':courses,
                            'cl':cl,
                            'co':co,
+                           'le':le,
                            'slist':slist,
                            'flist':flist,
                            'stlist':stlist,
                            'sqlist':sqlist,
-                           'role':role})
+                           'role':role,
+                           'cotxt':cotxt})
 
 def tools(request):
     squestions = False
@@ -155,6 +159,7 @@ def tools(request):
     co = ""
     cl = []
     le = 0
+    cotxt = ""
     slot1 = ""
     slot2 = ""
     slot3 = ""
@@ -193,6 +198,7 @@ def tools(request):
         this_course = Course.objects.get(code=course)
         selectedCourse = True
         co = course
+        cotxt = getattr(this_course,'name')
     if this_lecturer.count()>0 :
         this_lecturer = Lecturer.objects.get(username=this_user)
         role = True
@@ -602,6 +608,7 @@ def tools(request):
                            'selectedCourse':selectedCourse,
                            'co':co,
                            'le':le,
+                           'cotxt':cotxt,
                            'h':h,
                            'h1':h1,
                            'h2':h2,

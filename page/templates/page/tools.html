@@ -7,7 +7,7 @@
       <div class="row h-100 align-items-center">
         <div class="col-lg-12">
           <h1 class="display-4 text-white mt-5 mb-2">LECTURER PAGE</h1>
-          <p class="lead mb-5 text-white-50">Create your own lecture's interface with any tools you like. Add items using the drag and drop method and then press Save. When you finish you can either edit or delete your interface and then start again.</p>
+          <p class="lead mb-5 text-white-50">Create your own lecture's interface with any tools you like. Add items using the drag and drop method and then press Save. When you finish you can delete your interface and then start again.</p>
           <form onsubmit="return check()" id="dataform" enctype="multipart/form-data" method="post">
             {% csrf_token %}
             <input hidden type="text" id="col1value" name="Slot1" value="">
@@ -46,6 +46,9 @@
   {% if course_lecture %}
   <!-- Page Content -->
   <div class="container">
+
+    <p> Course: {{ co }} {{ cotxt }}</p>
+    <p> Lecture: {{ le }}</p>
 
     <button onclick="hideAll()" id="hidebtn" class="btn btn-dark" style="display:none;"><i class="fas fa-eye-slash">Hide All</i></button>
     <button onclick="showAll()" id="showbtn" class="btn btn-dark" style="display:none;"><i class="fas fa-eye">Show All</i></button>

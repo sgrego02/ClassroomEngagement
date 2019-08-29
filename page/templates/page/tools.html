@@ -1226,7 +1226,7 @@
 
       var roomName = "{{ co }}lecture{{ le }}";
 
-      var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+      var ws_scheme = window.location.protocol == "https:" ? "ws" : "ws";
 
       var chatSocket = new WebSocket(ws_scheme+'://' + window.location.host + '/ws/page/tools/'+ roomName + '/');
 
@@ -1280,7 +1280,7 @@
       {% if squestions is False %}
         var roomName = "{{ co }}lecture{{ le }}";
 
-        var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+        var ws_scheme = window.location.protocol == "https:" ? "ws" : "ws";
 
         var chatSocket = new WebSocket(ws_scheme+'://' + window.location.host + '/ws/page/tools/'+ roomName + '/');
 

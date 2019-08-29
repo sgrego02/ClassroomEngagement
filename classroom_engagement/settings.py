@@ -167,7 +167,7 @@ CHANNEL_LAYERS = {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'PASSWORD': 'bdJU9LJtWkhZrAX1CyUuRm4AdPKnl02z1PIM2vF+UKs=',
         'HOST': 'classroomengagement.redis.cache.windows.net',
-        'PORT': '6379',
+        'PORT': '6380',
         'OPTIONS': {
             'ssl': {'ssl-ca': '/etc/pki/tls/certs/ca-bundle.crt'}
         }

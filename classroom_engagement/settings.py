@@ -76,7 +76,15 @@ WSGI_APPLICATION = 'classroom_engagement.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# When working locally
+# When working locally SQLite3
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
+# When working locally MySQL
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.mysql',

@@ -1,48 +1,1344 @@
 [
 {
     "model": "page.course",
-    "pk": "C304",
+    "pk": "304",
     "fields": {
-        "name": "dkvnlvnef"
+        "name": "Logic-Based Learning"
     }
 },
 {
     "model": "page.course",
-    "pk": "C460",
+    "pk": "316",
     "fields": {
-        "name": "delfkwjf"
+        "name": "Computer Vision"
+    }
+},
+{
+    "model": "page.course",
+    "pk": "412H",
+    "fields": {
+        "name": "Large Scale Data Management"
+    }
+},
+{
+    "model": "page.course",
+    "pk": "416",
+    "fields": {
+        "name": "Machine Learning for Imaging"
+    }
+},
+{
+    "model": "page.course",
+    "pk": "460",
+    "fields": {
+        "name": "Deep Learning"
+    }
+},
+{
+    "model": "page.course",
+    "pk": "466H",
+    "fields": {
+        "name": "Inductive Programming"
+    }
+},
+{
+    "model": "page.course",
+    "pk": "469",
+    "fields": {
+        "name": "Probabilistic Model Checking and Analysis"
+    }
+},
+{
+    "model": "page.course",
+    "pk": "490H",
+    "fields": {
+        "name": "Natural Language Processing"
+    }
+},
+{
+    "model": "page.course",
+    "pk": "496",
+    "fields": {
+        "name": "Mathematics for Machine Learning"
+    }
+},
+{
+    "model": "page.course",
+    "pk": "498H",
+    "fields": {
+        "name": "Logics for Strategic Reasoning in AI"
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 105,
+    "fields": {
+        "number": 1,
+        "course": "304",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 106,
+    "fields": {
+        "number": 2,
+        "course": "304",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 107,
+    "fields": {
+        "number": 3,
+        "course": "304",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 108,
+    "fields": {
+        "number": 4,
+        "course": "304",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 109,
+    "fields": {
+        "number": 5,
+        "course": "304",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 110,
+    "fields": {
+        "number": 6,
+        "course": "304",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 111,
+    "fields": {
+        "number": 7,
+        "course": "304",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 112,
+    "fields": {
+        "number": 8,
+        "course": "304",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 113,
+    "fields": {
+        "number": 9,
+        "course": "304",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 114,
+    "fields": {
+        "number": 10,
+        "course": "304",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 115,
+    "fields": {
+        "number": 1,
+        "course": "316",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 116,
+    "fields": {
+        "number": 2,
+        "course": "316",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 117,
+    "fields": {
+        "number": 3,
+        "course": "316",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 118,
+    "fields": {
+        "number": 4,
+        "course": "316",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 119,
+    "fields": {
+        "number": 5,
+        "course": "316",
+        "lecturer": 254
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 120,
+    "fields": {
+        "number": 6,
+        "course": "316",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 121,
+    "fields": {
+        "number": 7,
+        "course": "316",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 122,
+    "fields": {
+        "number": 8,
+        "course": "316",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 123,
+    "fields": {
+        "number": 9,
+        "course": "316",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 124,
+    "fields": {
+        "number": 10,
+        "course": "316",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 125,
+    "fields": {
+        "number": 1,
+        "course": "412H",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 126,
+    "fields": {
+        "number": 2,
+        "course": "412H",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 127,
+    "fields": {
+        "number": 3,
+        "course": "412H",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 128,
+    "fields": {
+        "number": 4,
+        "course": "412H",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 129,
+    "fields": {
+        "number": 5,
+        "course": "412H",
+        "lecturer": 255
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 130,
+    "fields": {
+        "number": 6,
+        "course": "412H",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 131,
+    "fields": {
+        "number": 7,
+        "course": "412H",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 132,
+    "fields": {
+        "number": 8,
+        "course": "412H",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 133,
+    "fields": {
+        "number": 9,
+        "course": "412H",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 134,
+    "fields": {
+        "number": 10,
+        "course": "412H",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 135,
+    "fields": {
+        "number": 1,
+        "course": "416",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 136,
+    "fields": {
+        "number": 2,
+        "course": "416",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 137,
+    "fields": {
+        "number": 3,
+        "course": "416",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 138,
+    "fields": {
+        "number": 4,
+        "course": "416",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 139,
+    "fields": {
+        "number": 5,
+        "course": "416",
+        "lecturer": 256
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 140,
+    "fields": {
+        "number": 6,
+        "course": "416",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 141,
+    "fields": {
+        "number": 7,
+        "course": "416",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 142,
+    "fields": {
+        "number": 8,
+        "course": "416",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 143,
+    "fields": {
+        "number": 9,
+        "course": "416",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 144,
+    "fields": {
+        "number": 10,
+        "course": "416",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 145,
+    "fields": {
+        "number": 1,
+        "course": "460",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 146,
+    "fields": {
+        "number": 2,
+        "course": "460",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 147,
+    "fields": {
+        "number": 3,
+        "course": "460",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 148,
+    "fields": {
+        "number": 4,
+        "course": "460",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 149,
+    "fields": {
+        "number": 5,
+        "course": "460",
+        "lecturer": 257
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 150,
+    "fields": {
+        "number": 6,
+        "course": "460",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 151,
+    "fields": {
+        "number": 7,
+        "course": "460",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 152,
+    "fields": {
+        "number": 8,
+        "course": "460",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 153,
+    "fields": {
+        "number": 9,
+        "course": "460",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 154,
+    "fields": {
+        "number": 10,
+        "course": "460",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 155,
+    "fields": {
+        "number": 1,
+        "course": "466H",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 156,
+    "fields": {
+        "number": 2,
+        "course": "466H",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 157,
+    "fields": {
+        "number": 3,
+        "course": "466H",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 158,
+    "fields": {
+        "number": 4,
+        "course": "466H",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 159,
+    "fields": {
+        "number": 5,
+        "course": "466H",
+        "lecturer": 258
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 160,
+    "fields": {
+        "number": 6,
+        "course": "466H",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 161,
+    "fields": {
+        "number": 7,
+        "course": "466H",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 162,
+    "fields": {
+        "number": 8,
+        "course": "466H",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 163,
+    "fields": {
+        "number": 9,
+        "course": "466H",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 164,
+    "fields": {
+        "number": 10,
+        "course": "466H",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 165,
+    "fields": {
+        "number": 1,
+        "course": "469",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 166,
+    "fields": {
+        "number": 2,
+        "course": "469",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 167,
+    "fields": {
+        "number": 3,
+        "course": "469",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 168,
+    "fields": {
+        "number": 4,
+        "course": "469",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 169,
+    "fields": {
+        "number": 5,
+        "course": "469",
+        "lecturer": 259
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 170,
+    "fields": {
+        "number": 6,
+        "course": "469",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 171,
+    "fields": {
+        "number": 7,
+        "course": "469",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 172,
+    "fields": {
+        "number": 8,
+        "course": "469",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 173,
+    "fields": {
+        "number": 9,
+        "course": "469",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 174,
+    "fields": {
+        "number": 10,
+        "course": "469",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 175,
+    "fields": {
+        "number": 1,
+        "course": "490H",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 176,
+    "fields": {
+        "number": 2,
+        "course": "490H",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 177,
+    "fields": {
+        "number": 3,
+        "course": "490H",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 178,
+    "fields": {
+        "number": 4,
+        "course": "490H",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 179,
+    "fields": {
+        "number": 5,
+        "course": "490H",
+        "lecturer": 260
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 180,
+    "fields": {
+        "number": 6,
+        "course": "490H",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 181,
+    "fields": {
+        "number": 7,
+        "course": "490H",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 182,
+    "fields": {
+        "number": 8,
+        "course": "490H",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 183,
+    "fields": {
+        "number": 9,
+        "course": "490H",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 184,
+    "fields": {
+        "number": 10,
+        "course": "490H",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 185,
+    "fields": {
+        "number": 1,
+        "course": "496",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 186,
+    "fields": {
+        "number": 2,
+        "course": "496",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 187,
+    "fields": {
+        "number": 3,
+        "course": "496",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 188,
+    "fields": {
+        "number": 4,
+        "course": "496",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 189,
+    "fields": {
+        "number": 5,
+        "course": "496",
+        "lecturer": 261
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 190,
+    "fields": {
+        "number": 6,
+        "course": "496",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 191,
+    "fields": {
+        "number": 7,
+        "course": "496",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 192,
+    "fields": {
+        "number": 8,
+        "course": "496",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 193,
+    "fields": {
+        "number": 9,
+        "course": "496",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 194,
+    "fields": {
+        "number": 10,
+        "course": "496",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 195,
+    "fields": {
+        "number": 1,
+        "course": "498H",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 196,
+    "fields": {
+        "number": 2,
+        "course": "498H",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 197,
+    "fields": {
+        "number": 3,
+        "course": "498H",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 198,
+    "fields": {
+        "number": 4,
+        "course": "498H",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 199,
+    "fields": {
+        "number": 5,
+        "course": "498H",
+        "lecturer": 262
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 200,
+    "fields": {
+        "number": 6,
+        "course": "498H",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 201,
+    "fields": {
+        "number": 7,
+        "course": "498H",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 202,
+    "fields": {
+        "number": 8,
+        "course": "498H",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 203,
+    "fields": {
+        "number": 9,
+        "course": "498H",
+        "lecturer": 263
+    }
+},
+{
+    "model": "page.lecture",
+    "pk": 204,
+    "fields": {
+        "number": 10,
+        "course": "498H",
+        "lecturer": 263
     }
 },
 {
     "model": "auth.user",
     "fields": {
-        "password": "pbkdf2_sha256$150000$LtHQonLcJ3lB$AjXmh2qgwm+ffeSC4JnyXth2wcK7xbsg05tNOGtwqmA=",
-        "last_login": "2019-08-23T15:25:51.932Z",
+        "password": "pbkdf2_sha256$150000$iiB2GsFTbKCa$3U09+y3XhpJlGM7aoriO1iKD2EABluzw5ESQMU/zyYM=",
+        "last_login": "2019-08-29T09:42:35.195Z",
         "is_superuser": true,
         "username": "sg4518",
         "first_name": "",
         "last_name": "",
-        "email": "sotia.greg@gmail.com",
+        "email": "sg4518@imperial.ac.uk",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2019-08-12T11:06:04.981Z",
+        "date_joined": "2019-08-29T09:01:01.245Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$t5acR6fCchUs$uq2r3QjFnd7SUnh2C15tlvV0Uf//ZRXYbhD7VKS/SQQ=",
+        "last_login": "2019-08-29T09:42:13.537Z",
+        "is_superuser": false,
+        "username": "lecturer1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:06:23.735Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$OvAjRPBMtKYh$kwRlOGm6ZC4JpEP4zz+u1aJ804wOVxas7IZzg3cVjfQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer2",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:06:49.821Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$xSSzGHszuhVx$aYnAmEqHXOJH9U8wKzc1ta2wnxjgvV+hJgmjejCUXDw=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer3",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:07:11.205Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$wBuh5YrYp5ER$c+jbzunpCmMeD0MvF7t2JjRRfQ10tBNaCSmAXe+dcPY=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer4",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:07:36.223Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$Ci1ymvkAlhKz$0KGiM3m3zxus/8qdqiJtAdJANYMOOOfYUt/5ik2Ve2Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer5",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:07:52.349Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$DPOcWhitMiRZ$7sSPUlbZAWQTDJ/sbQ5x5KXVn+CJCyusu8J7tcG8Zks=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer6",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:08:07.319Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$MPbYnlC6nzBm$0VjsYHTiIIk/yV6IlCe2WlpVu+mUl6uZLOqQ6x/eyW0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer7",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:08:24.041Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$xd8N1c8nBhB3$+X+4u2M34r2SGvm6M9mEYnsCFG8UDmp8VL8PJYI0JdM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer8",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:08:39.391Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$60D9ed4EaDYI$eK/AoGrau7fCv25sbslmZ2BzvrVLUIq8O7F06HQ3D4Y=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer9",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:08:53.597Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$jaO6QA8DrbxQ$HPQEJV6Uu2fOqobqH4Uimsb0POFjK+WfrYEVhVQmzqI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "lecturer0",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:10:17.977Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$7ZOP3MlRLGzK$tCUrBNR1ctaRc2U8DDVXVlqsXtzPz9+33TVh6NCe7+Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:13:44.262Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$p6a4lkSaN889$JWzJ2y0BJl+MgIIjcv99giPGWVOGLT8x2Ju6VbAoKf4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student2",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:14:00.040Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$z9KH0kS8atjx$T5qkt+Ba3KMejejBKwY8jRVuqOEX1L1yqmnJ+l7Xrww=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student3",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:14:16.891Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$1vGnRxPAxGDI$zTSBtQjBhg8voWpiKccVqpw8dZu/9P2ToOn2g8tNtcc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student4",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:14:36.970Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$jvj76l5xkPlp$Z6IUzcFtTFbfZxNtX73eC02JtAvw+S4CKMMVn8y5CbI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student5",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:14:57.246Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$NOyyLN4iXN5T$qrV/zM88qnJ3gHdk5K39ky/R/EwYU7CbWT09J2SoLBs=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student6",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:15:10.575Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$AYnYwIZT0kEp$NDs7WWpo5v4ZoV86Fnhodcm0geUQkctnPu1xD4FB68Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student7",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:15:26.595Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$w9dksjUz8cLZ$ZrGf9BiVJnOYBxXrhXxiuIs3pNr/9l4HpNlfT4C5ijk=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student8",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:15:41.078Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$LGmnDa80qVRO$gxOIxTktDpzs6OSBLP9t/qKXYBAU16omy5YlTPmWL4g=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student9",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:16:08.115Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$150000$PVytHl8w41a5$+s/govsJfPg5xIBpM5TqkbwYJZ1/r9/kJslOK/mkuwc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student0",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2019-08-29T09:16:25.439Z",
         "groups": [],
         "user_permissions": []
     }
 },
 {
     "model": "sessions.session",
-    "pk": "fp54m013y3o5ud6u40757wnv7e7i2jzl",
+    "pk": "v0mjzf29xca9h7tubixdopbfaa5q3ej0",
     "fields": {
-        "session_data": "ZmJmMTdkNGY3Mjk4YWYwMzk0MGJiMjg4NjIzYzVmYWNjMDI3NjhmMTp7Il9hdXRoX3VzZXJfaWQiOiI1IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJjYWZmZjZiNWU5ZDM3NDg0YmMwMTEyZDdjZTY1ZmFiMGEyN2YyYjVmIn0=",
-        "expire_date": "2019-09-06T07:26:35.983Z"
+        "session_data": "MDc2MTdhYjNmMmFmMDNjYWMyY2U1ZjNhMzM1NzdiOTBmNDZiY2E3Mzp7Il9hdXRoX3VzZXJfaWQiOiIyNTMiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6ImM5NTkxNmVhM2VmMTBkNWZmZGY3MzRlMmYxZTQzNjE1ODI1MGMwODEifQ==",
+        "expire_date": "2019-09-12T09:01:35.083Z"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 1,
+    "pk": 179,
     "fields": {
-        "action_time": "2019-08-17T10:33:48.400Z",
+        "action_time": "2019-08-29T09:02:32.638Z",
         "user": [
             "sg4518"
         ],
@@ -50,17 +1346,17 @@
             "page",
             "course"
         ],
-        "object_id": "C304",
-        "object_repr": "C304",
+        "object_id": "304",
+        "object_repr": "304",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 2,
+    "pk": 180,
     "fields": {
-        "action_time": "2019-08-17T10:33:54.122Z",
+        "action_time": "2019-08-29T09:02:55.659Z",
         "user": [
             "sg4518"
         ],
@@ -68,35 +1364,593 @@
             "page",
             "course"
         ],
-        "object_id": "C460",
-        "object_repr": "C460",
+        "object_id": "316",
+        "object_repr": "316",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 3,
+    "pk": 181,
     "fields": {
-        "action_time": "2019-08-17T10:34:05.178Z",
+        "action_time": "2019-08-29T09:03:12.732Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "student"
+            "course"
         ],
-        "object_id": "4",
-        "object_repr": "st123",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"courses\"]}}]"
+        "object_id": "412H",
+        "object_repr": "412H",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 4,
+    "pk": 182,
     "fields": {
-        "action_time": "2019-08-17T10:34:12.776Z",
+        "action_time": "2019-08-29T09:03:29.052Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "course"
+        ],
+        "object_id": "416",
+        "object_repr": "416",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 183,
+    "fields": {
+        "action_time": "2019-08-29T09:03:40.847Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "course"
+        ],
+        "object_id": "460",
+        "object_repr": "460",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 184,
+    "fields": {
+        "action_time": "2019-08-29T09:03:56.033Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "course"
+        ],
+        "object_id": "466H",
+        "object_repr": "466H",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 185,
+    "fields": {
+        "action_time": "2019-08-29T09:04:06.141Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "course"
+        ],
+        "object_id": "469",
+        "object_repr": "469",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 186,
+    "fields": {
+        "action_time": "2019-08-29T09:04:17.104Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "course"
+        ],
+        "object_id": "490H",
+        "object_repr": "490H",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 187,
+    "fields": {
+        "action_time": "2019-08-29T09:04:25.923Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "course"
+        ],
+        "object_id": "496",
+        "object_repr": "496",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 188,
+    "fields": {
+        "action_time": "2019-08-29T09:04:36.840Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "course"
+        ],
+        "object_id": "498H",
+        "object_repr": "498H",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 189,
+    "fields": {
+        "action_time": "2019-08-29T09:06:23.980Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "254",
+        "object_repr": "lecturer1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 190,
+    "fields": {
+        "action_time": "2019-08-29T09:06:50.099Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "255",
+        "object_repr": "lecturer2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 191,
+    "fields": {
+        "action_time": "2019-08-29T09:07:11.500Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "256",
+        "object_repr": "lecturer3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 192,
+    "fields": {
+        "action_time": "2019-08-29T09:07:36.464Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "257",
+        "object_repr": "lecturer4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 193,
+    "fields": {
+        "action_time": "2019-08-29T09:07:52.594Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "258",
+        "object_repr": "lecturer5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 194,
+    "fields": {
+        "action_time": "2019-08-29T09:08:07.564Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "259",
+        "object_repr": "lecturer6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 195,
+    "fields": {
+        "action_time": "2019-08-29T09:08:24.284Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "260",
+        "object_repr": "lecturer7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 196,
+    "fields": {
+        "action_time": "2019-08-29T09:08:39.635Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "261",
+        "object_repr": "lecturer8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 197,
+    "fields": {
+        "action_time": "2019-08-29T09:08:53.839Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "262",
+        "object_repr": "lecturer9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 198,
+    "fields": {
+        "action_time": "2019-08-29T09:10:18.217Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "263",
+        "object_repr": "lecturer0",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 199,
+    "fields": {
+        "action_time": "2019-08-29T09:12:16.396Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "264",
+        "object_repr": "student1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 200,
+    "fields": {
+        "action_time": "2019-08-29T09:12:35.340Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "265",
+        "object_repr": "student2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 201,
+    "fields": {
+        "action_time": "2019-08-29T09:13:15.505Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "264",
+        "object_repr": "student1",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 202,
+    "fields": {
+        "action_time": "2019-08-29T09:13:15.591Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "265",
+        "object_repr": "student2",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 203,
+    "fields": {
+        "action_time": "2019-08-29T09:13:44.499Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "266",
+        "object_repr": "student1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 204,
+    "fields": {
+        "action_time": "2019-08-29T09:14:00.283Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "267",
+        "object_repr": "student2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 205,
+    "fields": {
+        "action_time": "2019-08-29T09:14:17.132Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "268",
+        "object_repr": "student3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 206,
+    "fields": {
+        "action_time": "2019-08-29T09:14:37.216Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "269",
+        "object_repr": "student4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 207,
+    "fields": {
+        "action_time": "2019-08-29T09:14:57.488Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "270",
+        "object_repr": "student5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 208,
+    "fields": {
+        "action_time": "2019-08-29T09:15:10.815Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "271",
+        "object_repr": "student6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 209,
+    "fields": {
+        "action_time": "2019-08-29T09:15:26.840Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "272",
+        "object_repr": "student7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 210,
+    "fields": {
+        "action_time": "2019-08-29T09:15:41.315Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "273",
+        "object_repr": "student8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 211,
+    "fields": {
+        "action_time": "2019-08-29T09:16:08.352Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "274",
+        "object_repr": "student9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 212,
+    "fields": {
+        "action_time": "2019-08-29T09:16:25.678Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "275",
+        "object_repr": "student0",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 213,
+    "fields": {
+        "action_time": "2019-08-29T09:16:47.248Z",
         "user": [
             "sg4518"
         ],
@@ -104,35 +1958,17 @@
             "page",
             "lecturer"
         ],
-        "object_id": "3",
-        "object_repr": "lr123",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"courses\"]}}]"
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 5,
-    "fields": {
-        "action_time": "2019-08-17T10:34:48.937Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "page",
-            "lecture"
-        ],
-        "object_id": "1",
-        "object_repr": "C304 1",
+        "object_id": "254",
+        "object_repr": "lecturer1",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 6,
+    "pk": 214,
     "fields": {
-        "action_time": "2019-08-17T10:36:01.251Z",
+        "action_time": "2019-08-29T09:16:55.540Z",
         "user": [
             "sg4518"
         ],
@@ -140,17 +1976,341 @@
             "page",
             "lecturer"
         ],
-        "object_id": "5",
-        "object_repr": "lr456",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"courses\"]}}]"
+        "object_id": "255",
+        "object_repr": "lecturer2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 7,
+    "pk": 215,
     "fields": {
-        "action_time": "2019-08-17T10:36:14.324Z",
+        "action_time": "2019-08-29T09:17:06.388Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecturer"
+        ],
+        "object_id": "256",
+        "object_repr": "lecturer3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 216,
+    "fields": {
+        "action_time": "2019-08-29T09:17:21.663Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecturer"
+        ],
+        "object_id": "257",
+        "object_repr": "lecturer4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 217,
+    "fields": {
+        "action_time": "2019-08-29T09:17:33.421Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecturer"
+        ],
+        "object_id": "258",
+        "object_repr": "lecturer5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 218,
+    "fields": {
+        "action_time": "2019-08-29T09:17:44.332Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecturer"
+        ],
+        "object_id": "259",
+        "object_repr": "lecturer6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 219,
+    "fields": {
+        "action_time": "2019-08-29T09:17:56.384Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecturer"
+        ],
+        "object_id": "260",
+        "object_repr": "lecturer7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 220,
+    "fields": {
+        "action_time": "2019-08-29T09:18:06.656Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecturer"
+        ],
+        "object_id": "261",
+        "object_repr": "lecturer8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 221,
+    "fields": {
+        "action_time": "2019-08-29T09:18:18.007Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecturer"
+        ],
+        "object_id": "262",
+        "object_repr": "lecturer9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 222,
+    "fields": {
+        "action_time": "2019-08-29T09:18:27.111Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecturer"
+        ],
+        "object_id": "263",
+        "object_repr": "lecturer0",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 223,
+    "fields": {
+        "action_time": "2019-08-29T09:18:49.686Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "266",
+        "object_repr": "student1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 224,
+    "fields": {
+        "action_time": "2019-08-29T09:18:59.425Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "267",
+        "object_repr": "student2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 225,
+    "fields": {
+        "action_time": "2019-08-29T09:19:09.895Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "268",
+        "object_repr": "student3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 226,
+    "fields": {
+        "action_time": "2019-08-29T09:19:20.612Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "269",
+        "object_repr": "student4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 227,
+    "fields": {
+        "action_time": "2019-08-29T09:19:31.110Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "270",
+        "object_repr": "student5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 228,
+    "fields": {
+        "action_time": "2019-08-29T09:19:41.902Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "271",
+        "object_repr": "student6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 229,
+    "fields": {
+        "action_time": "2019-08-29T09:19:53.484Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "272",
+        "object_repr": "student7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 230,
+    "fields": {
+        "action_time": "2019-08-29T09:20:09.980Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "273",
+        "object_repr": "student8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 231,
+    "fields": {
+        "action_time": "2019-08-29T09:20:30.212Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "274",
+        "object_repr": "student9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 232,
+    "fields": {
+        "action_time": "2019-08-29T09:20:46.535Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "student"
+        ],
+        "object_id": "275",
+        "object_repr": "student0",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 233,
+    "fields": {
+        "action_time": "2019-08-29T09:21:33.372Z",
         "user": [
             "sg4518"
         ],
@@ -158,658 +2318,2063 @@
             "page",
             "lecture"
         ],
-        "object_id": "2",
-        "object_repr": "C304 2",
+        "object_id": "104",
+        "object_repr": "304 1",
         "action_flag": 1,
         "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 8,
+    "pk": 234,
     "fields": {
-        "action_time": "2019-08-17T11:12:01.641Z",
+        "action_time": "2019-08-29T09:21:33.458Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "interface"
+            "lecture"
         ],
-        "object_id": "6",
-        "object_repr": "C304 1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "105",
+        "object_repr": "304 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 9,
+    "pk": 235,
     "fields": {
-        "action_time": "2019-08-17T11:48:44.790Z",
+        "action_time": "2019-08-29T09:21:41.970Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "interface"
+            "lecture"
         ],
-        "object_id": "22",
-        "object_repr": "C304 1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "106",
+        "object_repr": "304 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 10,
+    "pk": 236,
     "fields": {
-        "action_time": "2019-08-17T11:48:44.792Z",
+        "action_time": "2019-08-29T09:21:50.525Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "interface"
+            "lecture"
         ],
-        "object_id": "21",
-        "object_repr": "C304 1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "107",
+        "object_repr": "304 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 11,
+    "pk": 237,
     "fields": {
-        "action_time": "2019-08-17T12:48:59.560Z",
+        "action_time": "2019-08-29T09:21:59.554Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "feedback"
+            "lecture"
         ],
-        "object_id": "1",
-        "object_repr": "C304 1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "108",
+        "object_repr": "304 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 12,
+    "pk": 238,
     "fields": {
-        "action_time": "2019-08-17T15:44:09.689Z",
+        "action_time": "2019-08-29T09:22:07.424Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "feedback"
+            "lecture"
         ],
-        "object_id": "6",
-        "object_repr": "C304 1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "109",
+        "object_repr": "304 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 13,
+    "pk": 239,
     "fields": {
-        "action_time": "2019-08-17T15:44:09.690Z",
+        "action_time": "2019-08-29T09:22:17.967Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "feedback"
+            "lecture"
         ],
-        "object_id": "5",
-        "object_repr": "C304 1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "110",
+        "object_repr": "304 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 14,
+    "pk": 240,
     "fields": {
-        "action_time": "2019-08-17T15:46:24.126Z",
+        "action_time": "2019-08-29T09:22:27.102Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "feedback"
+            "lecture"
         ],
-        "object_id": "7",
-        "object_repr": "C304 1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "111",
+        "object_repr": "304 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 15,
+    "pk": 241,
     "fields": {
-        "action_time": "2019-08-17T15:47:35.201Z",
+        "action_time": "2019-08-29T09:22:35.911Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "feedback"
+            "lecture"
         ],
-        "object_id": "8",
-        "object_repr": "C304 1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "112",
+        "object_repr": "304 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 16,
+    "pk": 242,
     "fields": {
-        "action_time": "2019-08-21T06:56:27.014Z",
+        "action_time": "2019-08-29T09:22:46.248Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "student"
+            "lecture"
         ],
-        "object_id": "6",
-        "object_repr": "st456",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"courses\"]}}]"
+        "object_id": "113",
+        "object_repr": "304 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 17,
+    "pk": 243,
     "fields": {
-        "action_time": "2019-08-21T12:26:44.203Z",
+        "action_time": "2019-08-29T09:22:56.423Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "student"
+            "lecture"
         ],
-        "object_id": "7",
-        "object_repr": "s1",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"courses\"]}}]"
+        "object_id": "114",
+        "object_repr": "304 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 18,
+    "pk": 244,
     "fields": {
-        "action_time": "2019-08-21T14:41:16.889Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "auth",
-            "user"
-        ],
-        "object_id": "4",
-        "object_repr": "st123",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 19,
-    "fields": {
-        "action_time": "2019-08-21T14:41:16.891Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "auth",
-            "user"
-        ],
-        "object_id": "6",
-        "object_repr": "st456",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 20,
-    "fields": {
-        "action_time": "2019-08-21T14:41:23.683Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "auth",
-            "user"
-        ],
-        "object_id": "2",
-        "object_repr": "sotia",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 21,
-    "fields": {
-        "action_time": "2019-08-21T14:42:51.617Z",
+        "action_time": "2019-08-29T09:23:13.746Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "student"
+            "lecture"
         ],
-        "object_id": "8",
-        "object_repr": "s2",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"courses\"]}}]"
+        "object_id": "115",
+        "object_repr": "316 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 22,
+    "pk": 245,
     "fields": {
-        "action_time": "2019-08-21T14:42:54.633Z",
+        "action_time": "2019-08-29T09:23:24.393Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "student"
+            "lecture"
         ],
-        "object_id": "9",
-        "object_repr": "s3",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"courses\"]}}]"
+        "object_id": "116",
+        "object_repr": "316 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 23,
+    "pk": 246,
     "fields": {
-        "action_time": "2019-08-21T14:43:43.438Z",
+        "action_time": "2019-08-29T09:23:33.190Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "157",
-        "object_repr": "C304 1 9 10",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_id": "117",
+        "object_repr": "316 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 24,
+    "pk": 247,
     "fields": {
-        "action_time": "2019-08-21T14:43:50.332Z",
+        "action_time": "2019-08-29T09:23:43.731Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "156",
-        "object_repr": "C304 1 9 9",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_id": "118",
+        "object_repr": "316 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 25,
+    "pk": 248,
     "fields": {
-        "action_time": "2019-08-21T14:43:55.076Z",
+        "action_time": "2019-08-29T09:23:53.012Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "155",
-        "object_repr": "C304 1 9 8",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_id": "119",
+        "object_repr": "316 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 26,
+    "pk": 249,
     "fields": {
-        "action_time": "2019-08-21T14:44:00.042Z",
+        "action_time": "2019-08-29T09:24:02.038Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "154",
-        "object_repr": "C304 1 9 7",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_id": "120",
+        "object_repr": "316 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 27,
+    "pk": 250,
     "fields": {
-        "action_time": "2019-08-21T14:44:06.156Z",
+        "action_time": "2019-08-29T09:24:12.819Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "153",
-        "object_repr": "C304 1 9 6",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_id": "121",
+        "object_repr": "316 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 28,
+    "pk": 251,
     "fields": {
-        "action_time": "2019-08-21T14:44:13.446Z",
+        "action_time": "2019-08-29T09:24:23.473Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "152",
-        "object_repr": "C304 1 9 5",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_id": "122",
+        "object_repr": "316 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 29,
+    "pk": 252,
     "fields": {
-        "action_time": "2019-08-21T14:44:21.163Z",
+        "action_time": "2019-08-29T09:24:34.237Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "151",
-        "object_repr": "C304 1 9 4",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_id": "123",
+        "object_repr": "316 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 30,
+    "pk": 253,
     "fields": {
-        "action_time": "2019-08-21T14:44:26.386Z",
+        "action_time": "2019-08-29T09:24:44.971Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "150",
-        "object_repr": "C304 1 9 3",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_id": "124",
+        "object_repr": "316 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 31,
+    "pk": 254,
     "fields": {
-        "action_time": "2019-08-21T14:44:29.924Z",
+        "action_time": "2019-08-29T09:25:07.333Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
-        "object_id": "149",
-        "object_repr": "C304 1 9 2",
-        "action_flag": 2,
-        "change_message": "[]"
+        "object_id": "125",
+        "object_repr": "412H 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 32,
+    "pk": 255,
     "fields": {
-        "action_time": "2019-08-21T14:44:35.419Z",
+        "action_time": "2019-08-29T09:25:17.069Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
+        ],
+        "object_id": "126",
+        "object_repr": "412H 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 256,
+    "fields": {
+        "action_time": "2019-08-29T09:25:26.696Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "127",
+        "object_repr": "412H 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 257,
+    "fields": {
+        "action_time": "2019-08-29T09:25:34.866Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "128",
+        "object_repr": "412H 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 258,
+    "fields": {
+        "action_time": "2019-08-29T09:25:43.565Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "129",
+        "object_repr": "412H 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 259,
+    "fields": {
+        "action_time": "2019-08-29T09:25:52.695Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "130",
+        "object_repr": "412H 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 260,
+    "fields": {
+        "action_time": "2019-08-29T09:26:02.476Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "131",
+        "object_repr": "412H 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 261,
+    "fields": {
+        "action_time": "2019-08-29T09:26:11.798Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "132",
+        "object_repr": "412H 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 262,
+    "fields": {
+        "action_time": "2019-08-29T09:26:22.526Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "133",
+        "object_repr": "412H 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 263,
+    "fields": {
+        "action_time": "2019-08-29T09:26:34.603Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "134",
+        "object_repr": "412H 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 264,
+    "fields": {
+        "action_time": "2019-08-29T09:26:47.742Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "135",
+        "object_repr": "416 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 265,
+    "fields": {
+        "action_time": "2019-08-29T09:26:58.110Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "136",
+        "object_repr": "416 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 266,
+    "fields": {
+        "action_time": "2019-08-29T09:27:12.564Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "137",
+        "object_repr": "416 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 267,
+    "fields": {
+        "action_time": "2019-08-29T09:27:21.353Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "138",
+        "object_repr": "416 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 268,
+    "fields": {
+        "action_time": "2019-08-29T09:27:30.736Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "139",
+        "object_repr": "416 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 269,
+    "fields": {
+        "action_time": "2019-08-29T09:27:39.101Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "140",
+        "object_repr": "416 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 270,
+    "fields": {
+        "action_time": "2019-08-29T09:27:51.733Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "141",
+        "object_repr": "416 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 271,
+    "fields": {
+        "action_time": "2019-08-29T09:28:01.401Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "142",
+        "object_repr": "416 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 272,
+    "fields": {
+        "action_time": "2019-08-29T09:28:15.332Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "143",
+        "object_repr": "416 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 273,
+    "fields": {
+        "action_time": "2019-08-29T09:28:24.778Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "144",
+        "object_repr": "416 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 274,
+    "fields": {
+        "action_time": "2019-08-29T09:28:38.236Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "145",
+        "object_repr": "460 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 275,
+    "fields": {
+        "action_time": "2019-08-29T09:28:46.869Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "146",
+        "object_repr": "460 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 276,
+    "fields": {
+        "action_time": "2019-08-29T09:28:55.303Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "147",
+        "object_repr": "460 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 277,
+    "fields": {
+        "action_time": "2019-08-29T09:29:03.870Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
         ],
         "object_id": "148",
-        "object_repr": "C304 1 9 1",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_repr": "460 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 33,
+    "pk": 278,
     "fields": {
-        "action_time": "2019-08-21T14:45:40.735Z",
+        "action_time": "2019-08-29T09:29:12.976Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "answer"
+            "lecture"
         ],
         "object_id": "149",
-        "object_repr": "C304 1 9 2",
-        "action_flag": 2,
-        "change_message": "[{\"changed\": {\"fields\": [\"students\"]}}]"
+        "object_repr": "460 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 34,
+    "pk": 279,
     "fields": {
-        "action_time": "2019-08-23T15:23:27.458Z",
+        "action_time": "2019-08-29T09:29:23.115Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "student"
+            "lecture"
         ],
-        "object_id": "9",
-        "object_repr": "s3",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "150",
+        "object_repr": "460 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 35,
+    "pk": 280,
     "fields": {
-        "action_time": "2019-08-23T15:23:27.464Z",
+        "action_time": "2019-08-29T09:29:34.893Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "student"
+            "lecture"
         ],
-        "object_id": "8",
-        "object_repr": "s2",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "151",
+        "object_repr": "460 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 36,
+    "pk": 281,
     "fields": {
-        "action_time": "2019-08-23T15:23:27.465Z",
+        "action_time": "2019-08-29T09:29:47.168Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "student"
+            "lecture"
         ],
-        "object_id": "7",
-        "object_repr": "s1",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "152",
+        "object_repr": "460 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 37,
+    "pk": 282,
     "fields": {
-        "action_time": "2019-08-23T15:23:42.976Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "auth",
-            "user"
-        ],
-        "object_id": "7",
-        "object_repr": "s1",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 38,
-    "fields": {
-        "action_time": "2019-08-23T15:23:42.979Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "auth",
-            "user"
-        ],
-        "object_id": "8",
-        "object_repr": "s2",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 39,
-    "fields": {
-        "action_time": "2019-08-23T15:23:42.980Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "auth",
-            "user"
-        ],
-        "object_id": "9",
-        "object_repr": "s3",
-        "action_flag": 3,
-        "change_message": ""
-    }
-},
-{
-    "model": "admin.logentry",
-    "pk": 40,
-    "fields": {
-        "action_time": "2019-08-23T15:26:03.201Z",
+        "action_time": "2019-08-29T09:29:56.966Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "lecturer"
+            "lecture"
         ],
-        "object_id": "5",
-        "object_repr": "lr456",
-        "action_flag": 3,
-        "change_message": ""
+        "object_id": "153",
+        "object_repr": "460 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
     "model": "admin.logentry",
-    "pk": 41,
+    "pk": 283,
     "fields": {
-        "action_time": "2019-08-23T15:26:03.205Z",
+        "action_time": "2019-08-29T09:30:07.178Z",
         "user": [
             "sg4518"
         ],
         "content_type": [
             "page",
-            "lecturer"
+            "lecture"
         ],
-        "object_id": "3",
-        "object_repr": "lr123",
+        "object_id": "154",
+        "object_repr": "460 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 284,
+    "fields": {
+        "action_time": "2019-08-29T09:30:15.752Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "155",
+        "object_repr": "466H 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 285,
+    "fields": {
+        "action_time": "2019-08-29T09:30:24.981Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "156",
+        "object_repr": "466H 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 286,
+    "fields": {
+        "action_time": "2019-08-29T09:30:34.961Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "157",
+        "object_repr": "466H 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 287,
+    "fields": {
+        "action_time": "2019-08-29T09:30:44.057Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "158",
+        "object_repr": "466H 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 288,
+    "fields": {
+        "action_time": "2019-08-29T09:30:53.216Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "159",
+        "object_repr": "466H 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 289,
+    "fields": {
+        "action_time": "2019-08-29T09:31:03.209Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "160",
+        "object_repr": "466H 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 290,
+    "fields": {
+        "action_time": "2019-08-29T09:31:11.941Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "161",
+        "object_repr": "466H 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 291,
+    "fields": {
+        "action_time": "2019-08-29T09:31:23.737Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "162",
+        "object_repr": "466H 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 292,
+    "fields": {
+        "action_time": "2019-08-29T09:31:32.517Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "163",
+        "object_repr": "466H 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 293,
+    "fields": {
+        "action_time": "2019-08-29T09:31:42.334Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "164",
+        "object_repr": "466H 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 294,
+    "fields": {
+        "action_time": "2019-08-29T09:31:51.322Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "165",
+        "object_repr": "469 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 295,
+    "fields": {
+        "action_time": "2019-08-29T09:31:59.634Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "166",
+        "object_repr": "469 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 296,
+    "fields": {
+        "action_time": "2019-08-29T09:32:08.073Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "167",
+        "object_repr": "469 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 297,
+    "fields": {
+        "action_time": "2019-08-29T09:32:17.088Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "168",
+        "object_repr": "469 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 298,
+    "fields": {
+        "action_time": "2019-08-29T09:32:27.120Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "169",
+        "object_repr": "469 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 299,
+    "fields": {
+        "action_time": "2019-08-29T09:32:39.991Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "170",
+        "object_repr": "469 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 300,
+    "fields": {
+        "action_time": "2019-08-29T09:32:48.680Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "171",
+        "object_repr": "469 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 301,
+    "fields": {
+        "action_time": "2019-08-29T09:32:57.615Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "172",
+        "object_repr": "469 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 302,
+    "fields": {
+        "action_time": "2019-08-29T09:33:08.702Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "173",
+        "object_repr": "469 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 303,
+    "fields": {
+        "action_time": "2019-08-29T09:33:18.281Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "174",
+        "object_repr": "469 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 304,
+    "fields": {
+        "action_time": "2019-08-29T09:33:28.408Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "175",
+        "object_repr": "490H 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 305,
+    "fields": {
+        "action_time": "2019-08-29T09:33:38.071Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "176",
+        "object_repr": "490H 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 306,
+    "fields": {
+        "action_time": "2019-08-29T09:33:49.805Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "177",
+        "object_repr": "490H 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 307,
+    "fields": {
+        "action_time": "2019-08-29T09:33:59.206Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "178",
+        "object_repr": "490H 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 308,
+    "fields": {
+        "action_time": "2019-08-29T09:34:10.508Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "179",
+        "object_repr": "490H 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 309,
+    "fields": {
+        "action_time": "2019-08-29T09:34:23.463Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "180",
+        "object_repr": "490H 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 310,
+    "fields": {
+        "action_time": "2019-08-29T09:34:32.585Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "181",
+        "object_repr": "490H 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 311,
+    "fields": {
+        "action_time": "2019-08-29T09:34:42.110Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "182",
+        "object_repr": "490H 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 312,
+    "fields": {
+        "action_time": "2019-08-29T09:34:50.909Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "183",
+        "object_repr": "490H 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 313,
+    "fields": {
+        "action_time": "2019-08-29T09:35:00.007Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "184",
+        "object_repr": "490H 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 314,
+    "fields": {
+        "action_time": "2019-08-29T09:35:08.696Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "185",
+        "object_repr": "496 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 315,
+    "fields": {
+        "action_time": "2019-08-29T09:35:20.797Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "186",
+        "object_repr": "496 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 316,
+    "fields": {
+        "action_time": "2019-08-29T09:35:29.976Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "187",
+        "object_repr": "496 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 317,
+    "fields": {
+        "action_time": "2019-08-29T09:35:38.970Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "188",
+        "object_repr": "496 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 318,
+    "fields": {
+        "action_time": "2019-08-29T09:35:49.331Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "189",
+        "object_repr": "496 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 319,
+    "fields": {
+        "action_time": "2019-08-29T09:36:12.769Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "190",
+        "object_repr": "496 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 320,
+    "fields": {
+        "action_time": "2019-08-29T09:36:21.042Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "191",
+        "object_repr": "496 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 321,
+    "fields": {
+        "action_time": "2019-08-29T09:36:29.910Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "192",
+        "object_repr": "496 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 322,
+    "fields": {
+        "action_time": "2019-08-29T09:36:39.648Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "193",
+        "object_repr": "496 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 323,
+    "fields": {
+        "action_time": "2019-08-29T09:36:49.386Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "194",
+        "object_repr": "496 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 324,
+    "fields": {
+        "action_time": "2019-08-29T09:37:03.328Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "195",
+        "object_repr": "498H 1",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 325,
+    "fields": {
+        "action_time": "2019-08-29T09:37:15.781Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "196",
+        "object_repr": "498H 2",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 326,
+    "fields": {
+        "action_time": "2019-08-29T09:37:26.480Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "197",
+        "object_repr": "498H 3",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 327,
+    "fields": {
+        "action_time": "2019-08-29T09:37:37.373Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "198",
+        "object_repr": "498H 4",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 328,
+    "fields": {
+        "action_time": "2019-08-29T09:37:47.761Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "199",
+        "object_repr": "498H 5",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 329,
+    "fields": {
+        "action_time": "2019-08-29T09:37:56.576Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "200",
+        "object_repr": "498H 6",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 330,
+    "fields": {
+        "action_time": "2019-08-29T09:38:05.742Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "201",
+        "object_repr": "498H 7",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 331,
+    "fields": {
+        "action_time": "2019-08-29T09:38:14.235Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "202",
+        "object_repr": "498H 8",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 332,
+    "fields": {
+        "action_time": "2019-08-29T09:38:23.132Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "203",
+        "object_repr": "498H 9",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 333,
+    "fields": {
+        "action_time": "2019-08-29T09:38:33.738Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "204",
+        "object_repr": "498H 10",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 334,
+    "fields": {
+        "action_time": "2019-08-29T09:43:03.358Z",
+        "user": [
+            "sg4518"
+        ],
+        "content_type": [
+            "page",
+            "lecture"
+        ],
+        "object_id": "104",
+        "object_repr": "304 1",
         "action_flag": 3,
         "change_message": ""
     }
 },
 {
-    "model": "admin.logentry",
-    "pk": 42,
+    "model": "page.student",
+    "pk": 266,
     "fields": {
-        "action_time": "2019-08-23T15:26:12.160Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "auth",
-            "user"
-        ],
-        "object_id": "3",
-        "object_repr": "lr123",
-        "action_flag": 3,
-        "change_message": ""
+        "courses": [
+            "304"
+        ]
     }
 },
 {
-    "model": "admin.logentry",
-    "pk": 43,
+    "model": "page.student",
+    "pk": 267,
     "fields": {
-        "action_time": "2019-08-23T15:26:12.162Z",
-        "user": [
-            "sg4518"
-        ],
-        "content_type": [
-            "auth",
-            "user"
-        ],
-        "object_id": "5",
-        "object_repr": "lr456",
-        "action_flag": 3,
-        "change_message": ""
+        "courses": [
+            "304",
+            "316"
+        ]
+    }
+},
+{
+    "model": "page.student",
+    "pk": 268,
+    "fields": {
+        "courses": [
+            "304",
+            "316",
+            "412H"
+        ]
+    }
+},
+{
+    "model": "page.student",
+    "pk": 269,
+    "fields": {
+        "courses": [
+            "304",
+            "316",
+            "412H",
+            "416"
+        ]
+    }
+},
+{
+    "model": "page.student",
+    "pk": 270,
+    "fields": {
+        "courses": [
+            "304",
+            "316",
+            "412H",
+            "416",
+            "460"
+        ]
+    }
+},
+{
+    "model": "page.student",
+    "pk": 271,
+    "fields": {
+        "courses": [
+            "304",
+            "316",
+            "412H",
+            "416",
+            "460",
+            "466H"
+        ]
+    }
+},
+{
+    "model": "page.student",
+    "pk": 272,
+    "fields": {
+        "courses": [
+            "304",
+            "316",
+            "412H",
+            "416",
+            "460",
+            "466H",
+            "469"
+        ]
+    }
+},
+{
+    "model": "page.student",
+    "pk": 273,
+    "fields": {
+        "courses": [
+            "304",
+            "316",
+            "412H",
+            "416",
+            "460",
+            "466H",
+            "469",
+            "490H"
+        ]
+    }
+},
+{
+    "model": "page.student",
+    "pk": 274,
+    "fields": {
+        "courses": [
+            "304",
+            "316",
+            "412H",
+            "416",
+            "460",
+            "466H",
+            "469",
+            "490H",
+            "496"
+        ]
+    }
+},
+{
+    "model": "page.student",
+    "pk": 275,
+    "fields": {
+        "courses": [
+            "304",
+            "316",
+            "412H",
+            "416",
+            "460",
+            "466H",
+            "469",
+            "490H",
+            "496",
+            "498H"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 254,
+    "fields": {
+        "courses": [
+            "304",
+            "316"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 255,
+    "fields": {
+        "courses": [
+            "316",
+            "412H"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 256,
+    "fields": {
+        "courses": [
+            "412H",
+            "416"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 257,
+    "fields": {
+        "courses": [
+            "416",
+            "460"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 258,
+    "fields": {
+        "courses": [
+            "460",
+            "466H"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 259,
+    "fields": {
+        "courses": [
+            "466H",
+            "469"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 260,
+    "fields": {
+        "courses": [
+            "469",
+            "490H"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 261,
+    "fields": {
+        "courses": [
+            "490H",
+            "496"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 262,
+    "fields": {
+        "courses": [
+            "496",
+            "498H"
+        ]
+    }
+},
+{
+    "model": "page.lecturer",
+    "pk": 263,
+    "fields": {
+        "courses": [
+            "304",
+            "498H"
+        ]
     }
 }
 ]

@@ -477,8 +477,10 @@ def tools(request):
                 answer = request.GET.get('answer')
                 txt = request.GET.get('txt')
                 if (txt):
-                    studentsquestions = StudentsQuestions(interface=i,student=this_student,question=txt)
-                    studentsquestions.save()
+                    studentsquestionscheck = StudentsQuestions.objects.filter(interface=i,student=this_student,question=txt)
+                    if studentsquestionscheck==0:
+                        studentsquestions = StudentsQuestions(interface=i,student=this_student,question=txt)
+                        studentsquestions.save()
                 if (question and answer):
                     q = Question.objects.get(interface=i,question_number=int(question))
                     q.submitted.add(this_student)

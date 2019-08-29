@@ -19,10 +19,12 @@
     <div class="row">
       <div class="col-md-4 mb-5">
       </div>
-      <div class="col-md-4 mb-5">
     {% if user.is_authenticated %}
+      <div class="col-md-12 mb-5">  
         <h2>Press 'Tools' to get started.</h2>
+      </div>
     {% else %}
+       <div class="col-md-4 mb-5">
         <div class="jumbotron">
           <h1>Login here :</h1>
           <br>
@@ -42,8 +44,8 @@
             </div>
           </form>
         </div>
+       </div>
     {% endif %}
-      </div>
       <div class="col-md-4 mb-5">
       </div>
     </div>

@@ -1,3 +1,17 @@
+# The MIT License (MIT)
+#
+# Copyright (c) 2011-2019 Twitter, Inc. 
+# Copyright (c) 2019 Classroom Engagement, Sotia Gregoriou, Imperial College London
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ”Software”), 
+# to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+# and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED ”AS IS”, WITHOUT WARRANTY OF ANY KIND, EX- PRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGE- MENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 # page/views.py
 from django.shortcuts import render
 from page.forms import UserForm
@@ -7,8 +21,6 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
 
 def index(request):
     return render(request, 'page/index.html', {})
@@ -499,8 +511,7 @@ def tools(request):
                     a.students=st+1
                     a.save()
             if request.method == 'POST':
-                    feedbackvalue = request.POST.get('feedbackvalue');
-                    print(feedbackvalue)
+                    feedbackvalue = request.POST.get('feedbackvalue')
                     if feedbackvalue:
                         f = Feedback(interface=i,text=feedbackvalue,student=this_student)
                         f.save()
